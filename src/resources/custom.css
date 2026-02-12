@@ -1,54 +1,51 @@
-/* :root {
-  /*
+:root {
   /* Example setup for custom colors */
 /* Generate at: https://once-ui.com/customize */
-/*
-  --scheme-brand-100: #08002f;
-  --scheme-brand-200:  #04025c;
-  --scheme-brand-300:  #1f398e;
-  --scheme-brand-400:  #3856ae;
-  --scheme-brand-500:  #5071cc;
-  --scheme-brand-600:  #6f94f1;
-  --scheme-brand-700:  #8db3ff;
-  --scheme-brand-800:  #b2dbff;
-  --scheme-brand-900:  #bfe8ff;
-  --scheme-brand-1000: #ccf6ff;
-  --scheme-brand-1100: #d2fcff;
-  --scheme-brand-1200: #d2fcff;
-  --scheme-brand-600-10: rgba(111,148,241,0.1);
-  --scheme-brand-600-30: rgba(111,148,241,0.3);
-  --scheme-brand-600-50: rgba(111,148,241,0.5);
+  --scheme-brand-100: #000035;
+  --scheme-brand-200: #000b4d;
+  --scheme-brand-300: #003e80;
+  --scheme-brand-400: #1c5ba0;
+  --scheme-brand-500: #3976bd;
+  --scheme-brand-600: #5a98e1;
+  --scheme-brand-600-15: rgba(90,152,225,0.15);
+  --scheme-brand-600-30: rgba(90,152,225,0.3);
+  --scheme-brand-600-50: rgba(90,152,225,0.5);
+  --scheme-brand-700: #79b8ff;
+  --scheme-brand-800: #9bdcff;
+  --scheme-brand-900: #abecff;
+  --scheme-brand-1000: #b8faff;
+  --scheme-brand-1100: #c2ffff;
+  --scheme-brand-1200: #c2ffff;
 
-  --scheme-accent-100:  #030b10;
-  --scheme-accent-200:  #0d181d;
-  --scheme-accent-300:  #364248;
-  --scheme-accent-400:  #505d64;
-  --scheme-accent-500:  #69777e;
-  --scheme-accent-600:  #8a989f;
-  --scheme-accent-700:  #a8b7bf;
-  --scheme-accent-800:  #c8d7df;
-  --scheme-accent-900:  #d5e4ec;
-  --scheme-accent-1000: #e2f1f9;
-  --scheme-accent-1100: #e9f8ff;
-  --scheme-accent-1200: #efffff;
-  --scheme-accent-600-10: rgba(138,152,159,0.1);
-  --scheme-accent-600-30: rgba(138,152,159,0.3);
-  --scheme-accent-600-50: rgba(138,152,159,0.5);
+  --scheme-accent-100: #090909;
+  --scheme-accent-200: #161616;
+  --scheme-accent-300: #404040;
+  --scheme-accent-400: #5b5b5b;
+  --scheme-accent-500: #777777;
+  --scheme-accent-600: #959595;
+  --scheme-accent-600-15: rgba(149,149,149,0.15);
+  --scheme-accent-600-30: rgba(149,149,149,0.3);
+  --scheme-accent-600-50: rgba(149,149,149,0.5);
+  --scheme-accent-700: #b4b4b4;
+  --scheme-accent-800: #d4d4d4;
+  --scheme-accent-900: #e1e1e1;
+  --scheme-accent-1000: #eeeeee;
+  --scheme-accent-1100: #f5f5f5;
+  --scheme-accent-1200: #fcfcfc;
 
-  --scheme-neutral-100:  #020b10;
-  --scheme-neutral-200:  #0b181d;
-  --scheme-neutral-300:  #344248;
-  --scheme-neutral-400:  #4f5d64;
-  --scheme-neutral-500:  #68777e;
-  --scheme-neutral-600:  #89989f;
-  --scheme-neutral-700:  #a7b7be;
-  --scheme-neutral-800:  #c7d7df;
-  --scheme-neutral-900:  #d4e4ec;
-  --scheme-neutral-1000: #e1f2f9;
-  --scheme-neutral-1100: #e7f8ff;
-  --scheme-neutral-1200: #eeffff;
-  --scheme-neutral-600-10: rgba(137,152,159,0.1);
-  --scheme-neutral-600-30: rgba(137,152,159,0.3);
-  --scheme-neutral-600-50: rgba(137,152,159,0.5);
-  /*
-}*/
+  --scheme-neutral-100: #07090d;
+  --scheme-neutral-200: #14161a;
+  --scheme-neutral-300: #3d4045;
+  --scheme-neutral-400: #585b60;
+  --scheme-neutral-500: #75777d;
+  --scheme-neutral-600: #95989e;
+  --scheme-neutral-600-15: rgba(149,152,158,0.15);
+  --scheme-neutral-600-30: rgba(149,152,158,0.3);
+  --scheme-neutral-600-50: rgba(149,152,158,0.5);
+  --scheme-neutral-700: #b1b4ba;
+  --scheme-neutral-800: #d1d4da;
+  --scheme-neutral-900: #dee1e7;
+  --scheme-neutral-1000: #ebeef5;
+  --scheme-neutral-1100: #f2f5fb;
+  --scheme-neutral-1200: #f9fcff;
+}

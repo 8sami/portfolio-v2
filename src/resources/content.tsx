@@ -101,7 +101,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.eu/samiullahjaved/30min",
   },
   intro: {
     display: true,
