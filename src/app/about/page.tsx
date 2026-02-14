@@ -11,6 +11,8 @@ import {
   Meta,
   Schema,
   Row,
+  List,
+  ListItem,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -122,7 +124,7 @@ export default function About() {
                 fitWidth
                 border="brand-alpha-medium"
                 background="brand-alpha-weak"
-                radius="full"
+                radius="m"
                 padding="4"
                 gap="8"
                 marginBottom="m"
@@ -136,7 +138,7 @@ export default function About() {
                 <Row paddingX="8">Schedule a call</Row>
                 <IconButton
                   href={about.calendar.link}
-                  data-border="rounded"
+                  data-border="conservative"
                   variant="secondary"
                   icon="chevronRight"
                 />
@@ -161,7 +163,7 @@ export default function About() {
                 wrap
                 horizontal="center"
                 fitWidth
-                data-border="rounded"
+                data-border="conservative"
               >
                 {social
                       .filter((item) => item.essential)
@@ -218,22 +220,18 @@ export default function About() {
                         {experience.timeframe}
                       </Text>
                     </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
                       {experience.role}
                     </Text>
-                    <Column as="ul" gap="16">
+                    <List as="ul" textVariant="body-default-m" gap="8">
                       {experience.achievements.map(
                         (achievement: React.ReactNode, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
+                          <ListItem key={`${experience.company}-${index}`}>
                             {achievement}
-                          </Text>
+                          </ListItem>
                         ),
                       )}
-                    </Column>
+                    </List>
                     {experience.images && experience.images.length > 0 && (
                       <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
@@ -269,12 +267,24 @@ export default function About() {
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    <Row fillWidth horizontal="between" vertical="end">
+                      <Text id={institution.name} variant="heading-strong-l">
+                        {institution.name}
+                      </Text>
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                        {institution.timeframe}
+                      </Text>
+                    </Row>
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
                       {institution.description}
                     </Text>
+                    {institution?.achievements && institution.achievements?.length > 0 && (
+                      <List as="ul" gap="8" textVariant="body-default-m">
+                        {institution.achievements?.map((item, idx) => (
+                          <ListItem key={idx}>{item}</ListItem>
+                        ))}
+                    </List>
+                    )}
                   </Column>
                 ))}
               </Column>

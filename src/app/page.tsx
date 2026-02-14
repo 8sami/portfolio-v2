@@ -56,6 +56,7 @@ export default function Home() {
                 background="brand-alpha-weak"
                 paddingX="12"
                 paddingY="4"
+                radius="m"
                 onBackground="neutral-strong"
                 textVariant="label-default-s"
                 arrow={false}
@@ -78,7 +79,7 @@ export default function Home() {
           <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
             <Button
               id="about"
-              data-border="rounded"
+              data-border="conservative"
               href={about.path}
               variant="secondary"
               size="m"

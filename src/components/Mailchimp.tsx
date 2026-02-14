@@ -54,7 +54,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       overflow="hidden"
       fillWidth
       padding="xl"
-      radius="l"
+      radius="m"
       marginBottom="m"
       horizontal="center"
       align="center"

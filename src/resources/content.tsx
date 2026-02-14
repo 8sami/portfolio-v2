@@ -23,15 +23,15 @@ const social: Social = [
   // Import new icons in /once-ui/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
-    name: "GitHub",
+    name: "8sami",
     icon: "github",
-    link: "https://github.com/sam1-khan",
+    link: "https://github.com/8sami",
     essential: true,
   },
   {
-    name: "GitHub",
+    name: "sam1-khan",
     icon: "github",
-    link: "https://github.com/8sami",
+    link: "https://github.com/sam1-khan",
     essential: true,
   },
   {
@@ -101,7 +101,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://cal.eu/samiullahjaved/30min",
   },
   intro: {
     display: true,
@@ -160,15 +160,18 @@ const about: About = {
     institutions: [
       {
         name: "Islamia Government Science College Sukkur",
-        description: <>Intermediate in Computer Science (Aug. 2024 - Expected 2026)</>,
+        description: "Intermediate in Computer Science",
+        achievements: [],
+        timeframe: "Aug. 2024 - Expected 2026",
       },
       {
         name: "APWA Excellent World School Sukkur",
-        description: <>
-          Primary & High School (Apr. 2014 - Aug. 2024)
-          <br />1st position in Annual Examination 2022
-          <br />2nd position in Annual Examination 2020-21
-        </>,
+        description: "Primary & High School",
+        achievements: [
+          "1st position in Annual Examination 2022",
+          "2nd position in Annual Examination 2020-21",
+        ],
+        timeframe: "Apr. 2014 - Aug. 2024",
       },
     ],
   },
