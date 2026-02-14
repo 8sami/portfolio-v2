@@ -176,7 +176,11 @@ export interface About extends BasePageConfig {
       /** Institution name */
       name: string;
       /** Description of studies */
-      description: React.ReactNode;
+      description: string;
+      /** Achievements at the institution */
+      achievements?: string[];
+      /** Timeframe of studies */
+      timeframe: string;
     }>;
   };
   /** Technical skills section */
