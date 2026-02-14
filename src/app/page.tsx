@@ -56,6 +56,7 @@ export default function Home() {
                 background="brand-alpha-weak"
                 paddingX="12"
                 paddingY="4"
+                radius="m"
                 onBackground="neutral-strong"
                 textVariant="label-default-s"
                 arrow={false}
