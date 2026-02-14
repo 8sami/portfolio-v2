@@ -67,7 +67,7 @@ export const Header = () => {
         fillWidth
         padding="8"
         horizontal="center"
-        data-border="rounded"
+        data-border="conservative"
         s={{
           position: "fixed",
         }}
@@ -79,7 +79,7 @@ export const Header = () => {
           <Row
             background="page"
             border="neutral-alpha-weak"
-            radius="m-4"
+            radius="m-8"
             shadow="l"
             padding="4"
             horizontal="center"
