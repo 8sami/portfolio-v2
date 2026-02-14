@@ -122,7 +122,7 @@ export default function About() {
                 fitWidth
                 border="brand-alpha-medium"
                 background="brand-alpha-weak"
-                radius="full"
+                radius="m"
                 padding="4"
                 gap="8"
                 marginBottom="m"
@@ -136,7 +136,7 @@ export default function About() {
                 <Row paddingX="8">Schedule a call</Row>
                 <IconButton
                   href={about.calendar.link}
-                  data-border="rounded"
+                  data-border="conservative"
                   variant="secondary"
                   icon="chevronRight"
                 />
@@ -161,7 +161,7 @@ export default function About() {
                 wrap
                 horizontal="center"
                 fitWidth
-                data-border="rounded"
+                data-border="conservative"
               >
                 {social
                       .filter((item) => item.essential)
