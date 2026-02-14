@@ -1,21 +1,38 @@
-:root {
+/* :root {
+  /*
+  /* Override default variables here */
+  /*
+  --font-size-display-multiplier:   1;
+  --font-size-heading-multiplier:   1;
+  --font-size-body-multiplier:      1;
+  --font-size-label-multiplier:     1;
+
+  --line-height-display-multiplier: 1;
+  --line-height-heading-multiplier: 1;
+  --line-height-body-multiplier:    1;
+  --line-height-label-multiplier:   1;
+
+  --default-border:        var(--neutral-border-medium);
+
+  /*
   /* Example setup for custom colors */
-/* Generate at: https://once-ui.com/customize */
-  --scheme-brand-100: #000035;
-  --scheme-brand-200: #000b4d;
-  --scheme-brand-300: #003e80;
-  --scheme-brand-400: #1c5ba0;
-  --scheme-brand-500: #3976bd;
-  --scheme-brand-600: #5a98e1;
-  --scheme-brand-600-15: rgba(90,152,225,0.15);
-  --scheme-brand-600-30: rgba(90,152,225,0.3);
-  --scheme-brand-600-50: rgba(90,152,225,0.5);
-  --scheme-brand-700: #79b8ff;
-  --scheme-brand-800: #9bdcff;
-  --scheme-brand-900: #abecff;
-  --scheme-brand-1000: #b8faff;
-  --scheme-brand-1100: #c2ffff;
-  --scheme-brand-1200: #c2ffff;
+  /* Generate at: https://once-ui.com/customize */
+  /*
+  --scheme-brand-100: #08002f;
+  --scheme-brand-200:  #04025c;
+  --scheme-brand-300:  #1f398e;
+  --scheme-brand-400:  #3856ae;
+  --scheme-brand-500:  #5071cc;
+  --scheme-brand-600:  #6f94f1;
+  --scheme-brand-700:  #8db3ff;
+  --scheme-brand-800:  #b2dbff;
+  --scheme-brand-900:  #bfe8ff;
+  --scheme-brand-1000: #ccf6ff;
+  --scheme-brand-1100: #d2fcff;
+  --scheme-brand-1200: #d2fcff;
+  --scheme-brand-600-10: rgba(111,148,241,0.1);
+  --scheme-brand-600-30: rgba(111,148,241,0.3);
+  --scheme-brand-600-50: rgba(111,148,241,0.5);
 
   --scheme-accent-100: #090909;
   --scheme-accent-200: #161616;
