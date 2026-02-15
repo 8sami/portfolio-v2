@@ -67,9 +67,8 @@ export default function DoomPage() {
         </RevealFx>
       </Column>
 
-      <RevealFx translateY="12" delay={0.4} fillWidth horizontal="center">
+      <RevealFx translateY="12" delay={0.4} horizontal="center">
         <Flex
-            fillWidth
             horizontal="center"
             direction="column"
             gap="m"
@@ -89,7 +88,7 @@ export default function DoomPage() {
                 allowFullScreen
             />
             <Text variant="body-default-s" onBackground="neutral-weak">
-                Controls: Arrow Keys to Move, CTRL to Fire, SPACE to Open, SHIFT to Strafe.
+                Controls: Arrow Keys to Move, CTRL to Open, SPACE to Fire, SHIFT to Strafe.
             </Text>
         </Flex>
       </RevealFx>

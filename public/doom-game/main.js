@@ -81,7 +81,6 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
             case 32: return KEY_RCTRL;  // SPACE -> FIRE (Ctrl in Doom)
             case 17: return 32;         // CTRL -> OPEN/USE (Space in Doom)
             
-            case 18: return KEY_RALT;   // Alt (Strafe)
             case 16: return KEY_RALT;   // Shift (Strafe)
             
             case 13: return 13;         // Enter
