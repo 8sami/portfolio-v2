@@ -242,3 +242,20 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * The Fun Stuff page configuration.
+ */
+export interface TheFunStuff extends BasePageConfig {
+  images: Array<{
+    src: string;
+    alt: string;
+    orientation: string;
+  }>;
+  stuff: Array<{
+    name: string;
+    description: string;
+    image: string;
+    button: string;
+  }>;
+}
