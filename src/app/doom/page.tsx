@@ -91,9 +91,6 @@ export default function DoomPage() {
             <Text variant="body-default-s" onBackground="neutral-weak">
                 Controls: Arrow Keys to Move, CTRL to Fire, SPACE to Open, SHIFT to Strafe.
             </Text>
-             <Button href="/the-fun-stuff" variant="tertiary" arrowIcon>
-                Back to Fun Stuff
-            </Button>
         </Flex>
       </RevealFx>
     </Column>

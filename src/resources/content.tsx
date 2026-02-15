@@ -315,26 +315,4 @@ const gallery: Gallery = {
   ],
 };
 
-const thefunstuff: TheFunStuff = {
-  path: "/the-fun-stuff",
-  label: "The Fun Stuff",
-  title: `The Fun Stuff`,
-  images: [
-    {
-      src: "/images/the-fun-stuff/you-got-games.jpg",
-      alt: "meme image",
-      orientation: "horizontal",
-    },
-  ],
-  description: `"Do you have any games on your phone?" - YES!`,
-  stuff: [
-    {
-      name: "DOOM",
-      description: "Doom is a classic game that has been run on calculators and digital cameras to unconventional hardware like pregnancy tests, fridges, smart light bulbs, and even via bacteria.",
-      image: "/images/the-fun-stuff/doom.jpg",
-      button: "Play DOOM",
-    },
-  ],
-};
-
 export { person, social, newsletter, home, about, blog, work, gallery, thefunstuff };
