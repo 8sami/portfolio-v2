@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Guestbook, Home, Newsletter, Person, Social, Work, TheFunStuff } from "@/types";
+import { About, Blog, Gallery, Guestbook, Home, Newsletter, Person, Social, Work, Doom } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -11,6 +11,17 @@ const person: Person = {
   location: "Asia/Karachi", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Urdu"], // optional: Leave the array empty if you don't want to display languages
 };
+
+const doom: Doom = {
+  path: "/doom",
+  label: "DOOM",
+  title: "DOOM Game",
+  description: "Rip and Tear, until it is done.",
+  controls: "Controls: Arrow Keys to Move, CTRL to Open, SPACE to Fire, SHIFT to Strafe.",
+  iframe: {
+    link: "/doom-game/index.html",
+  }
+}
 
 const newsletter: Newsletter = {
   display: false,
@@ -315,4 +326,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, thefunstuff };
+export { person, social, newsletter, home, about, blog, work, gallery, doom };

@@ -244,18 +244,11 @@ export interface Gallery extends BasePageConfig {
 }
 
 /**
- * The Fun Stuff page configuration.
+ * Doom page configuration.
  */
-export interface TheFunStuff extends BasePageConfig {
-  images: Array<{
-    src: string;
-    alt: string;
-    orientation: string;
-  }>;
-  stuff: Array<{
-    name: string;
-    description: string;
-    image: string;
-    button: string;
-  }>;
+export interface Doom extends BasePageConfig {
+  controls: string;
+  iframe: {
+    link: string;
+  };
 }

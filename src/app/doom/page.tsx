@@ -1,17 +1,17 @@
 import {
   Heading,
   Text,
-  Button,
   Column,
   Flex,
   RevealFx,
+  TypeFx,
 } from "@once-ui-system/core";
-import { baseURL } from "@/resources";
+import { baseURL, doom } from "@/resources";
 
 
 export async function generateMetadata() {
-  const title = "Doom";
-  const description = "Play the classic Doom game right in your browser.";
+  const title = doom.title;
+  const description = doom.description;
   const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
 
   return {
@@ -21,7 +21,7 @@ export async function generateMetadata() {
       title,
       description,
       type: "website",
-      url: `https://${baseURL}/doom`,
+      url: `https://${baseURL}{doom.path}`,
       images: [
         {
           url: ogImage,
@@ -48,50 +48,43 @@ export default function DoomPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: "Doom",
-            description: "Play Doom in your browser.",
-            url: `https://${baseURL}/doom`,
-            image: `https://${baseURL}/og?title=Doom`,
+            name: doom.title,
+            description: doom.description,
+            url: `https://${baseURL}${doom.path}`,
+            image: `https://${baseURL}/og?title=${doom.label}`,
           }),
         }}
       />
       
       <Column fillWidth gap="m" horizontal="center">
-        <RevealFx translateY="4" fillWidth horizontal="center">
-            <Heading variant="display-strong-l">DOOM</Heading>
-        </RevealFx>
-        <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center">
-             <Text variant="body-default-m" onBackground="neutral-weak">
-                Rip and Tear, until it is done.
-            </Text>
-        </RevealFx>
+        <Heading variant="display-strong-l">{doom.label}</Heading>
+        <Text variant="body-default-m" onBackground="neutral-weak">
+          <TypeFx words={doom.description} />
+        </Text>
       </Column>
-
-      <RevealFx translateY="12" delay={0.4} horizontal="center">
-        <Flex
-            horizontal="center"
-            direction="column"
-            gap="m"
-            align="center"
-        >
-            <iframe
-                src="/doom-game/index.html"
-                style={{
-                    border: "none",
-                    maxWidth: "800px",
-                    width: "100%",
-                    aspectRatio: "16/10",
-                    imageRendering: "pixelated",
-                    boxShadow: "0 0 20px rgba(0,0,0,0.5)",
-                }}
-                title="Doom Game"
-                allowFullScreen
-            />
-            <Text variant="body-default-s" onBackground="neutral-weak">
-                Controls: Arrow Keys to Move, CTRL to Open, SPACE to Fire, SHIFT to Strafe.
-            </Text>
-        </Flex>
-      </RevealFx>
+      <Flex
+          horizontal="center"
+          direction="column"
+          gap="m"
+          align="center"
+      >
+          <iframe
+              src={doom.iframe.link}
+              style={{
+                  border: "none",
+                  maxWidth: "800px",
+                  width: "100%",
+                  aspectRatio: "16/10",
+                  imageRendering: "pixelated",
+                  boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+              }}
+              title={doom.title}
+              allowFullScreen
+          />
+          <Text variant="body-default-s" onBackground="neutral-weak">
+            <TypeFx words={doom.controls} />
+          </Text>
+      </Flex>
     </Column>
   );
 }
