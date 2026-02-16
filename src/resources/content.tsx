@@ -16,8 +16,8 @@ const doom: Doom = {
   path: "/doom",
   label: "DOOM",
   title: "DOOM Game",
-  description: "Rip and Tear, until it is done.",
-  controls: "Controls: Arrow Keys to Move, CTRL to Open, SPACE to Fire, SHIFT to Strafe.",
+  description: '"Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done."',
+  controls: "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu.",
   iframe: {
     link: "/doom-game/index.html",
   }
@@ -119,10 +119,15 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        After messing around and learning different stuff, I have acquired hands‑on experience with both Python and JavaScript, particularly, NextJS,
-        ReactJS, Typescript, Django, Django Ninja, Flask and many more things that I won’t be able to fit here. I have a good understanding and experience
-        of version control and deployments and, not to forget, I have created many N8N automation flows and used AI for different use cases, worked with
-        Supabase, Strapi CMS, different UI libraries(Shadcn, Chakra, AntDesign etc.), also tried app development with Expo and didn’t like it
+        I can be described as someone who is genuinely curious, straight-forward and someone who actually listens.
+        <br /> <br />
+        That said, I mostly tend to follow my gut feelings and curiosity, and the same gut feeling and curiosity has led me to learn programming when I was in 9th grade. Since then, I have learned whatever I thought would be fun to learn.
+        <br /><br />
+        Programming is a like a superpower to me that has enabled me to create whatever I want, however I want, wherever I want, for whatever reason I want, for whoever I want. I get to choose to solve someone's problem using whatever means, for whatever reason and get compensated for doing so and enjoy it all the whilst!
+        <br /> <br />
+        So I am not someone who does things just for the sake of money or just because my boss told me to do it. I need to see my contribution making an impact in someone's life, which makes me a bad corporate employee but I would rather stay true to myself than lie just to earn a few cents.
+        <br /> <br />
+        I find product development quite enojoyable. There's just so much fun in solving someone's problem. The process of getting realtime feedback, improving the product based on that and then getting positive feedback is one of my most cherished source of serotonin.
       </>
     ),
   },
@@ -132,11 +137,11 @@ const about: About = {
     experiences: [
       {
         company: "Devkind",
-        timeframe: "Jul. 2025 - Present",
+        timeframe: "Jul. 2025 - Feb. 2026",
         role: "Software Developer",
         achievements: [
           <>Built a plug-and-play checkout for Swell stores using Cloudflare KV, Easyblocks, and NextJS, featuring a no-code editor for UI customisation.</>,
-          <>Optimised the core checkout logic from 3 steps to 1, reducing friction and increasing completion rates by approximately 35%.</>,
+          <>Optimised the core checkout logic from 3 steps to 1, reducing friction and increasing completion rates by &asymp;35%.</>,
           <>Delivered 6+ client projects end-to-end, managing design, backend, frontend implementation, and deployment.</>,
           <>Mentored an intern through code reviews and task delegation to ensure timely and effective task completion.</>,
         ],
@@ -148,7 +153,7 @@ const about: About = {
         role: "Developer Intern",
         achievements: [
           <>Reworked a legacy website with a modern, sleek design, improving SEO and UX, which directly increased organic traffic, sales leads and decreased paint time from 172 ms to 30 ms.</>,
-          <>Standardised AI usage by creating a database of specialised prompts, reducing API token costs by 30%, and ensuring code consistency.</>,
+          <>Standardised AI usage by creating a database of specialised prompts, reducing API token costs by &asymp;30%, and ensuring code consistency.</>,
           <>Automated marketing workflows using N8N and Slack, saving the team 10+ hours of manual work weekly.</>,
         ],
         images: [],
@@ -158,7 +163,7 @@ const about: About = {
         timeframe: "Nov. 2024 - Apr. 2025",
         role: "Full-stack Freelance Developer",
         achievements: [
-          <>Built a custom invoicing system using Django Ninja and NextJS that had processed over 20,000,000 PKR in transactions.</>,
+          <>Built a custom invoicing system using Django Ninja and NextJS that had processed upto 20,000,000 PKR in transactions.</>,
           <>Iterated on the product based on real-time client feedback to handle different scenarios and 4+ new feature requests.</>,
         ],
         images: [],
@@ -173,7 +178,7 @@ const about: About = {
         name: "Islamia Government Science College Sukkur",
         description: "Intermediate in Computer Science",
         achievements: [],
-        timeframe: "Aug. 2024 - Expected 2026",
+        timeframe: "Aug. 2024 - Expd. 2026",
       },
       {
         name: "APWA Excellent World School Sukkur",

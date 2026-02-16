@@ -271,7 +271,7 @@ export default function About() {
                       <Text id={institution.name} variant="heading-strong-l">
                         {institution.name}
                       </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      <Text variant="heading-default-xs" style={{ textWrap: "nowrap" }} onBackground="neutral-weak">
                         {institution.timeframe}
                       </Text>
                     </Row>
