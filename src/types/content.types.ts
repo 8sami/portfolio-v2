@@ -242,3 +242,13 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * Doom page configuration.
+ */
+export interface Doom extends BasePageConfig {
+  controls: string;
+  iframe: {
+    link: string;
+  };
+}

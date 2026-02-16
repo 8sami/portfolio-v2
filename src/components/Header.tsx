@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, blog, work, gallery, doom } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -95,16 +95,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/about"
+                      href={about.path}
                       label={about.label}
-                      selected={pathname === "/about"}
+                      selected={pathname === about.path}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
-                      href="/about"
-                      selected={pathname === "/about"}
+                      href={about.path}
+                      selected={pathname === about.path}
                     />
                   </Row>
                 </>
@@ -114,16 +114,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/work"
+                      href={work.path}
                       label={work.label}
-                      selected={pathname.startsWith("/work")}
+                      selected={pathname.startsWith(work.path)}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
-                      href="/work"
-                      selected={pathname.startsWith("/work")}
+                      href={work.path}
+                      selected={pathname.startsWith(work.path)}
                     />
                   </Row>
                 </>
@@ -133,16 +133,16 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href="/blog"
+                      href={blog.path}
                       label={blog.label}
-                      selected={pathname.startsWith("/blog")}
+                      selected={pathname.startsWith(blog.path)}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="book"
-                      href="/blog"
-                      selected={pathname.startsWith("/blog")}
+                      href={blog.path}
+                      selected={pathname.startsWith(blog.path)}
                     />
                   </Row>
                 </>
@@ -152,16 +152,35 @@ export const Header = () => {
                   <Row s={{ hide: true }}>
                     <ToggleButton
                       prefixIcon="gallery"
-                      href="/gallery"
+                      href={gallery.path}
                       label={gallery.label}
-                      selected={pathname.startsWith("/gallery")}
+                      selected={pathname.startsWith(gallery.path)}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="gallery"
-                      href="/gallery"
-                      selected={pathname.startsWith("/gallery")}
+                      href={gallery.path}
+                      selected={pathname.startsWith(gallery.path)}
+                    />
+                  </Row>
+                </>
+              )}
+              {routes["/doom"] && (
+                <>
+                  <Row s={{ hide: true }}>
+                    <ToggleButton
+                      prefixIcon="game" 
+                      href={doom.path}
+                      label={doom.label}
+                      selected={pathname.startsWith(doom.path)}
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton
+                      prefixIcon="game"
+                      href={doom.path}
+                      selected={pathname.startsWith(doom.path)}
                     />
                   </Row>
                 </>
