@@ -61,12 +61,18 @@ const social: Social = [
     name: "Threads",
     icon: "threads",
     link: "https://www.threads.com/@wotareudoing",
-    essential: true,
+    essential: false,
   },
   {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,
+    essential: true,
+  },
+  {
+    name: "Resume",
+    icon: "resume",
+    link: "/Samiullah_Javed.pdf",
     essential: true,
   },
 ];
