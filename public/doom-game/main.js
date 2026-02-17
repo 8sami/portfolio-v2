@@ -127,8 +127,9 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
         ["btn-right", KEY_RIGHT],
         ["btn-enter", 13],
         ["btn-strafe", KEY_RALT],
-        ["btn-fire", KEY_RCTRL], // This button now sends the Fire command
-        ["btn-use", 32]          // This button now sends the Use command
+        ["btn-fire", KEY_RCTRL],
+        ["btn-use", 32],
+        ["btn-esc", 27],
     ];
 
     mobileMap.forEach(([id, code]) => {

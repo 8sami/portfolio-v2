@@ -34,6 +34,24 @@ const social: Social = [
   // Import new icons in /once-ui/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
+    name: "Email",
+    icon: "email",
+    link: `mailto:${person.email}`,
+    essential: true,
+  },
+  {
+    name: "Resume",
+    icon: "resume",
+    link: "/Samiullah_Javed.pdf",
+    essential: true,
+  },
+  {
+    name: "LinkedIn",
+    icon: "linkedin",
+    link: "https://www.linkedin.com/in/samiullahjaved",
+    essential: true,
+  },
+  {
     name: "8sami",
     icon: "github",
     link: "https://github.com/8sami",
@@ -43,12 +61,6 @@ const social: Social = [
     name: "sam1-khan",
     icon: "github",
     link: "https://github.com/sam1-khan",
-    essential: true,
-  },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/in/samiullahjaved",
     essential: true,
   },
   {
@@ -62,18 +74,6 @@ const social: Social = [
     icon: "threads",
     link: "https://www.threads.com/@wotareudoing",
     essential: false,
-  },
-  {
-    name: "Email",
-    icon: "email",
-    link: `mailto:${person.email}`,
-    essential: true,
-  },
-  {
-    name: "Resume",
-    icon: "resume",
-    link: "/Samiullah_Javed.pdf",
-    essential: true,
   },
 ];
 
@@ -126,14 +126,14 @@ const about: About = {
     description: (
       <>
         I can be described as someone who is genuinely curious, straight-forward and someone who actually listens.
-        <br /> <br />
-        That said, I mostly tend to follow my gut feelings and curiosity, and the same gut feeling and curiosity has led me to learn programming when I was in 9th grade. Since then, I have learned whatever I thought would be fun to learn.
-        <br /><br />
-        Programming is a like a superpower to me that has enabled me to create whatever I want, however I want, wherever I want, for whatever reason I want, for whoever I want. I get to choose to solve someone's problem using whatever means, for whatever reason and get compensated for doing so and enjoy it all the whilst!
-        <br /> <br />
-        So I am not someone who does things just for the sake of money or just because my boss told me to do it. I need to see my contribution making an impact in someone's life, which makes me a bad corporate employee but I would rather stay true to myself than lie just to earn a few cents.
-        <br /> <br />
-        I find product development quite enojoyable. There's just so much fun in solving someone's problem. The process of getting realtime feedback, improving the product based on that and then getting positive feedback is one of my most cherished source of serotonin.
+        <br style={{ marginBottom: "12px" }} />
+        That said, I mostly tend to follow my gut feeling and curiosity, and that same gut feeling and curiosity led me to learn programming back when I was in 9th grade. Since then, I have learned whatever I thought would be fun to learn.
+        <br style={{ marginBottom: "12px" }} />
+        Programming is like a superpower to me that has enabled me to create whatever I want, however I want, wherever I want, for whatever reason I want, for whoever I want. I get to choose to solve someone's problem using whatever means, for whatever reason and get compensated for doing so and enjoy it all the whilst!
+        <br style={{ marginBottom: "12px" }} />
+        So I am not someone who does things just for the sake of money or just because my boss told me to do it. I need to see my contribution making an impact on someone's life, which makes me a bad corporate employee, but I would rather stay true to myself than lie just to earn a few cents.
+        <br style={{ marginBottom: "12px" }} />
+        I find product development quite enojoyable. There's just so much fun in solving someone's problem and the process of getting realtime feedback, improving the product based on that and then getting positive feedback in the end is one of my most cherished source of serotonin.
       </>
     ),
   },

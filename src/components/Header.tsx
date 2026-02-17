@@ -130,11 +130,7 @@ export const Header = () => {
               {enabledNavItems.map((item, index) => (
                 <Row key={item.href} vertical='center' gap='4'>
                   {index === 1 && (
-                    <Line
-                      background='neutral-alpha-medium'
-                      vert
-                      maxHeight='24'
-                    />
+                    <Line vert background='neutral-alpha-medium' height='24' />
                   )}
                   
                   <Row s={{ hide: true }}>

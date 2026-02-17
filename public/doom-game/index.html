@@ -16,9 +16,8 @@
 
         canvas {
             display: block;
-            width: 100vw;
-            height: 100vh;
-            image-rendering: pixelated;
+            width: 100dvw;
+            height: 100dvh;
             object-fit: contain;
         }
 
@@ -74,6 +73,8 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        #btn-esc { position: absolute; top: 15px; left: 15px; width: 20px; height: 20px; font-size: 8px; }
+
         /* D-Pad Positioning */
         #btn-up { position: absolute; top: 0; left: 40px; width: 40px; height: 40px; }
         #btn-down { position: absolute; bottom: 0; left: 40px; width: 40px; height: 40px; }
@@ -93,6 +94,8 @@
 
     <canvas id="screen" tabindex="0"></canvas>
 
+    <div class="btn" id="btn-esc">ESC</div>
+
     <div id="mobile-controls">
         <div id="dpad" class="control-group">
             <div class="btn" id="btn-up">↑</div>
@@ -103,9 +106,9 @@
 
         <div id="actions" class="control-group">
             <div class="btn action-btn" id="btn-strafe">ALT</div>
-            <div class="btn action-btn" id="btn-enter">↵</div>
-            <div class="btn action-btn" id="btn-fire">CTRL</div>
-            <div class="btn action-btn" id="btn-use">SPACE</div>
+            <div class="btn action-btn" id="btn-enter">↵ ENTR</div>
+            <div class="btn action-btn" id="btn-fire">SPACE</div>
+            <div class="btn action-btn" id="btn-use">CTRL</div>
         </div>
     </div>
 
