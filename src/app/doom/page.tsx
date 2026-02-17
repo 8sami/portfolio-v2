@@ -46,11 +46,10 @@ export default function DoomPage() {
         fillWidth
         horizontal='center'
       >
-      <Heading variant='display-strong-l'>{doom.label}</Heading>
+      <Heading variant='display-strong-m'>{doom.label}</Heading>
         <Text
-          variant='body-default-m'
+          variant='body-default-l'
           style={{ textAlign: 'center' }}
-          onBackground='neutral-weak'
         >
           {doom.description}
         </Text>

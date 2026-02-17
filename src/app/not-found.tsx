@@ -43,7 +43,7 @@ export default function NotFound() {
   return (
     <Column fill center gap="32" padding="m">
       <Column horizontal="center" gap="8">
-        <Heading variant="display-default-m">404 — Page Not Found</Heading>
+        <Heading variant="display-strong-s">404 - Page Not Found</Heading>
         <Text variant="body-default-m" onBackground="neutral-weak">
           The page you're looking for is gone, but here's a meme.
         </Text>
@@ -63,7 +63,7 @@ export default function NotFound() {
           overflow: 'hidden'
         }}
       >
-        {apiLoading && !error && (
+        {!isFullyLoaded && !error && (
           <Column gap="16" fill>
             <Skeleton shape="block" radius="m" style={{ width: '100%', height: "400px" }} />
             <Column gap="4">
