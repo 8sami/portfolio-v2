@@ -1,10 +1,21 @@
-import { About, Blog, Gallery, Guestbook, Home, Newsletter, Person, Social, Work, Doom } from "@/types";
+import type {
+  About,
+  Blog,
+  Gallery,
+  Guestbook,
+  Home,
+  Newsletter,
+  Person,
+  Social,
+  Work,
+  Doom,
+} from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Samiullah",
   lastName: "Javed",
-  name: `Samiullah Javed`,
+  name: "Samiullah Javed",
   role: "Software Developer & Future Founder",
   avatar: "/images/avatar.jpg",
   email: "samiullahjavedd@gmail.com",
@@ -16,12 +27,14 @@ const doom: Doom = {
   path: "/doom",
   label: "DOOM",
   title: "DOOM Game",
-  description: '"Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done."',
-  controls: "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu.",
+  description:
+    '"Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done."',
+  controls:
+    "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu.",
   iframe: {
     link: "/doom-game/index.html",
-  }
-}
+  },
+};
 
 const newsletter: Newsletter = {
   display: false,
@@ -86,9 +99,10 @@ const home: Home = {
   headline: <>Making lives easier by solving problems</>,
   featured: {
     display: true,
-    title: ( // hmmm, play doom? rickroll?
+    // hmmm, play doom? rickroll?
+    title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Once UI</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
@@ -99,7 +113,8 @@ const home: Home = {
   },
   subline: (
     <>
-      Assalamualaikum👋, I'm Sami. I love making products that solve actual problems.
+      Assalamualaikum👋, I'm Sami. I love making products that solve actual
+      problems.
     </>
   ),
 };
@@ -120,20 +135,44 @@ const about: About = {
     display: true,
     link: "https://cal.eu/samiullahjaved/30min",
   },
+  now: {
+    display: true,
+    title: "Now",
+    description: [
+      <>hi</>,
+      <>hello</>,
+      <>hii</>,
+    ],
+  },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        I can be described as someone who is genuinely curious, straight-forward and someone who actually listens.
+        I can be described as someone who is genuinely curious, straight-forward
+        and someone who actually listens.
         <br style={{ marginBottom: "12px" }} />
-        That said, I mostly tend to follow my gut feeling and curiosity, and that same gut feeling and curiosity led me to learn programming back when I was in 9th grade. Since then, I have learned whatever I thought would be fun to learn.
+        That said, I mostly tend to follow my gut feeling and curiosity, and
+        that same gut feeling and curiosity led me to learn programming back
+        when I was in 9th grade. Since then, I have learned whatever I thought
+        would be fun to learn.
         <br style={{ marginBottom: "12px" }} />
-        Programming is like a superpower to me that has enabled me to create whatever I want, however I want, wherever I want, for whatever reason I want, for whoever I want. I get to choose to solve someone's problem using whatever means, for whatever reason and get compensated for doing so and enjoy it all the whilst!
+        Programming is like a superpower to me that has enabled me to create
+        whatever I want, however I want, wherever I want, for whatever reason I
+        want, for whoever I want. I get to choose to solve someone's problem
+        using whatever means, for whatever reason and get compensated for doing
+        so and enjoy it all the whilst!
         <br style={{ marginBottom: "12px" }} />
-        So I am not someone who does things just for the sake of money or just because my boss told me to do it. I need to see my contribution making an impact on someone's life, which makes me a bad corporate employee, but I would rather stay true to myself than lie just to earn a few cents.
-        <br style={{ marginBottom: "12px" }} />
-        I find product development quite enojoyable. There's just so much fun in solving someone's problem and the process of getting realtime feedback, improving the product based on that and then getting positive feedback in the end is one of my most cherished source of serotonin.
+        So I am not someone who does things just for the sake of money or just
+        because my boss told me to do it. I need to see my contribution making
+        an impact on someone's life, which makes me a bad corporate employee,
+        but I would rather stay true to myself than lie just to earn a few
+        cents.
+        <br style={{ marginBottom: "12px" }} />I find product development quite
+        enojoyable. There's just so much fun in solving someone's problem and
+        the process of getting realtime feedback, improving the product based on
+        that and then getting positive feedback in the end is one of my most
+        cherished source of serotonin.
       </>
     ),
   },
@@ -146,10 +185,23 @@ const about: About = {
         timeframe: "Jul. 2025 - Feb. 2026",
         role: "Software Developer",
         achievements: [
-          <>Built a plug-and-play checkout for Swell stores using Cloudflare KV, Easyblocks, and NextJS, featuring a no-code editor for UI customisation.</>,
-          <>Optimised the core checkout logic from 3 steps to 1, reducing friction and increasing completion rates by &asymp;35%.</>,
-          <>Delivered 6+ client projects end-to-end, managing design, backend, frontend implementation, and deployment.</>,
-          <>Mentored an intern through code reviews and task delegation to ensure timely and effective task completion.</>,
+          <>
+            Built a plug-and-play checkout for Swell stores using Cloudflare KV,
+            Easyblocks, and NextJS, featuring a no-code editor for UI
+            customisation.
+          </>,
+          <>
+            Optimised the core checkout logic from 3 steps to 1, reducing
+            friction and increasing completion rates by &asymp;35%.
+          </>,
+          <>
+            Delivered 6+ client projects end-to-end, managing design, backend,
+            frontend implementation, and deployment.
+          </>,
+          <>
+            Mentored an intern through code reviews and task delegation to
+            ensure timely and effective task completion.
+          </>,
         ],
         images: [],
       },
@@ -158,9 +210,20 @@ const about: About = {
         timeframe: "Mar. 2025 - Jun. 2025",
         role: "Developer Intern",
         achievements: [
-          <>Reworked a legacy website with a modern, sleek design, improving SEO and UX, which directly increased organic traffic, sales leads and decreased paint time from 172 ms to 30 ms.</>,
-          <>Standardised AI usage by creating a database of specialised prompts, reducing API token costs by &asymp;30%, and ensuring code consistency.</>,
-          <>Automated marketing workflows using N8N and Slack, saving the team 10+ hours of manual work weekly.</>,
+          <>
+            Reworked a legacy website with a modern, sleek design, improving SEO
+            and UX, which directly increased organic traffic, sales leads and
+            decreased paint time from 172 ms to 30 ms.
+          </>,
+          <>
+            Standardised AI usage by creating a database of specialised prompts,
+            reducing API token costs by &asymp;30%, and ensuring code
+            consistency.
+          </>,
+          <>
+            Automated marketing workflows using N8N and Slack, saving the team
+            10+ hours of manual work weekly.
+          </>,
         ],
         images: [],
       },
@@ -169,8 +232,14 @@ const about: About = {
         timeframe: "Nov. 2024 - Apr. 2025",
         role: "Full-stack Freelance Developer",
         achievements: [
-          <>Built a custom invoicing system using Django Ninja and NextJS that had processed upto 20,000,000 PKR in transactions.</>,
-          <>Iterated on the product based on real-time client feedback to handle different scenarios and 4+ new feature requests.</>,
+          <>
+            Built a custom invoicing system using Django Ninja and NextJS that
+            had processed upto 20,000,000 PKR in transactions.
+          </>,
+          <>
+            Iterated on the product based on real-time client feedback to handle
+            different scenarios and 4+ new feature requests.
+          </>,
         ],
         images: [],
       },
@@ -199,49 +268,78 @@ const about: About = {
   },
   certifications: {
     display: true,
-    title: "Certifications",
+    title: "Certifications & Specializations",
     certificates: [
       {
         title: "Python 3 Programming",
-        description: <>Specialization in Python programming (University of Michigan, Aug. 2024)</>,
+        description: (
+          <>
+            <Text variant="body-default-s" onBackground="brand-weak">
+              University of Michigan, Aug. 2024
+            </Text>
+          </>
+        ),
         images: [],
         link: "https://www.coursera.org/account/accomplishments/specialization/QD9YGUEAT2P7",
       },
       {
         title: "Django for Everybody",
-        description: <>Web application development with Django (University of Michigan, Oct. 2024)</>,
+        description: (
+          <>
+            <Text variant="body-default-s" onBackground="brand-weak">
+              University of Michigan, Oct. 2024
+            </Text>
+          </>
+        ),
         images: [],
         link: "https://www.coursera.org/account/accomplishments/specialization/RKJ9K8JLME9M",
       },
       {
         title: "SQL for Data Science",
-        description: <>SQL fundamentals and data science applications (UC Davis, Mar. 2025)</>,
+        description: (
+          <>
+            <Text variant="body-default-s" onBackground="brand-weak">
+              UC Davis, Mar. 2025
+            </Text>
+          </>
+        ),
         images: [],
         link: "https://www.coursera.org/account/accomplishments/verify/L2PNKKAY8YZH",
       },
       {
         title: "Version Control with Git",
-        description: <>Git fundamentals and best practices (Atlassian, Aug. 2024)</>,
+        description: (
+          <>
+            <Text variant="body-default-s" onBackground="brand-weak">
+              Atlassian, Aug. 2024
+            </Text>
+          </>
+        ),
         images: [],
         link: "https://www.coursera.org/account/accomplishments/verify/DQ6FW6GSKSJO",
       },
       {
         title: "CS50x",
-        description: <>CS fundamentals and programming (Harvard University, Jun. 2024)</>,
+        description: (
+          <>
+            <Text variant="body-default-s" onBackground="brand-weak">
+              Harvard University, Jun. 2024
+            </Text>
+          </>
+        ),
         images: [],
         link: "https://certificates.cs50.io/96c90c9d-1fb7-4699-85a0-ed932f005519.pdf?size=letter",
       },
     ],
   },
-  technical: { // needs special attention
+  technical: {
+    // needs special attention
     display: true, // set to false to hide this section
     title: "Technical skills",
     skills: [
       {
         title: "Languages",
-        description: (
-          <>All the languages I have ever laid my hands on</>
-        ),
+        description: <>All the languages I have ever laid my hands on</>,
         tags: [
           {
             name: "TypeScript",
@@ -252,7 +350,7 @@ const about: About = {
             icon: "javascript",
           },
           {
-            name: "Python", 
+            name: "Python",
             icon: "python",
           },
           {
@@ -280,9 +378,7 @@ const about: About = {
       },
       {
         title: "Frameworks",
-        description: (
-          <>Call me Da Vinci for how many frameworks I have used</>
-        ),
+        description: <>Call me Da Vinci for how many frameworks I have used</>,
         tags: [
           {
             name: "Nextjs",
@@ -300,7 +396,7 @@ const about: About = {
             name: "Expo",
             icon: "expo",
           },
-          { 
+          {
             name: "Nodejs",
             icon: "nodejs",
           },
@@ -325,9 +421,7 @@ const about: About = {
       },
       {
         title: "Databases",
-        description: (
-          <>Been using these to store all the data</>
-        ),
+        description: <>Been using these to store all the data</>,
         tags: [
           {
             name: "PostgreSQL",
@@ -354,9 +448,7 @@ const about: About = {
       },
       {
         title: "Deployment Platforms",
-        description: (
-          <>Code deployed on these platforms</>
-        ),
+        description: <>Code deployed on these platforms</>,
         tags: [
           {
             name: "Vercel",
@@ -379,9 +471,7 @@ const about: About = {
       },
       {
         title: "UI libraries",
-        description: (
-          <>My art pieces are created using these libraries</>
-        ),
+        description: <>My art pieces are created using these libraries</>,
         tags: [
           {
             name: "Tailwind CSS",
@@ -416,9 +506,7 @@ const about: About = {
       },
       {
         title: "Helpful Tools",
-        description: (
-          <>Different tools that have helped me here and there</>
-        ),
+        description: <>Different tools that have helped me here and there</>,
         tags: [
           {
             name: "Git",
@@ -494,9 +582,7 @@ const about: About = {
       },
       {
         title: "Honorable Mentions",
-        description: (
-          <>Life would have been boring without these</>
-        ),
+        description: <>Life would have been boring without these</>,
         tags: [
           {
             name: "N8N",
@@ -529,19 +615,20 @@ const about: About = {
           {
             name: "Jinja",
             icon: "jinja",
-          }
+          },
         ],
         images: [],
-      }
+      },
     ],
   },
   gif: {
     title: "A little something to stare in awe at",
-    description: "I don't know why, but I really liked this gif, and I thought you might too",
+    description:
+      "I don't know why, but I really liked this gif, and I thought you might too",
     display: true,
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
-  }
+  },
 };
 
 const blog: Blog = {
@@ -556,8 +643,8 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: `Say hi👋 to fellow passersby`,
-  description: `How was you stay here? Leave a comment👇`,
+  title: "Say hi👋 to fellow passersby",
+  description: "How was you stay here? Leave a comment👇",
 };
 
 const work: Work = {

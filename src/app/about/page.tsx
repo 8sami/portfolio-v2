@@ -103,7 +103,7 @@ export default function About() {
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                  <Tag key={`${language}-${index}`} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -232,7 +232,7 @@ export default function About() {
                     <Row
                       fillWidth
                       horizontal="between"
-                      vertical="end"
+                      vertical="center"
                       marginBottom="4"
                     >
                       <Text id={experience.company} variant="heading-strong-l">
@@ -271,7 +271,7 @@ export default function About() {
                       >
                         {experience.images.map((image, index) => (
                           <Row
-                            key={index}
+                            key={`${experience.company}-${index}`}
                             border="neutral-medium"
                             radius="m"
                             minWidth={image.width}
@@ -311,7 +311,7 @@ export default function About() {
                     fillWidth
                     gap="4"
                   >
-                    <Row fillWidth horizontal="between" vertical="end">
+                    <Row fillWidth horizontal="between" vertical="center">
                       <Text id={institution.name} variant="heading-strong-l">
                         {institution.name}
                       </Text>
@@ -334,7 +334,7 @@ export default function About() {
                       institution.achievements?.length > 0 && (
                         <List as="ul" gap="8" textVariant="body-default-m">
                           {institution.achievements?.map((item, idx) => (
-                            <ListItem key={idx}>{item}</ListItem>
+                            <ListItem key={`${institution.name}-${idx}`}>{item}</ListItem>
                           ))}
                         </List>
                       )}
@@ -356,8 +356,8 @@ export default function About() {
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
                 {about.certifications.certificates.map((certificate, index) => (
-                  <Column key={`${certificate}-${index}`} fillWidth gap="4">
-                    <Row fillWidth horizontal="between" vertical="end">
+                  <Column key={`cert-${index}-${certificate.title}`} fillWidth gap="4">
+                    <Row fillWidth horizontal="between" vertical="center">
                       <Column>
                         <Text id={certificate.title} variant="heading-strong-l">
                           {certificate.title}
@@ -386,7 +386,7 @@ export default function About() {
                       <Row fillWidth paddingTop="m" gap="12" wrap>
                         {certificate.images.map((image, index) => (
                           <Row
-                            key={index}
+                            key={`cert-${index}-${image.alt}`}
                             border="neutral-medium"
                             radius="m"
                             minWidth={image.width}
@@ -445,7 +445,7 @@ export default function About() {
                       <Row fillWidth paddingTop="m" gap="12" wrap>
                         {skill.images.map((image, index) => (
                           <Row
-                            key={index}
+                            key={`${skill.title}-${index}`}
                             border="neutral-medium"
                             radius="m"
                             minWidth={image.width}
@@ -483,11 +483,34 @@ export default function About() {
                   {about.gif.description}
                 </Text>
                 <Media
+                  aspectRatio="5/5"
                   enlarge
                   radius="m"
                   alt={about.gif.alt}
                   src={about.gif.src}
                 />
+              </Column>
+            </>
+          )}
+
+          {about.now.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.now.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.now.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="40">
+                <Column gap="8">
+                  {about.now.description.map((item, index) => (
+                    <Text key={index} variant="body-default-m" onBackground="neutral-weak">
+                      {item}
+                    </Text>
+                  ))}
+                </Column>
               </Column>
             </>
           )}

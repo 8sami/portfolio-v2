@@ -1,5 +1,5 @@
 // @ts-nocheck
-import {
+import type {
   DataStyleConfig,
   DisplayConfig,
   EffectsConfig,
@@ -111,28 +111,28 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 80,
     x: 50,
     y: 60,
     width: 100,
     height: 50,
     tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    colorStart: "brand-background-strong",
+    colorEnd: "brand-background-strong",
   },
   dots: {
-    display: true,
-    opacity: 40,
-    size: "2",
-    color: "brand-background-strong",
+    display: false,
+    opacity: 80,
+    size: "8",
+    color: "accent-background-medium",
   },
   grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
+    display: true,
+    opacity: 90,
+    color: "accent-alpha-weak",
+    width: "0.5rem", 
+    height: "0.5rem",
   },
   lines: {
     display: false,
