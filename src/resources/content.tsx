@@ -136,7 +136,7 @@ const about: About = {
     link: "https://cal.eu/samiullahjaved/30min",
   },
   now: {
-    display: true,
+    display: false,
     title: "Now",
     description: [
       <>hi</>,
