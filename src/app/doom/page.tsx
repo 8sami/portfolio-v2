@@ -49,6 +49,7 @@ export default function DoomPage() {
       <Heading variant='display-strong-m'>{doom.label}</Heading>
         <Text
           variant='body-default-l'
+          onBackground='neutral-weak'
           style={{ textAlign: 'center' }}
         >
           {doom.description}

@@ -119,7 +119,7 @@ export default function NotFound() {
         )}
       </Flex>
 
-      <Button href="/" variant="primary" size="l">Take Me Home</Button>
+      <Button prefixIcon="home" href="/" variant="primary" size="s">Take Me Home</Button>
     </Column>
   );
 }

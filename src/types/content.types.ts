@@ -239,6 +239,21 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  /**
+   * Gif section
+   */
+  gif: {
+    /** Whether to display the gif section */
+    display: boolean;
+    /** Title for the gif section */
+    title: string;
+    /** Description for the gif section */
+    description: string;
+    /** Path to the gif */
+    src: string;
+    /** Alt text for the gif */
+    alt: string;
+  }
 }
 
 /**

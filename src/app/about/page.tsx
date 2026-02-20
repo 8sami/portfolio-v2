@@ -143,7 +143,7 @@ export default function About() {
                 <IconButton
                   href={about.calendar.link}
                   data-border="conservative"
-                  variant="secondary"
+                  variant="primary"
                   icon="chevronRight"
                 />
               </Row>
@@ -376,6 +376,7 @@ export default function About() {
                       >
                         <Button
                           variant="tertiary"
+                          size="s"
                           href={certificate.link}
                           prefixIcon="link"
                         />
@@ -418,7 +419,7 @@ export default function About() {
               >
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
+              <Column fillWidth gap="l" marginBottom="40">
                 {about.technical.skills.map((skill, index) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">
@@ -463,6 +464,30 @@ export default function About() {
                     )}
                   </Column>
                 ))}
+              </Column>
+            </>
+          )}
+
+          {about.gif.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.gif.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.gif.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="40">
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {about.gif.description}
+                </Text>
+                <Media
+                  enlarge
+                  radius="m"
+                  alt={about.gif.alt}
+                  src={about.gif.src}
+                />
               </Column>
             </>
           )}
