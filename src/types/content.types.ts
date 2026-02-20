@@ -183,6 +183,32 @@ export interface About extends BasePageConfig {
       timeframe: string;
     }>;
   };
+  certifications: {
+    /** Whether to display certifications section */
+    display: boolean;
+    /** Title for the certifications section */
+    title: string;
+    /** List of certifications */
+    certificates: Array<{
+      /** Certification title */
+      title: string;
+      /** Certification description */
+      description: React.ReactNode;
+      /** Certification images */
+      images?: Array<{
+        /** Image source path */
+        src: string;
+        /** Image alt text */
+        alt: string;
+        /** Image width ratio */
+        width: number;
+        /** Image height ratio */
+        height: number;
+      }>;
+      /** Certification link */
+      link: string;
+    }>;
+  };
   /** Technical skills section */
   technical: {
     /** Whether to display technical skills section */

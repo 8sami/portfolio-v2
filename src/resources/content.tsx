@@ -197,6 +197,42 @@ const about: About = {
       },
     ],
   },
+  certifications: {
+    display: true,
+    title: "Certifications",
+    certificates: [
+      {
+        title: "Python 3 Programming",
+        description: <>Specialization in Python programming (University of Michigan, Aug. 2024)</>,
+        images: [],
+        link: "https://www.coursera.org/account/accomplishments/specialization/QD9YGUEAT2P7",
+      },
+      {
+        title: "Django for Everybody",
+        description: <>Web application development with Django (University of Michigan, Oct. 2024)</>,
+        images: [],
+        link: "https://www.coursera.org/account/accomplishments/specialization/RKJ9K8JLME9M",
+      },
+      {
+        title: "SQL for Data Science",
+        description: <>SQL fundamentals and data science applications (UC Davis, Mar. 2025)</>,
+        images: [],
+        link: "https://www.coursera.org/account/accomplishments/verify/L2PNKKAY8YZH",
+      },
+      {
+        title: "Version Control with Git",
+        description: <>Git fundamentals and best practices (Atlassian, Aug. 2024)</>,
+        images: [],
+        link: "https://www.coursera.org/account/accomplishments/verify/DQ6FW6GSKSJO",
+      },
+      {
+        title: "CS50x",
+        description: <>CS fundamentals and programming (Harvard University, Jun. 2024)</>,
+        images: [],
+        link: "https://certificates.cs50.io/96c90c9d-1fb7-4699-85a0-ed932f005519.pdf?size=letter",
+      },
+    ],
+  },
   technical: { // needs special attention
     display: true, // set to false to hide this section
     title: "Technical skills",
