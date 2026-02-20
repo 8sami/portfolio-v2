@@ -202,61 +202,301 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Languages",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>All the languages I have ever laid my hands on</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
+            name: "TypeScript",
+            icon: "typescript",
           },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
-        tags: [
           {
             name: "JavaScript",
             icon: "javascript",
           },
           {
-            name: "Next.js",
+            name: "Python", 
+            icon: "python",
+          },
+          {
+            name: "C++",
+            icon: "cpp",
+          },
+          {
+            name: "C",
+            icon: "c",
+          },
+          {
+            name: "Bash",
+            icon: "bash",
+          },
+          {
+            name: "Elixir",
+            icon: "elixir",
+          },
+          {
+            name: "PHP",
+            icon: "php",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Frameworks",
+        description: (
+          <>Call me Da Vinci for how many frameworks I have used</>
+        ),
+        tags: [
+          {
+            name: "Nextjs",
             icon: "nextjs",
+          },
+          {
+            name: "React",
+            icon: "react",
+          },
+          {
+            name: "React Native",
+            icon: "react",
+          },
+          {
+            name: "Expo",
+            icon: "expo",
+          },
+          { 
+            name: "Nodejs",
+            icon: "nodejs",
+          },
+          {
+            name: "Django",
+            icon: "django",
+          },
+          {
+            name: "Django Ninja",
+            icon: "django",
+          },
+          {
+            name: "Flask",
+            icon: "flask",
+          },
+          {
+            name: "Laravel",
+            icon: "laravel",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Databases",
+        description: (
+          <>Been using these to store all the data</>
+        ),
+        tags: [
+          {
+            name: "PostgreSQL",
+            icon: "postgresql",
           },
           {
             name: "Supabase",
             icon: "supabase",
           },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "MySQL",
+            icon: "mysql",
+          },
+          {
+            name: "SQLite",
+            icon: "sqlite",
+          },
+          {
+            name: "Google Sheets",
+            icon: "googlesheets",
           },
         ],
+        images: [],
       },
+      {
+        title: "Deployment Platforms",
+        description: (
+          <>Code deployed on these platforms</>
+        ),
+        tags: [
+          {
+            name: "Vercel",
+            icon: "vercel",
+          },
+          {
+            name: "Cloudflare",
+            icon: "cloudflare",
+          },
+          {
+            name: "Netlify",
+            icon: "netlify",
+          },
+          {
+            name: "PythonAnywhere",
+            icon: "pythonanywhere",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "UI libraries",
+        description: (
+          <>My art pieces are created using these libraries</>
+        ),
+        tags: [
+          {
+            name: "Tailwind CSS",
+            icon: "tailwindcss",
+          },
+          {
+            name: "Shadcn UI",
+            icon: "shadcnui",
+          },
+          {
+            name: "ChakraUI",
+            icon: "chakraui",
+          },
+          {
+            name: "Ant Design",
+            icon: "antdesign",
+          },
+          {
+            name: "Bootstrap",
+            icon: "bootstrap",
+          },
+          {
+            name: "Once UI",
+            icon: "onceui",
+          },
+          {
+            name: "Shopify Polaris",
+            icon: "shopify",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Helpful Tools",
+        description: (
+          <>Different tools that have helped me here and there</>
+        ),
+        tags: [
+          {
+            name: "Git",
+            icon: "git",
+          },
+          {
+            name: "GitHub",
+            icon: "github",
+          },
+          {
+            name: "Docker",
+            icon: "docker",
+          },
+          {
+            name: "Postman",
+            icon: "postman",
+          },
+          {
+            name: "Figma",
+            icon: "figma",
+          },
+          {
+            name: "GitLab",
+            icon: "gitlab",
+          },
+          {
+            name: "Jira",
+            icon: "jira",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "IDEs",
+        description: (
+          <>Ranking of all the IDEs I have used so far, from good to meh</>
+        ),
+        tags: [
+          {
+            name: "VS Code",
+            icon: "vscode",
+          },
+          {
+            name: "Antigravity",
+            icon: "google",
+          },
+          {
+            name: "Sublime Text",
+            icon: "sublimetext",
+          },
+          {
+            name: "Jupyter Notebook",
+            icon: "jupyter",
+          },
+          {
+            name: "Cursor",
+            icon: "cursor",
+          },
+          {
+            name: "Android Studio",
+            icon: "androidstudio",
+          },
+          {
+            name: "Zed",
+            icon: "zed",
+          },
+          {
+            name: "Kiro",
+            icon: "kiro",
+          },
+        ],
+        images: [],
+      },
+      {
+        title: "Honorable Mentions",
+        description: (
+          <>Life would have been boring without these</>
+        ),
+        tags: [
+          {
+            name: "N8N",
+            icon: "n8n",
+          },
+          {
+            name: "Firebase",
+            icon: "firebase",
+          },
+          {
+            name: "Stripe",
+            icon: "stripe",
+          },
+          {
+            name: "Redis",
+            icon: "redis",
+          },
+          {
+            name: "Celery",
+            icon: "celery",
+          },
+          {
+            name: "Twilio",
+            icon: "twilio",
+          },
+          {
+            name: "VirusTotal",
+            icon: "virustotal",
+          },
+          {
+            name: "Jinja",
+            icon: "jinja",
+          }
+        ],
+        images: [],
+      }
     ],
   },
 };
