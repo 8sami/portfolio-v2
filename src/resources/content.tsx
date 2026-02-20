@@ -624,7 +624,7 @@ const about: About = {
   gif: {
     title: "A little something to stare in awe at",
     description:
-      "I don't know why, but I really liked this gif, and I thought you might too",
+      "I don't know why, but I really liked this gif, and wanted to add it here",
     display: true,
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
