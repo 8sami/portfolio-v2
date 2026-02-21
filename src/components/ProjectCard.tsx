@@ -2,6 +2,7 @@
 
 import {
   AvatarGroup,
+  Button,
   Carousel,
   Column,
   Flex,
@@ -19,6 +20,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  showAvatars?: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -29,6 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  showAvatars = true,
 }) => {
   return (
     <Column fillWidth gap="m">
@@ -57,30 +60,36 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
           <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+            {showAvatars && avatars?.length > 0 && (
+              <AvatarGroup avatars={avatars} size="m" reverse />
+            )}
             {description?.trim() && (
               <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
                 {description}
               </Text>
             )}
-            <Flex gap="24" wrap>
+            <Flex gap="xs" wrap>
               {content?.trim() && (
-                <SmartLink
+                <Button
                   suffixIcon="arrowRight"
+                  size="s"
+                  variant="primary"
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
                   <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
+                </Button>
               )}
               {link && (
-                <SmartLink
+                <Button
                   suffixIcon="arrowUpRightFromSquare"
+                  size="s"
+                  variant="secondary"
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
                   <Text variant="body-default-s">View project</Text>
-                </SmartLink>
+                </Button>
               )}
             </Flex>
           </Column>

@@ -7,6 +7,8 @@ interface ProjectsProps {
   exclude?: string[];
 }
 
+export const SHOW_AVATARS = false;
+
 export function Projects({ range, exclude }: ProjectsProps) {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
 
@@ -34,6 +36,7 @@ export function Projects({ range, exclude }: ProjectsProps) {
           title={post.metadata.title}
           description={post.metadata.summary}
           content={post.content}
+          showAvatars={SHOW_AVATARS}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
           link={post.metadata.link || ""}
         />
