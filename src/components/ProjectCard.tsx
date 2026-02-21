@@ -64,7 +64,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               <AvatarGroup avatars={avatars} size="m" reverse />
             )}
             {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              <Text wrap="balance" variant="body-default-s" onBackground="neutral-medium">
                 {description}
               </Text>
             )}
