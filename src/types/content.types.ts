@@ -134,7 +134,7 @@ export interface About extends BasePageConfig {
     /** Title of the introduction section */
     title: string;
     /** Description of the introduction section */
-    description: React.ReactNode;
+    description: React.ReactNode[];
   };
   /** Now section */
   now: {

@@ -206,10 +206,14 @@ export default function About() {
             <Column
               textVariant="body-default-l"
               fillWidth
-              gap="m"
+              gap="s"
               marginBottom="xl"
             >
-              {about.intro.description}
+              {about.intro.description.map((paragraph, index) => (
+                <Text key={`intro-${index}`}>
+                  {paragraph}
+                </Text>
+              ))}
             </Column>
           )}
 

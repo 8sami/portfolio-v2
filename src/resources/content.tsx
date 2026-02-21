@@ -111,12 +111,7 @@ const home: Home = {
     ),
     href: "/work/building-once-ui-a-customizable-design-system",
   },
-  subline: (
-    <>
-      Assalamualaikum👋, I'm Sami. I love making products that solve actual
-      problems.
-    </>
-  ),
+  subline: <>Assalamualaikum👋, I'm Sami. I love making products that solve actual problems.</>,
 };
 
 const about: About = {
@@ -138,43 +133,40 @@ const about: About = {
   now: {
     display: false,
     title: "Now",
-    description: [
-      <>hi</>,
-      <>hello</>,
-      <>hii</>,
-    ],
+    description: [<>hi</>, <>hello</>, <>hii</>],
   },
   intro: {
     display: true,
     title: "Introduction",
-    description: (
+    description: [
       <>
-        I can be described as someone who is genuinely curious, straight-forward
-        and someone who actually listens.
-        <br style={{ marginBottom: "12px" }} />
-        That said, I mostly tend to follow my gut feeling and curiosity, and
-        that same gut feeling and curiosity led me to learn programming back
-        when I was in 9th grade. Since then, I have learned whatever I thought
-        would be fun to learn.
-        <br style={{ marginBottom: "12px" }} />
-        Programming is like a superpower to me that has enabled me to create
-        whatever I want, however I want, wherever I want, for whatever reason I
-        want, for whoever I want. I get to choose to solve someone's problem
-        using whatever means, for whatever reason and get compensated for doing
-        so and enjoy it all the whilst!
-        <br style={{ marginBottom: "12px" }} />
-        So I am not someone who does things just for the sake of money or just
-        because my boss told me to do it. I need to see my contribution making
-        an impact on someone's life, which makes me a bad corporate employee,
-        but I would rather stay true to myself than lie just to earn a few
-        cents.
-        <br style={{ marginBottom: "12px" }} />I find product development quite
-        enojoyable. There's just so much fun in solving someone's problem and
-        the process of getting realtime feedback, improving the product based on
-        that and then getting positive feedback in the end is one of my most
-        cherished source of serotonin.
-      </>
-    ),
+        I can be described as someone who is genuinely curious, straight-forward and someone who
+        actually listens.
+      </>,
+      <>
+        That said, I mostly tend to follow my gut feeling and curiosity, and that same gut feeling
+        and curiosity led me to learn programming back when I was in 9th grade. Since then, I have
+        learned whatever I thought would be fun to learn.
+      </>,
+      <>
+        Programming is like a superpower to me that has enabled me to create whatever I want,
+        however I want, wherever I want, for whatever reason I want, for whoever I want. I get to
+        choose to solve someone's problem using whatever means, for whatever reason and get
+        compensated for doing so and enjoy it all the whilst!
+      </>,
+      <>
+        So I am not someone who does things just for the sake of money or just because my boss told
+        me to do it. I need to see my contribution making an impact on someone's life, which makes
+        me a bad corporate employee, but I would rather stay true to myself than lie just to earn a
+        few cents.
+      </>,
+      <>
+        I find product development quite enojoyable. There's just so much fun in solving someone's
+        problem and the process of getting realtime feedback, improving the product based on that
+        and then getting positive feedback in the end is one of my most cherished source of
+        serotonin.
+      </>,
+    ],
   },
   work: {
     display: true, // set to false to hide this section
@@ -186,21 +178,20 @@ const about: About = {
         role: "Software Developer",
         achievements: [
           <>
-            Built a plug-and-play checkout for Swell stores using Cloudflare KV,
-            Easyblocks, and NextJS, featuring a no-code editor for UI
-            customisation.
+            Built a plug-and-play checkout for Swell stores using Cloudflare KV, Easyblocks, and
+            NextJS, featuring a no-code editor for UI customisation.
           </>,
           <>
-            Optimised the core checkout logic from 3 steps to 1, reducing
-            friction and increasing completion rates by &asymp;35%.
+            Optimised the core checkout logic from 3 steps to 1, reducing friction and increasing
+            completion rates by &asymp;35%.
           </>,
           <>
-            Delivered 6+ client projects end-to-end, managing design, backend,
-            frontend implementation, and deployment.
+            Delivered 6+ client projects end-to-end, managing design, backend, frontend
+            implementation, and deployment.
           </>,
           <>
-            Mentored an intern through code reviews and task delegation to
-            ensure timely and effective task completion.
+            Mentored an intern through code reviews and task delegation to ensure timely and
+            effective task completion.
           </>,
         ],
         images: [],
@@ -211,18 +202,17 @@ const about: About = {
         role: "Developer Intern",
         achievements: [
           <>
-            Reworked a legacy website with a modern, sleek design, improving SEO
-            and UX, which directly increased organic traffic, sales leads and
-            decreased paint time from 172 ms to 30 ms.
+            Reworked a legacy website with a modern, sleek design, improving SEO and UX, which
+            directly increased organic traffic, sales leads and decreased paint time from 172 ms to
+            30 ms.
           </>,
           <>
-            Standardised AI usage by creating a database of specialised prompts,
-            reducing API token costs by &asymp;30%, and ensuring code
-            consistency.
+            Standardised AI usage by creating a database of specialised prompts, reducing API token
+            costs by &asymp;30%, and ensuring code consistency.
           </>,
           <>
-            Automated marketing workflows using N8N and Slack, saving the team
-            10+ hours of manual work weekly.
+            Automated marketing workflows using N8N and Slack, saving the team 10+ hours of manual
+            work weekly.
           </>,
         ],
         images: [],
@@ -233,12 +223,12 @@ const about: About = {
         role: "Full-stack Freelance Developer",
         achievements: [
           <>
-            Built a custom invoicing system using Django Ninja and NextJS that
-            had processed upto 20,000,000 PKR in transactions.
+            Built a custom invoicing system using Django Ninja and NextJS that had processed upto
+            20,000,000 PKR in transactions.
           </>,
           <>
-            Iterated on the product based on real-time client feedback to handle
-            different scenarios and 4+ new feature requests.
+            Iterated on the product based on real-time client feedback to handle different scenarios
+            and 4+ new feature requests.
           </>,
         ],
         images: [],
@@ -541,9 +531,7 @@ const about: About = {
       },
       {
         title: "IDEs",
-        description: (
-          <>Ranking of all the IDEs I have used so far, from good to meh</>
-        ),
+        description: <>Ranking of all the IDEs I have used so far, from good to meh</>,
         tags: [
           {
             name: "VS Code",
@@ -623,8 +611,7 @@ const about: About = {
   },
   gif: {
     title: "A little something to stare in awe at",
-    description:
-      "I don't know why, but I really liked this gif, and wanted to add it here",
+    description: "I don't know why, but I really liked this gif, and wanted to add it here",
     display: true,
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
