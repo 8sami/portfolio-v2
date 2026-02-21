@@ -39,7 +39,7 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Instrument_Serif, Instrument_Sans, JetBrains_Mono, DotGothic16  } from "next/font/google";
+import { Instrument_Serif, Instrument_Sans, DotGothic16 } from "next/font/google";
 
 const heading = Instrument_Serif({
   variable: "--font-heading",
@@ -62,10 +62,11 @@ const label = DotGothic16({
   weight: "400"
 });
 
-const code = JetBrains_Mono({
+const code = DotGothic16({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
+  weight: "400"
 });
 
 const fonts: FontsConfig = {
