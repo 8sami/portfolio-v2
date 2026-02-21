@@ -22,6 +22,7 @@ export default function DoomPage() {
       toastShown.current = true;
     }
   }, [addToast]);
+
   return (
     <Column maxWidth="m" paddingTop="24" gap="xl" horizontal="center">
       <Schema
@@ -39,7 +40,6 @@ export default function DoomPage() {
       />
       <Column
         gap="s"
-        vertical="center"
         direction="column"
         fillWidth
         horizontal="center"
@@ -50,14 +50,14 @@ export default function DoomPage() {
         <Text
           variant="body-default-l"
           onBackground="neutral-medium"
-          style={{ textAlign: "center" }}
+          align="center"
         >
           {doom.description}
         </Text>
       </Column>
       <Column gap="s" fillWidth horizontal="center">
         <Text
-          style={{ textAlign: "center" }}
+          align="center"
           variant="label-default-xs"
           onBackground="neutral-medium"
         >
@@ -81,8 +81,8 @@ export default function DoomPage() {
             maxWidth: "700px",
             width: "100%",
             aspectRatio: "16/10",
-            borderRadius: "9px",
-            boxShadow: "0 0 20px rgba(0,0,0,0.2)",
+            borderRadius: "var(--radius-m)",
+            boxShadow: "var(--shadow-l-strong)",
           }}
           title={doom.title}
           allowFullScreen

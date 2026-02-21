@@ -13,6 +13,7 @@ import {
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
   HiDocumentText,
+  HiOutlineInformationCircle,
 } from "react-icons/hi2";
 
 import {
@@ -78,6 +79,7 @@ import {
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
 import { DiVisualstudio } from "react-icons/di";
+import { FaHandHolding } from "react-icons/fa";
 
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
@@ -86,6 +88,8 @@ export const iconLibrary: Record<string, IconType> = {
   email: HiEnvelope,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
+  info: HiOutlineInformationCircle,
+  hand: FaHandHolding,
   grid: PiGridFourDuotone,
   book: PiBookBookmarkDuotone,
   openLink: HiOutlineLink,
@@ -160,7 +164,6 @@ export const iconLibrary: Record<string, IconType> = {
   jira: SiJira,
   pythonanywhere: SiPythonanywhere,
   twilio: SiTwilio,
-  
 };
 
 export type IconLibrary = typeof iconLibrary;

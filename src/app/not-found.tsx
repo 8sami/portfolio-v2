@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Column, Heading, Text, Button, Skeleton, Flex } from "@once-ui-system/core";
+import { Column, Heading, Text, Button, Skeleton, Flex, Row, Icon } from "@once-ui-system/core";
 import Link from "next/link";
 
 type Meme = {
@@ -19,6 +19,7 @@ export default function NotFound() {
 
   const fetchMeme = async () => {
     setApiLoading(true);
+    setImageLoading(true);
     setError(false);
     try {
       const res = await fetch("https://meme-api.com/gimme");
@@ -44,9 +45,25 @@ export default function NotFound() {
     <Column fill center gap="l" padding="m">
       <Column horizontal="center" gap="8">
         <Heading variant="display-strong-s">404 - Page Not Found</Heading>
-        <Text align="center" variant="body-default-m" onBackground="neutral-weak">
-          The page you're looking for is gone, but here's a meme.
-        </Text>
+        <Row vertical="center" gap="8">
+          <Text align="center" variant="body-default-m" onBackground="neutral-medium">
+            The page you're looking for is gone, but here's a meme.
+          </Text>
+          <Icon 
+            name="info" 
+            size="xs" 
+            marginTop="2"
+            onBackground="brand-weak"
+            tooltip={
+              <>
+                These memes are by the D3VD API. They do not<br/>
+                represent the views or opinions of Samiullah Javed and<br/>
+                are implemented solely for entertainment purposes.
+              </>
+            }
+            tooltipPosition="top"
+          />
+        </Row>
       </Column>
 
       <Flex 
@@ -119,7 +136,12 @@ export default function NotFound() {
         )}
       </Flex>
 
-      <Button prefixIcon="home" href="/" variant="primary" size="s">Take Me Home</Button>
+      <Row horizontal="center" gap="8">
+        <Button prefixIcon="hand" variant="primary" size="s" onClick={fetchMeme}>
+          Give me another meme! 
+        </Button>
+        <Button prefixIcon="home" href="/" variant="secondary" size="s">Take Me Home</Button>
+      </Row>
     </Column>
   );
 }
