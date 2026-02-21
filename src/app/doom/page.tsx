@@ -1,17 +1,27 @@
-import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
-import { baseURL, doom, person, about } from "@/resources";
+"use client";
 
-export async function generateMetadata() {
-  return Meta.generate({
-    title: doom.title,
-    description: doom.description,
-    baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(doom.title)}`,
-    path: doom.path,
-  });
-}
+import { Column, Heading, Meta, Schema, Text, useToast } from "@once-ui-system/core";
+import { baseURL, doom, person, about } from "@/resources";
+import { useEffect, useRef } from "react";
 
 export default function DoomPage() {
+  const { addToast } = useToast();
+  const toastShown = useRef(false);
+
+  useEffect(() => {
+    if (toastShown.current) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+    if (isMobile && isPortrait) {
+      addToast({
+        variant: "success",
+        message: "Landscape mode recommended for the best experience.",
+      });
+      toastShown.current = true;
+    }
+  }, [addToast]);
   return (
     <Column maxWidth="m" paddingTop="24" gap="xl" horizontal="center">
       <Schema
@@ -53,8 +63,19 @@ export default function DoomPage() {
         >
           {doom.controls}
         </Text>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (orientation: landscape) and (max-height: 600px) {
+            .doom-iframe {
+              height: 80vh !important;
+              max-height: none !important;
+              max-width: 800px !important;
+              aspect-ratio: auto !important;
+            }
+          }
+        ` }} />
         <iframe
           src={doom.iframe.link}
+          className="doom-iframe"
           style={{
             border: "none",
             maxWidth: "700px",
