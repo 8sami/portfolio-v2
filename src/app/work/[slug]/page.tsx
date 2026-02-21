@@ -16,7 +16,7 @@ import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import type { Metadata } from "next";
-import { Projects, SHOW_AVATARS } from "@/components/work/Projects";
+import { Projects } from "@/components/work/Projects";
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const posts = getPosts(["src", "app", "work", "projects"]);
@@ -65,11 +65,10 @@ export default async function Project({
     notFound();
   }
 
-  const avatars = SHOW_AVATARS
-    ? post.metadata.team?.map((person) => ({
-        src: person.avatar,
-      })) || []
-    : [];
+  const avatars =
+    post.metadata.team?.map((person) => ({
+      src: person.avatar,
+    })) || [];
 
   return (
     <Column as="section" maxWidth="m" horizontal="center" gap="l">
@@ -101,9 +100,7 @@ export default async function Project({
       </Column>
       <Row marginBottom="32" horizontal="center">
         <Row gap="16" vertical="center">
-          {post.metadata.team && SHOW_AVATARS && (
-            <AvatarGroup reverse avatars={avatars} size="s" />
-          )}
+          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
           <Text variant="label-default-m" onBackground="brand-weak">
             {post.metadata.team?.map((member, idx) => (
               <span key={`${member.name}-${idx}`}>

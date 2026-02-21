@@ -236,7 +236,7 @@ export default function About() {
                     <Row
                       fillWidth
                       horizontal="between"
-                      vertical="center"
+                      vertical="start"
                       marginBottom="4"
                     >
                       <Text id={experience.company} variant="heading-strong-l">
@@ -315,7 +315,7 @@ export default function About() {
                     fillWidth
                     gap="4"
                   >
-                    <Row fillWidth horizontal="between" vertical="center">
+                    <Row fillWidth horizontal="between" vertical="start">
                       <Text id={institution.name} variant="heading-strong-l">
                         {institution.name}
                       </Text>
