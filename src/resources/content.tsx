@@ -694,4 +694,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, doom };
+export { person, social, newsletter, home, about, blog, work, gallery, guestbook, doom };

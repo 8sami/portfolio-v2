@@ -266,6 +266,17 @@ export interface About extends BasePageConfig {
 }
 
 /**
+ * Guestbook Section
+ * @description The below information will be displayed on the Home page in Guestbook block
+ */
+export interface Guestbook extends BasePageConfig {
+  /** Title of the guestbook section */
+  title: string;
+  /** Description of the guestbook section */
+  description: string;
+};
+
+/**
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */

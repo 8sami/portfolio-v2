@@ -24,6 +24,7 @@ const routes: RoutesConfig = {
   "/blog": false,
   "/gallery": false,
   "/doom": true,
+  "/guestbook": true,
 };
 
 const display: DisplayConfig = {
