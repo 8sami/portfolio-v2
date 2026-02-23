@@ -37,7 +37,7 @@ export const CommentList: React.FC<CommentListProps> = ({
   isLoading,
 }) => {
   return (
-    <Column fillWidth gap="8">
+    <Column fillWidth gap="4">
       {comments.map((comment) => (
         <Row key={comment.id} gap="16" paddingY="12" fillWidth vertical="start">
           <Avatar

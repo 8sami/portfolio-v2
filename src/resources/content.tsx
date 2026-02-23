@@ -485,7 +485,7 @@ const about: About = {
           },
           {
             name: "Once UI",
-            icon: "onceui",
+            icon: "",
           },
           {
             name: "Shopify Polaris",
@@ -551,7 +551,7 @@ const about: About = {
           },
           {
             name: "Cursor",
-            icon: "cursor",
+            icon: "",
           },
           {
             name: "Android Studio",
@@ -559,11 +559,11 @@ const about: About = {
           },
           {
             name: "Zed",
-            icon: "zed",
+            icon: "",
           },
           {
             name: "Kiro",
-            icon: "kiro",
+            icon: "",
           },
         ],
         images: [],

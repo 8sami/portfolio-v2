@@ -144,14 +144,14 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
         </Toast>
       )}
 
-      <Column fillWidth gap="48" paddingX="l">
+      <Column fillWidth gap="24" paddingX="m">
         {/* Header */}
         <Heading variant="display-strong-s" align="center">
           {guestbook.title}
         </Heading>
 
         {/* Comment Section */}
-        <Column fillWidth horizontal="center" gap="64">
+        <Column fillWidth horizontal="center" gap="32">
           <Column
             fillWidth
             style={{
