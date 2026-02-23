@@ -1,13 +1,11 @@
-import { Suspense } from "react";
 import { Meta } from "@once-ui-system/core";
 import { baseURL, guestbook } from "@/resources";
 import { GuestbookContent } from "@/components/guestbook/GuestbookContent";
-import Loading from "./loading";
 
 export async function generateMetadata() {
   return Meta.generate({
     title: guestbook.title,
-    description: guestbook.description,
+    description: guestbook.description || "",
     baseURL: baseURL,
     image: `/api/og/generate?title=${encodeURIComponent(guestbook.title)}`,
     path: guestbook.path,
@@ -37,11 +35,5 @@ async function GuestbookData() {
 }
 
 export default function Guestbook() {
-  return (
-    <section>
-      <Suspense fallback={<Loading />}>
-        <GuestbookData />
-      </Suspense>
-    </section>
-  );
+  return <GuestbookData />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Flex, Button, Text, Avatar } from "@once-ui-system/core";
+import { Flex, Button, Text, Avatar, Icon } from "@once-ui-system/core";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 

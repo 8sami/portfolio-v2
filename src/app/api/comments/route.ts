@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -13,6 +13,7 @@ interface Comment {
     name: string | null;
     email: string | null;
     image: string | null;
+    is_admin: boolean;
   } | null;
 }
 
@@ -30,7 +31,8 @@ export async function GET() {
           id,
           name,
           email,
-          image
+          image,
+          is_admin
         )
       `)
       .order('created_at', { ascending: false });
@@ -145,7 +147,8 @@ export async function POST(request: NextRequest) {
           id,
           name,
           email,
-          image
+          image,
+          is_admin
         )
       `)
       .single();

@@ -630,14 +630,13 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: "Say hi👋 to fellow passersby",
-  description: "How was you stay here? Leave a comment👇",
+  title: "Say hi 👋 to fellow passersby",
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
+  title: "A few documented projects",
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes

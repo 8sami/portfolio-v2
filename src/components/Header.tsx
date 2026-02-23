@@ -13,6 +13,7 @@ import {
   gallery,
   doom,
   home,
+  guestbook,
 } from '@/resources';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.scss';
@@ -60,6 +61,7 @@ export const Header = () => {
       { href: blog.path, icon: 'book', label: blog.label },
       { href: gallery.path, icon: 'gallery', label: gallery.label },
       { href: doom.path, icon: 'game', label: doom.label },
+      { href: guestbook.path, icon: 'pen', label: guestbook.label },
     ],
     [],
   );

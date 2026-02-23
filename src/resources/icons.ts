@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 
 import {
   HiArrowUpRight,
@@ -23,6 +23,9 @@ import {
   PiBookBookmarkDuotone,
   PiImageDuotone,
   PiGameControllerDuotone,
+  PiSignIn,
+  PiSignOut,
+  PiPenNib,
 } from "react-icons/pi";
 
 import {
@@ -82,6 +85,8 @@ import { DiVisualstudio } from "react-icons/di";
 import { FaHandHolding } from "react-icons/fa";
 
 export const iconLibrary: Record<string, IconType> = {
+  signin: PiSignIn,
+  signout: PiSignOut,
   arrowUpRight: HiArrowUpRight,
   resume: HiDocumentText,
   arrowRight: HiArrowRight,
@@ -164,6 +169,7 @@ export const iconLibrary: Record<string, IconType> = {
   jira: SiJira,
   pythonanywhere: SiPythonanywhere,
   twilio: SiTwilio,
+  pen: PiPenNib,
 };
 
 export type IconLibrary = typeof iconLibrary;

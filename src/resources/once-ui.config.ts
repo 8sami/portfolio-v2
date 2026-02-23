@@ -15,7 +15,9 @@ import type {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://www.samiullahjaved.com";
+const baseURL = process.env.NODE_ENV === 'development' 
+  ? "http://localhost:3000" 
+  : "https://www.samiullahjaved.com";
 
 const routes: RoutesConfig = {
   "/": true,

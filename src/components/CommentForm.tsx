@@ -1,14 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button, Flex, Textarea, Avatar } from "@once-ui-system/core";
+import type React from "react";
+import { useState } from "react";
+import {
+  Button,
+  Row,
+  Column,
+  Input,
+  UserMenu,
+  Dropdown,
+  Option,
+  Icon,
+} from "@once-ui-system/core";
+import type { User } from "@supabase/supabase-js";
 
 interface CommentFormProps {
   onSubmit: (content: string) => Promise<void>;
-  userAvatar?: string | null;
+  user: User | null;
+  onSignOut: () => void;
+  onSignIn: () => void;
 }
 
-export const CommentForm: React.FC<CommentFormProps> = ({ onSubmit, userAvatar }) => {
+export const CommentForm: React.FC<CommentFormProps> = ({
+  onSubmit,
+  user,
+  onSignOut,
+  onSignIn,
+}) => {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -28,36 +46,60 @@ export const CommentForm: React.FC<CommentFormProps> = ({ onSubmit, userAvatar }
   };
 
   return (
-    <Flex gap="12" fillWidth>
-      <Avatar
-        src={userAvatar || undefined}
-        size="l"
-        style={{ flexShrink: 0 }}
-      />
-      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-        <Textarea
-          id="comment-content"
-          placeholder="Share your thoughts..."
-          value={content}
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => setContent(event.target.value)}
-          disabled={isSubmitting}
-          lines={2}
-          style={{ width: '100%' }}
-          hasSuffix={
-            <Flex paddingRight="8" vertical="center" height="fill">
+    <Column fillWidth gap="12" paddingY="12">
+      <Row fillWidth gap="12" vertical="center">
+        <UserMenu
+          name=""
+          avatarProps={{
+            src:
+              user?.user_metadata?.avatar_url || user?.user_metadata?.picture,
+            style: {
+              width: "52px",
+              height: "52px",
+            },
+          }}
+          dropdown={
+            <Dropdown radius="m-4">
+              {user ? (
+                <Option
+                  label="Sign out"
+                  value="signout"
+                  onClick={onSignOut}
+                  hasSuffix={<Icon size="s" name="signout" />}
+                />
+              ) : (
+                <Option
+                  label="Sign in"
+                  value="signin"
+                  onClick={onSignIn}
+                  hasSuffix={<Icon size="s" name="signin" />}
+                />
+              )}
+            </Dropdown>
+          }
+        />
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+          <Input
+            id="comment-content"
+            placeholder="Add a nice comment..."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            disabled={isSubmitting}
+            height="s"
+            hasSuffix={
               <Button
                 type="submit"
-                disabled={!content.trim() || isSubmitting}
+                disabled={isSubmitting}
                 loading={isSubmitting}
-                size="m"
+                size="s"
                 variant="primary"
               >
                 Post
               </Button>
-            </Flex>
-          }
-        />
-      </form>
-    </Flex>
+            }
+          />
+        </form>
+      </Row>
+    </Column>
   );
 };

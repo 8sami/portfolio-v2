@@ -1,25 +1,23 @@
 "use client";
 
 import type React from "react";
-import { useState, useEffect, useRef } from "react";
-import { Flex, Heading, Schema, Column, Button, Text, Icon, Dialog, Toast, UserMenu, Dropdown, Option } from "@once-ui-system/core";
+import { useState, useEffect, useRef, useCallback } from "react";
+import {
+  Heading,
+  Schema,
+  Column,
+  Button,
+  Text,
+  Dialog,
+  Toast,
+  Row,
+} from "@once-ui-system/core";
 import { baseURL, guestbook, person } from "@/resources";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
-
-interface Comment {
-  id: string;
-  content: string;
-  created_at: string;
-  author: {
-    id: string;
-    name: string | null;
-    email: string | null;
-    image: string | null;
-  } | null;
-}
+import type { Comment } from "@/components/CommentList";
 
 export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   initialComments = [],
@@ -38,7 +36,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ content }),
       });
@@ -115,7 +113,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${window.location.origin}/guestbook`
+        redirectTo: `${window.location.origin}/guestbook`,
       },
     });
   };
@@ -126,14 +124,13 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   };
 
   return (
-    <Column maxWidth="m" fillWidth horizontal="center">
+    <Column maxWidth="m" fillWidth paddingTop="24">
       <Schema
         as="webPage"
         baseURL={baseURL}
         title={guestbook.title}
-        description={guestbook.description}
+        description=""
         path={guestbook.path}
-        image={`/api/og/generate?title=${encodeURIComponent(guestbook.title)}`}
         author={{
           name: person.name,
           url: `${baseURL}${guestbook.path}`,
@@ -147,60 +144,35 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
         </Toast>
       )}
 
-      <Flex direction="column" fillWidth gap="24" paddingX="l">
+      <Column fillWidth gap="48" paddingX="l">
         {/* Header */}
-        <Column fillWidth gap="8">
-          <Heading variant="display-strong-l">
-            {guestbook.title}
-          </Heading>
-          <Text variant="heading-default-xl" onBackground="neutral-weak">
-            {guestbook.description}
-          </Text>
-        </Column>
+        <Heading variant="display-strong-s" align="center">
+          {guestbook.title}
+        </Heading>
 
         {/* Comment Section */}
-        <Column fillWidth gap="16">
-          {/* Form and Auth */}
-          <Column fillWidth gap="8">
-            <Flex vertical="center" fillWidth horizontal="between" gap="12">
-              <div /> {/* Spacer since Heading is removed */}
-              {user && (
-                <UserMenu
-                  name={user.user_metadata?.full_name || user.user_metadata?.name || user.email || ""}
-                  subline={user.email}
-                  avatarProps={{ src: user.user_metadata?.avatar_url || user.user_metadata?.picture }}
-                  dropdown={
-                    <Dropdown>
-                      <Option
-                        label="Log out"
-                        hasPrefix={<Icon name="logout" size="xs" />}
-                        onClick={handleSignOut}
-                        danger
-                      />
-                    </Dropdown>
-                  }
-                />
-              )}
-            </Flex>
-            <Column
-              style={{
-                opacity: isPosting ? 0.5 : 1,
-                pointerEvents: isPosting ? "none" : "auto",
-              }}
-            >
-              <CommentForm 
-                onSubmit={handleSubmit} 
-                userAvatar={user?.user_metadata?.avatar_url || user?.user_metadata?.picture}
-              />
-            </Column>
+        <Column fillWidth horizontal="center" gap="64">
+          <Column
+            fillWidth
+            style={{
+              opacity: isPosting ? 0.5 : 1,
+              pointerEvents: isPosting ? "none" : "auto",
+            }}
+          >
+            <CommentForm
+              onSubmit={handleSubmit}
+              user={user}
+              onSignOut={handleSignOut}
+              onSignIn={() => setShowSignInModal(true)}
+            />
           </Column>
 
           {/* Comments List */}
-          <Column fillWidth gap="0">
+          <Column fillWidth maxWidth="m" gap="0">
             <CommentList comments={comments} isLoading={isPosting} />
           </Column>
         </Column>
-      </Flex>
+      </Column>
 
       {/* Sign-in Modal */}
       <Dialog
@@ -209,34 +181,35 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
         title="Sign in to comment"
         maxWidth="xs"
       >
-        <Flex
-          direction="column"
-          gap="m"
-          background="transparent"
-          border="transparent"
-        >
-          <Text variant="body-default-m" onBackground="neutral-weak">
-            You need to sign in to leave a comment.
+        <Column gap="24" padding="24" horizontal="center">
+          <Text
+            variant="body-default-m"
+            onBackground="neutral-weak"
+            align="center"
+          >
+            Join the conversation and share your thoughts.
           </Text>
-          <Flex direction="column" gap="s">
+          <Column fillWidth gap="12">
             <Button
               onClick={() => handleSignIn("google")}
               size="m"
               fillWidth
+              variant="primary"
+              prefixIcon="google"
             >
-              <Icon name="google" size="s" marginRight="8" />
               Continue with Google
             </Button>
             <Button
               onClick={() => handleSignIn("github")}
               size="m"
               fillWidth
+              variant="primary"
+              prefixIcon="github"
             >
-              <Icon name="github" size="s" marginRight="8" />
               Continue with GitHub
             </Button>
-          </Flex>
-        </Flex>
+          </Column>
+        </Column>
       </Dialog>
     </Column>
   );
