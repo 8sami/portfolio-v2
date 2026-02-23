@@ -64,7 +64,7 @@ export const CommentList: React.FC<CommentListProps> = ({
                   "Anonymous"}
               </Text>
               <Text variant="body-default-s" onBackground="neutral-weak">
-                {formatDate(comment.created_at)}
+                {formatDate(comment.created_at, true)}
               </Text>
             </Row>
             <Text

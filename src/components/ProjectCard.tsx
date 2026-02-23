@@ -65,7 +65,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {description}
               </Text>
             )}
-            <Flex gap="xs" wrap>
+            <Flex gap="8" wrap>
               {content?.trim() && (
                 <Button
                   suffixIcon="arrowRight"

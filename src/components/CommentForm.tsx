@@ -89,7 +89,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
             hasSuffix={
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !content.trim()}
                 loading={isSubmitting}
                 size="s"
                 variant="primary"

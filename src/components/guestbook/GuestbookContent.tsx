@@ -180,10 +180,18 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
         onClose={() => setShowSignInModal(false)}
         title="Sign in to comment"
         maxWidth="xs"
+        style={{
+          height: 'fit-content',
+          margin: 'auto',
+        }}
       >
-        <Column gap="24" padding="24" horizontal="center">
+        <Column 
+          gap="32" 
+          padding="16" 
+          horizontal="center"
+        >
           <Text
-            variant="body-default-m"
+            variant="body-default-l"
             onBackground="neutral-weak"
             align="center"
           >
