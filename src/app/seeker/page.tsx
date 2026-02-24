@@ -7,7 +7,6 @@ import {
   Text,
   Heading,
   Button,
-  RevealFx,
   LetterFx,
   Icon,
   Line,
@@ -112,7 +111,7 @@ export default function SeekerPage() {
         marginBottom="20"
       >
         <Heading variant="display-strong-s" align="center">
-          <LetterFx trigger="instant" speed="medium">
+          <LetterFx trigger="instant" speed="fast">
             EVERYBODY'S WATCHING
           </LetterFx>
         </Heading>
@@ -136,16 +135,15 @@ export default function SeekerPage() {
           align="center"
           gap="24"
         >
-          <RevealFx translateY="12" speed="medium">
-            <Column horizontal="center" align="center" gap="12">
+            <Row fillWidth horizontal="center" vertical="center" gap="12">
               <Icon name="globe" size="l" onBackground="brand-medium" />
               <Heading as="h2" variant="display-strong-s" align="center">
+                <LetterFx trigger="instant" speed="slow">
                 Think you're safe?
+                </LetterFx>
               </Heading>
-            </Column>
-          </RevealFx>
+            </Row>
           
-          <RevealFx translateY="12" delay={0.2} speed="medium">
             <Column horizontal="center" align="center" maxWidth="s">
               <Text
                 variant="body-default-m"
@@ -156,9 +154,7 @@ export default function SeekerPage() {
                 Go on. Tap it. It’s the same split-second choice you make when checking a "failed delivery" text or some random email. I just want to show you exactly what the bad guys see before they actually start cleaning you out. No fluff, just a look at your own front door from the outside.
               </Text>
             </Column>
-          </RevealFx>
 
-          <RevealFx translateY="12" delay={0.4} speed="medium">
             <Button
               id="grant-location"
               data-border="conservative"
@@ -170,7 +166,6 @@ export default function SeekerPage() {
             >
               Expose me
             </Button>
-          </RevealFx>
 
           <Text
             variant="label-default-xs"
@@ -184,8 +179,8 @@ export default function SeekerPage() {
 
       {geoState === "loading" && (
         <Column fillWidth gap="l">
-          <Skeleton shape="block" width="xl" style={{ height: "400px" }} />
-          <Skeleton shape="block" width="xl" style={{ height: "200px" }} />
+          <Skeleton shape="block" width="xl" style={{ height: "400px", borderRadius: "var(--radius-m)" }} />
+          <Skeleton shape="block" width="xl" style={{ height: "200px", borderRadius: "var(--radius-m)" }} />
         </Column>
       )}
 

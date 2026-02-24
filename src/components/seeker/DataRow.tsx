@@ -1,7 +1,4 @@
-"use client";
-
 import { Row, Text } from "@once-ui-system/core";
-import { LetterFx } from "@once-ui-system/core";
 
 interface DataRowProps {
   label: string;
@@ -16,9 +13,9 @@ export function DataRow({
 }: DataRowProps) {
   const displayValue = Array.isArray(value) ? value.join(", ") : value;
   return (
-    <Row fillWidth vertical="start" gap="8">
+    <Row fillWidth vertical="start" gap="12">
       <Text
-        variant="label-default-xs"
+        variant="label-default-s"
         onBackground="neutral-weak"
         style={{ width: "var(--s-11)", flexShrink: 0 }}
       >
@@ -29,9 +26,7 @@ export function DataRow({
         onBackground={variant}
         style={{ fontFamily: "var(--font-code)", wordBreak: "break-all", flexGrow: 1 }}
       >
-        <LetterFx trigger="instant" speed="fast">
-          {displayValue || "None"}
-        </LetterFx>
+        {displayValue}
       </Text>
     </Row>
   );

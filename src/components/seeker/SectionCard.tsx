@@ -1,6 +1,7 @@
 "use client";
 
-import { Column, Row, Text } from "@once-ui-system/core";
+import type { IconName } from "@/resources/icons";
+import { Column, Icon, Row, Text } from "@once-ui-system/core";
 
 interface SectionCardProps {
   title: string;
@@ -9,12 +10,13 @@ interface SectionCardProps {
     label: string;
     variant: "neutral" | "warning" | "danger" | "success";
   };
-}
+  icon?: IconName;}
 
 export function SectionCard({
   title,
   children,
   tag,
+  icon,
 }: SectionCardProps) {
   return (
     <Column
@@ -27,31 +29,36 @@ export function SectionCard({
       data-border="conservative"
     >
       <Row vertical="center" horizontal="between">
-        <Text
-          variant="label-default-s"
-          weight="strong"
-          onBackground="neutral-strong"
-        >
-          {title}
-        </Text>
+        <Row vertical="center" gap="4">
+          {icon && (
+            <Icon name={icon} size="m" onBackground="neutral-strong" marginRight="4" />
+          )}
+          <Text
+            paddingY="8"
+            variant="label-default-l"
+            weight="strong"
+          >
+            {title}
+          </Text>
+        </Row>
         {tag && (
           <Row
             paddingX="8"
             paddingY="2"
-            radius="s"
-            background={`${tag.variant}-alpha-weak`}
+            radius="xs"
+            background={`${tag.variant}-alpha-strong`}
             border={`${tag.variant}-alpha-medium`}
           >
             <Text
               variant="label-default-xs"
-              onBackground={`${tag.variant}-strong`}
+              onBackground={`${tag.variant}-medium`}
             >
               {tag.label}
             </Text>
           </Row>
         )}
       </Row>
-      <Column fillWidth gap="8">
+      <Column fillWidth gap="12">
         {children}
       </Column>
     </Column>

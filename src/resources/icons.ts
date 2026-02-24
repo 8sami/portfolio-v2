@@ -1,4 +1,4 @@
-import type { IconType } from "react-icons";
+import type { IconType } from 'react-icons';
 
 import {
   HiArrowUpRight,
@@ -14,7 +14,8 @@ import {
   HiOutlineRocketLaunch,
   HiDocumentText,
   HiOutlineInformationCircle,
-} from "react-icons/hi2";
+  HiBellAlert,
+} from 'react-icons/hi2';
 
 import {
   PiHouseDuotone,
@@ -26,7 +27,15 @@ import {
   PiSignIn,
   PiSignOut,
   PiPenNib,
-} from "react-icons/pi";
+  PiFingerprint,
+  PiBatteryMedium,
+  PiShield,
+  PiNetwork,
+  PiCpu,
+  PiGear,
+  PiMaskHappy,
+  PiBroom,
+} from 'react-icons/pi';
 
 import {
   SiJavascript,
@@ -78,11 +87,27 @@ import {
   SiVirustotal,
   SiGitlab,
   SiShopify,
-} from "react-icons/si";
+} from 'react-icons/si';
 
-import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
-import { DiVisualstudio } from "react-icons/di";
-import { FaHandHolding } from "react-icons/fa";
+import {
+  FaDiscord,
+  FaGithub,
+  FaLinkedin,
+  FaX,
+  FaThreads,
+  FaInstagram,
+  FaXTwitter,
+  FaFacebook,
+  FaPinterest,
+  FaWhatsapp,
+  FaReddit,
+  FaTelegram,
+  FaCompass,
+  FaGifts,
+} from 'react-icons/fa6';
+import { DiVisualstudio } from 'react-icons/di';
+import { FaCut, FaHandHolding } from 'react-icons/fa';
+import { GiFishingHook } from 'react-icons/gi';
 
 export const iconLibrary: Record<string, IconType> = {
   signin: PiSignIn,
@@ -91,6 +116,19 @@ export const iconLibrary: Record<string, IconType> = {
   resume: HiDocumentText,
   arrowRight: HiArrowRight,
   email: HiEnvelope,
+  signature: PiFingerprint,
+  battery: PiBatteryMedium,
+  shield: PiShield,
+  compass: FaCompass,
+  gifts: FaGifts,
+  cut: FaCut,
+  clean: PiBroom,
+  hook: GiFishingHook,
+  masks: PiMaskHappy,
+  network: PiNetwork,
+  chip: PiCpu,
+  settings: PiGear,
+  alert: HiBellAlert,
   globe: HiOutlineGlobeAsiaAustralia,
   person: PiUserCircleDuotone,
   info: HiOutlineInformationCircle,
