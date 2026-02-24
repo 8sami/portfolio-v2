@@ -47,7 +47,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
 
   return (
     <Column fillWidth gap="12" paddingY="12">
-      <Row fillWidth gap="12" vertical="center">
+      <Row fillWidth gap="xs" vertical="center">
         <UserMenu
           name=""
           avatarProps={{

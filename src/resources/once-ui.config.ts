@@ -116,7 +116,7 @@ const effects: EffectsConfig = {
   },
   gradient: {
     display: true,
-    opacity: 80,
+    opacity: 100,
     x: 50,
     y: 60,
     width: 100,
@@ -133,10 +133,10 @@ const effects: EffectsConfig = {
   },
   grid: {
     display: true,
-    opacity: 90,
+    opacity: 80,
     color: "accent-alpha-weak",
-    width: "0.5rem", 
-    height: "0.5rem",
+    width: "0.38rem", 
+    height: "0.38rem",
   },
   lines: {
     display: false,
