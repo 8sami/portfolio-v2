@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Column, Heading, Text, Button, Skeleton, Flex, Row, Icon } from "@once-ui-system/core";
+import { useEffect, useRef, useState } from "react";
+import { Column, Heading, Text, Button, Skeleton, Flex, Row, Icon, Toast, useToast } from "@once-ui-system/core";
 import Link from "next/link";
 
 type Meme = {
@@ -11,11 +11,15 @@ type Meme = {
   postLink: string;
 };
 
+const memeDisclaimer = <>These memes are by the D3VD API. They do not represent the views or opinions of Samiullah Javed and are implemented solely for entertainment purposes.</>
+
 export default function NotFound() {
   const [meme, setMeme] = useState<Meme | null>(null);
   const [apiLoading, setApiLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { addToast } = useToast();
+  const toastShown = useRef(false);
 
   const fetchMeme = async () => {
     setApiLoading(true);
@@ -41,6 +45,21 @@ export default function NotFound() {
 
   const isFullyLoaded = !apiLoading && !imageLoading && meme;
 
+  useEffect(() => {
+    if (toastShown.current) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+    if (isMobile && isPortrait) {
+      addToast({
+        variant: "danger",
+        message: memeDisclaimer,
+      });
+      toastShown.current = true;
+    }
+  }, [addToast]);
+
   return (
     <Column fill center gap="l" padding="m">
       <Column horizontal="center" gap="8">
@@ -50,17 +69,12 @@ export default function NotFound() {
             The page you're looking for is gone, but here's a meme.
           </Text>
           <Icon 
+            s={{ hide: true }}
             name="info" 
             size="xs" 
             marginTop="2"
             onBackground="brand-weak"
-            tooltip={
-              <>
-                These memes are by the D3VD API. They do not<br/>
-                represent the views or opinions of Samiullah Javed and<br/>
-                are implemented solely for entertainment purposes.
-              </>
-            }
+            tooltip={memeDisclaimer}
             tooltipPosition="top"
           />
         </Row>

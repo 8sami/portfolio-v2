@@ -16,7 +16,7 @@ export default function DoomPage() {
 
     if (isMobile && isPortrait) {
       addToast({
-        variant: "success",
+        variant: "danger",
         message: "Landscape mode recommended for the best experience.",
       });
       toastShown.current = true;
