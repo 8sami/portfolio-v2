@@ -10,7 +10,6 @@ import {
   Text,
   Dialog,
   Toast,
-  Row,
 } from "@once-ui-system/core";
 import { baseURL, guestbook, person } from "@/resources";
 import { CommentForm } from "@/components/CommentForm";

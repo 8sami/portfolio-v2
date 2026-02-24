@@ -48,10 +48,9 @@ export default function NotFound() {
   useEffect(() => {
     if (toastShown.current) return;
 
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+    const isMobile = window.matchMedia("(max-width: 1024px)").matches;
 
-    if (isMobile && isPortrait) {
+    if (isMobile) {
       addToast({
         variant: "danger",
         message: memeDisclaimer,
@@ -69,13 +68,13 @@ export default function NotFound() {
             The page you're looking for is gone, but here's a meme.
           </Text>
           <Icon 
-            s={{ hide: true }}
+            m={{ hide: true }}
             name="info" 
             size="xs" 
             marginTop="2"
             onBackground="brand-weak"
-            tooltip={memeDisclaimer}
-            tooltipPosition="top"
+            tooltip={<Text style={{ maxWidth: "240px", textWrap: "balance" }} variant="body-default-xs" onBackground="neutral-medium">{memeDisclaimer}</Text>}
+            tooltipPosition="bottom"
           />
         </Row>
       </Column>

@@ -179,7 +179,7 @@ export const Header = () => {
             textVariant='body-default-s'
             gap='20'
           >
-            <Flex s={{ hide: true }}>
+            <Flex style={{ fontVariantNumeric: 'tabular-nums' }} s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
           </Flex>

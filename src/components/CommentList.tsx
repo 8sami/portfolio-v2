@@ -51,19 +51,19 @@ export const CommentList: React.FC<CommentListProps> = ({
             }
             borderWidth={2}
           />
-          <Column gap="4" fillWidth>
+          <Column gap="1" fillWidth>
             <Row
-              vertical="center"
+              vertical="end"
               gap="8"
               fillWidth
               style={{ flexWrap: "wrap" }}
             >
-              <Text variant="label-strong-s" onBackground="neutral-strong">
+              <Text variant="label-strong-m" onBackground="neutral-strong">
                 {comment.author?.name ||
                   comment.author?.email?.split("@")[0] ||
                   "Anonymous"}
               </Text>
-              <Text variant="body-default-s" onBackground="neutral-weak">
+              <Text variant="body-default-xs" onBackground="neutral-weak">
                 {formatDate(comment.created_at, true)}
               </Text>
             </Row>
