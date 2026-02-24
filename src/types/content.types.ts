@@ -312,3 +312,8 @@ export interface Doom extends BasePageConfig {
     link: string;
   };
 }
+
+/**
+ * Seeker page configuration — location & fingerprint demo.
+ */
+export interface Seeker extends BasePageConfig {}

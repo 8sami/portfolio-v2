@@ -27,6 +27,7 @@ const routes: RoutesConfig = {
   "/gallery": false,
   "/doom": true,
   "/guestbook": true,
+  "/seeker": true,
 };
 
 const display: DisplayConfig = {

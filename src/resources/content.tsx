@@ -6,6 +6,7 @@ import type {
   Home,
   Newsletter,
   Person,
+  Seeker,
   Social,
   Work,
   Doom,
@@ -99,17 +100,16 @@ const home: Home = {
   headline: <>Making lives easier by solving problems</>,
   featured: {
     display: true,
-    // hmmm, play doom? rickroll?
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>
+        <strong className="ml-4">⚠️ Warning</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          This site knows where you are
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/seeker",
   },
   subline: <>Assalamualaikum👋, I'm Sami. I love making products that solve actual problems.</>,
 };
@@ -693,4 +693,12 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, guestbook, doom };
+const seeker: Seeker = {
+  path: "/seeker",
+  label: "Seeker",
+  title: "SEEKER // Location Intelligence",
+  description:
+    "An educational demo inspired by thewhiteh4t/seeker — showing how websites can collect your location, device fingerprint, and browser metadata. Stay vigilant.",
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, guestbook, doom, seeker };

@@ -10,6 +10,7 @@ export {
   gallery,
   doom,
   guestbook,
+  seeker,
 } from "./content";
 
 export {
