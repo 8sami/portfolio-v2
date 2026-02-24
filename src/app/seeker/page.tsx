@@ -105,23 +105,23 @@ export default function SeekerPage() {
       {/* ── Header ── */}
       <Column
         fillWidth
-        gap="12"
+        gap="32"
         horizontal="center"
         align="center"
-        marginBottom="20"
+        maxWidth={"m"}
       >
         <Heading variant="display-strong-s" align="center">
-          <LetterFx trigger="instant" speed="fast">
-            EVERYBODY'S WATCHING
+          <LetterFx trigger="instant" speed="slow">
+            {seeker.ui.pageHeading}
           </LetterFx>
         </Heading>
         <Text
           variant="body-default-m"
-          onBackground="neutral-weak"
+          onBackground="neutral-medium"
           align="center"
           wrap="balance"
         >
-          Look, your browser is basically a sieve. Honestly, it's just leaking your life out to any site that knows how to ask—and most of them do.
+          {seeker.ui.pageDescription}
         </Text>
       </Column>
 
@@ -129,50 +129,28 @@ export default function SeekerPage() {
       {geoState === "idle" && (
         <Column
           fillWidth
-          padding="64"
           radius="m"
           horizontal="center"
-          align="center"
-          gap="24"
+          gap="s"
         >
-            <Row fillWidth horizontal="center" vertical="center" gap="12">
-              <Icon name="globe" size="l" onBackground="brand-medium" />
-              <Heading as="h2" variant="display-strong-s" align="center">
-                <LetterFx trigger="instant" speed="slow">
-                Think you're safe?
-                </LetterFx>
-              </Heading>
-            </Row>
-          
-            <Column horizontal="center" align="center" maxWidth="s">
-              <Text
-                variant="body-default-m"
-                onBackground="neutral-weak"
-                align="center"
-                wrap="balance"
-              >
-                Go on. Tap it. It’s the same split-second choice you make when checking a "failed delivery" text or some random email. I just want to show you exactly what the bad guys see before they actually start cleaning you out. No fluff, just a look at your own front door from the outside.
-              </Text>
-            </Column>
-
-            <Button
-              id="grant-location"
-              data-border="conservative"
-              variant="primary"
-              size="m"
-              prefixIcon="globe"
-              arrowIcon
-              onClick={requestLocation}
-            >
-              Expose me
-            </Button>
+          <Button
+            id="grant-location"
+            data-border="conservative"
+            variant="primary"
+            size="s"
+            prefixIcon={seeker.ui.entrance?.buttonIcon}
+            arrowIcon
+            onClick={requestLocation}
+          >
+            {seeker.ui.entrance?.button}
+          </Button>
 
           <Text
             variant="label-default-xs"
             onBackground="neutral-weak"
             style={{ opacity: 0.6 }}
           >
-            Requires location permission.
+            {seeker.ui.entrance?.permissionLabel}
           </Text>
         </Column>
       )}
@@ -202,7 +180,7 @@ export default function SeekerPage() {
             onBackground="danger-strong"
             align="center"
           >
-            Access Denied
+            {seeker.ui.denied?.heading}
           </Heading>
           <Text
             variant="body-default-m"
@@ -210,16 +188,16 @@ export default function SeekerPage() {
             align="center"
             wrap="balance"
           >
-            You blocked the request. Good. But a real hacker would already be trying another way to get in.
+            {seeker.ui.denied?.message}
           </Text>
           <Button
             data-border="conservative"
             variant="secondary"
             size="s"
-            prefixIcon="arrowLeft"
+            prefixIcon={seeker.ui.denied?.buttonIcon}
             onClick={reset}
           >
-            Try Again
+            {seeker.ui.denied?.tryAgain}
           </Button>
         </Column>
       )}
@@ -240,9 +218,9 @@ export default function SeekerPage() {
             <Icon name="info" size="xs" onBackground="danger-medium" />
             <Text variant="body-default-s" onBackground="danger-medium">
               <Text as="span" weight="strong" onBackground="danger-strong">
-                YOU'RE TOTALLY EXPOSED.{" "}
+                {seeker.ui.results?.alertTitle}{" "}
               </Text>
-              An attacker is basically sitting in your living room now. They’ve got your home layout, your device ID, and even how much battery you have left—it’s everything they need to pick their next target. You, probably.
+              {seeker.ui.results?.alertMessage}
             </Text>
           </Row>
 
@@ -258,7 +236,7 @@ export default function SeekerPage() {
       {/* ── Device Intel ── */}
       <Column fillWidth gap="m">
         <Heading as="h2" variant="display-strong-s">
-          Personal Information Leak
+          {seeker.ui?.device.heading ?? "Personal Information Leak"}
         </Heading>
 
         {device ? (

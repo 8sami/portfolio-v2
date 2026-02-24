@@ -1,11 +1,23 @@
-"use client";
-
-import { Column, Row, Text, Heading, Button, Icon } from "@once-ui-system/core";
+import { Column, Row, Text, Heading, Button, Icon, type IconName } from "@once-ui-system/core";
+import { seeker } from "@/resources";
 
 interface MapEmbedProps {
   latitude: number;
   longitude: number;
   accuracy: number;
+}
+
+interface CoordDisplay {
+  label: string;
+  value: number;
+}
+
+interface ButtonConfig {
+  label: string;
+  href: string;
+  variant: "primary" | "secondary";
+  arrowIcon?: boolean;
+  prefixIcon?: IconName;
 }
 
 export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
@@ -18,10 +30,22 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
     longitude - delta
   },${latitude - delta},${longitude + delta},${latitude + delta}&layer=mapnik&marker=${latitude},${longitude}`;
 
+  const ui = seeker.ui.results;
+
+  const coords: CoordDisplay[] = [
+    { label: ui.mapLatLabel, value: latitude },
+    { label: ui.mapLonLabel, value: longitude },
+  ];
+
+  const buttons: ButtonConfig[] = [
+    { label: ui.mapButtons.google, href: googleMapsUrl, variant: "primary", arrowIcon: true, prefixIcon: "map-pin" },
+    { label: ui.mapButtons.osm, href: osmViewUrl, variant: "secondary", arrowIcon: false, prefixIcon: "globe" },
+  ];
+
   return (
     <Column fillWidth gap="m">
       <Heading as="h2" variant="display-strong-s">
-        Location Map
+        {ui.mapHeading}
       </Heading>
       <Column
         fillWidth
@@ -35,7 +59,7 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
         <iframe
           src={osmEmbedUrl}
           style={{ width: "100%", height: "320px", border: "none", display: "block" }}
-          title="Location Map"
+          title={ui.mapHeading}
           loading="lazy"
           referrerPolicy="no-referrer"
         />
@@ -48,60 +72,45 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
           wrap
           style={{ borderTop: "1px solid var(--neutral-alpha-weak)" }}
         >
-          <Row gap="8" vertical="center" flex={1}>
-            <Icon name="globe" size="xs" onBackground="neutral-weak" />
-            <Text variant="label-default-xs" onBackground="neutral-weak" style={{ opacity: 0.6 }}>Lat</Text>
-            <Text
-              variant="body-default-s"
-              onBackground="neutral-strong"
-              style={{ fontFamily: "var(--font-code)" }}
-            >
-              {latitude.toFixed(8)}
-            </Text>
-          </Row>
-          <Row gap="8" vertical="center" flex={1}>
-            <Icon name="globe" size="xs" onBackground="neutral-weak" />
-            <Text variant="label-default-xs" onBackground="neutral-weak" style={{ opacity: 0.6 }}>Lon</Text>
-            <Text
-              variant="body-default-s"
-              onBackground="neutral-strong"
-              style={{ fontFamily: "var(--font-code)" }}
-            >
-              {longitude.toFixed(8)}
-            </Text>
-          </Row>
+          {coords.map((coord) => (
+            <Row key={coord.label} gap="8" vertical="center" flex={1}>
+              <Icon name="globe" size="xs" onBackground="neutral-weak" />
+              <Text variant="label-default-xs" onBackground="neutral-weak" style={{ opacity: 0.6 }}>
+                {coord.label}
+              </Text>
+              <Text
+                variant="body-default-s"
+                onBackground="neutral-strong"
+                style={{ fontFamily: "var(--font-code)" }}
+              >
+                {coord.value.toFixed(8)}
+              </Text>
+            </Row>
+          ))}
           <Text
             variant="label-default-xs"
             onBackground="neutral-weak"
           >
-            +/- {accuracy.toFixed(0)} m
+            {ui.mapAccuracyPrefix}{accuracy.toFixed(0)} m
           </Text>
         </Row>
       </Column>
       <Row style={{ flexWrap: "nowrap" }} fillWidth gap="8" wrap data-border="conservative">
-        <Button
-          href={googleMapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="primary"
-          size="s"
-          prefixIcon="globe"
-          arrowIcon
-          fillWidth
-        >
-          Google Maps
-        </Button>
-        <Button
-          href={osmViewUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="secondary"
-          size="s"
-          prefixIcon="globe"
-          fillWidth
-        >
-          OpenStreetMap
-        </Button>
+        {buttons.map((btn) => (
+          <Button
+            key={btn.label}
+            href={btn.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant={btn.variant}
+            size="s"
+            prefixIcon={btn.prefixIcon}
+            arrowIcon={btn.arrowIcon}
+            fillWidth
+          >
+            {btn.label}
+          </Button>
+        ))}
       </Row>
     </Column>
   );

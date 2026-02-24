@@ -1,8 +1,7 @@
-"use client";
-
 import { Column, Heading } from "@once-ui-system/core";
 import { DataRow } from "./DataRow";
 import { SectionCard } from "./SectionCard";
+import { seeker } from "@/resources";
 
 interface LocationData {
   latitude: number;
@@ -14,34 +13,52 @@ interface LocationData {
   speed: number | null;
 }
 
+interface RowConfig {
+  labelKey: keyof typeof seeker.ui.device.labels;
+  getValue: () => string;
+}
+
 export function LocationInfo({ data }: { data: LocationData }) {
   const { latitude, longitude, accuracy, altitude, altitudeAccuracy, heading, speed } = data;
+  const ui = seeker.ui.results;
+  const labels = ui.labels ?? {};
+
+  const rows: RowConfig[] = [
+    { labelKey: "latitude", getValue: () => `${latitude.toFixed(8)} deg` },
+    { labelKey: "longitude", getValue: () => `${longitude.toFixed(8)} deg` },
+    { labelKey: "accuracy", getValue: () => `${ui.mapAccuracyPrefix}${accuracy.toFixed(1)} m` },
+    {
+      labelKey: "altitude",
+      getValue: () => (altitude !== null ? `${altitude.toFixed(1)} m ASL` : labels.na),
+    },
+    {
+      labelKey: "altAccuracy",
+      getValue: () =>
+        altitudeAccuracy !== null ? `${ui.mapAccuracyPrefix}${altitudeAccuracy.toFixed(1)} m` : labels.na,
+    },
+    {
+      labelKey: "heading",
+      getValue: () => (heading !== null ? `${heading.toFixed(1)} deg` : labels.na),
+    },
+    {
+      labelKey: "speed",
+      getValue: () => (speed !== null ? `${(speed * 3.6).toFixed(1)} km/h` : labels.speedStationary),
+    },
+  ];
 
   return (
     <Column fillWidth gap="m">
       <Heading as="h2" variant="display-strong-s">
-        Live Tracking
+        {ui.locationHeading}
       </Heading>
-      <SectionCard title="GPS Coordinates">
-        <DataRow label="Latitude" value={`${latitude.toFixed(8)} deg`} />
-        <DataRow label="Longitude" value={`${longitude.toFixed(8)} deg`} />
-        <DataRow label="Accuracy" value={`+/- ${accuracy.toFixed(1)} m`} />
-        <DataRow
-          label="Altitude"
-          value={altitude !== null ? `${altitude.toFixed(1)} m ASL` : "N/A"}
-        />
-        <DataRow
-          label="Alt. Accuracy"
-          value={altitudeAccuracy !== null ? `+/- ${altitudeAccuracy.toFixed(1)} m` : "N/A"}
-        />
-        <DataRow
-          label="Heading"
-          value={heading !== null ? `${heading.toFixed(1)} deg` : "N/A"}
-        />
-        <DataRow
-          label="Speed"
-          value={speed !== null ? `${(speed * 3.6).toFixed(1)} km/h` : "Stationary"}
-        />
+      <SectionCard title={ui.gpsTitle}>
+        {rows.map((row) => (
+          <DataRow
+            key={row.labelKey}
+            label={labels[row.labelKey]}
+            value={row.getValue()}
+          />
+        ))}
       </SectionCard>
     </Column>
   );

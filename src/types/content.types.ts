@@ -316,4 +316,64 @@ export interface Doom extends BasePageConfig {
 /**
  * Seeker page configuration — location & fingerprint demo.
  */
-export interface Seeker extends BasePageConfig {}
+export interface Seeker extends BasePageConfig {
+  ui: {
+    pageHeading: string;
+    pageDescription: string;
+    entrance: {
+      title: string;
+      description: string;
+      button: string;
+      buttonIcon: IconName;
+      permissionLabel: string;
+    };
+    denied: {
+      heading: string;
+      message: string;
+      tryAgain: string;
+      buttonIcon: IconName;
+    };
+    results: {
+      alertTitle: string;
+      alertMessage: string;
+      locationHeading: string;
+      gpsTitle: string;
+      mapHeading: string;
+      mapLatLabel: string;
+      mapLonLabel: string;
+      mapAccuracyPrefix: string;
+      mapButtons: {
+        google: string;
+        osm: string;
+      };
+      labels?: Record<string, string>;
+    };
+    device: {
+      heading: string;
+      sections: {
+        identity: string;
+        network: string;
+        networkTag: string;
+        privacy: string;
+        privacyTag: string;
+        hardware: string;
+        resources: string;
+        preferences: string;
+        signature: string;
+        signatureTag: string;
+      };
+      labels: Record<string, string>;
+      signatureLabels: Record<string, string>;
+    };
+    disclaimer: {
+      heading: string;
+      lead: string;
+      tipsTitle: string;
+      tips: Array<{ icon: string; title: string; desc: string }>;
+      vectorsTitle: string;
+      vectors: Array<{ icon: string; title: string; desc: string }>;
+      footerNotice: string;
+      footerIcon: IconName;
+    };
+  };
+}
