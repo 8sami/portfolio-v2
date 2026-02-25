@@ -9,6 +9,8 @@ export {
   work,
   gallery,
   doom,
+  guestbook,
+  seeker,
 } from "./content";
 
 export {

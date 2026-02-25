@@ -1,76 +1,90 @@
-import { Heading, Text, Column } from '@once-ui-system/core';
-import { baseURL, doom } from '@/resources';
-export async function generateMetadata() {
-  const title = doom.title;
-  const description = doom.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'website',
-      url: `https://${baseURL}{doom.path}`,
-      images: [{ url: ogImage, alt: title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
-}
+"use client";
+
+import { Column, Heading, Meta, Schema, Text, useToast } from "@once-ui-system/core";
+import { baseURL, doom, person, about } from "@/resources";
+import { useEffect, useRef } from "react";
+
 export default function DoomPage() {
+  const { addToast } = useToast();
+  const toastShown = useRef(false);
+
+  useEffect(() => {
+    if (toastShown.current) return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+
+    if (isMobile && isPortrait) {
+      addToast({
+        variant: "danger",
+        message: "Landscape mode recommended for the best experience.",
+      });
+      toastShown.current = true;
+    }
+  }, [addToast]);
+
   return (
-    <Column maxWidth='s' gap='xl' paddingY='12' horizontal='center'>
-      <script
-        type='application/ld+json'
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebPage',
-            'name': doom.title,
-            'description': doom.description,
-            'url': `https://${baseURL}${doom.path}`,
-            'image': `https://${baseURL}/og?title=${doom.label}`,
-          }),
+    <Column maxWidth="m" paddingTop="24" gap="xl" horizontal="center">
+      <Schema
+        as="webPage"
+        baseURL={baseURL}
+        path={doom.path}
+        title={doom.title}
+        description={doom.description}
+        image={`/api/og/generate?title=${encodeURIComponent(doom.title)}`}
+        author={{
+          name: person.name,
+          url: `${baseURL}${about.path}`,
+          image: `${baseURL}${person.avatar}`,
         }}
       />
       <Column
-        gap='s'
-        vertical='center'
-        direction='column'
+        gap="32"
+        direction="column"
         fillWidth
-        horizontal='center'
+        horizontal="center"
+        paddingBottom="4"
       >
-      <Heading variant='display-strong-l'>{doom.label}</Heading>
+        <Heading variant="display-strong-s" align="center">
+          {doom.label}
+        </Heading>
         <Text
-          variant='body-default-m'
-          style={{ textAlign: 'center' }}
-          onBackground='neutral-weak'
+          variant="body-default-m"
+          onBackground="neutral-medium"
+          align="center"
+          wrap="balance"
         >
           {doom.description}
         </Text>
       </Column>
-      <Column gap='s' maxWidth='s' horizontal='center'>
+      <Column gap="16" fillWidth horizontal="center">
         <Text
-          style={{ textAlign: 'center', marginTop: 'auto' }}
-          variant='label-default-xs'
-          onBackground='neutral-weak'
+          align="center"
+          variant="label-default-xs"
+          onBackground="neutral-medium"
         >
           {doom.controls}
         </Text>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (orientation: landscape) and (max-height: 600px) {
+            .doom-iframe {
+              height: 80vh !important;
+              max-height: none !important;
+              max-width: 800px !important;
+              aspect-ratio: auto !important;
+            }
+          }
+        ` }} />
         <iframe
           src={doom.iframe.link}
+          className="doom-iframe"
           style={{
-            border: 'none',
-            maxWidth: '700px',
-            width: '100%',
-            aspectRatio: '16/10',
-            boxShadow: '0 0 20px rgba(0,0,0,0.5)',
+            border: "none",
+            maxWidth: "700px",
+            width: "100%",
+            aspectRatio: "16/10",
+            borderRadius: "var(--radius-m)",
+            boxShadow: "var(--shadow-l-strong)",
           }}
           title={doom.title}
           allowFullScreen

@@ -2,11 +2,11 @@
 
 import {
   AvatarGroup,
+  Button,
   Carousel,
   Column,
   Flex,
   Heading,
-  SmartLink,
   Text,
 } from "@once-ui-system/core";
 
@@ -33,6 +33,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <Column fillWidth gap="m">
       <Carousel
+        aspectRatio="16/10"
         sizes="(max-width: 960px) 100vw, 960px"
         items={images.map((image) => ({
           slide: image,
@@ -56,30 +57,36 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
           <Column flex={7} gap="16">
-            {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+            {avatars?.length > 0 && (
+              <AvatarGroup avatars={avatars} size="m" reverse />
+            )}
             {description?.trim() && (
-              <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
+              <Text wrap="balance" variant="body-default-s" onBackground="neutral-medium">
                 {description}
               </Text>
             )}
-            <Flex gap="24" wrap>
+            <Flex gap="8" wrap>
               {content?.trim() && (
-                <SmartLink
+                <Button
                   suffixIcon="arrowRight"
+                  size="s"
+                  variant="primary"
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Read case study</Text>
-                </SmartLink>
+                  <Text variant="label-default-s">Read case study</Text>
+                </Button>
               )}
               {link && (
-                <SmartLink
+                <Button
                   suffixIcon="arrowUpRightFromSquare"
+                  size="s"
+                  variant="secondary"
                   style={{ margin: "0", width: "fit-content" }}
                   href={link}
                 >
-                  <Text variant="body-default-s">View project</Text>
-                </SmartLink>
+                  <Text variant="label-default-s">View project</Text>
+                </Button>
               )}
             </Flex>
           </Column>

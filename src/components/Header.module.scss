@@ -19,3 +19,12 @@
         bottom: 0;
     }
 }
+
+.navContainer {
+    transition: transform 0.2s ease-in-out;
+
+    @media (max-width: 768px) {
+        transform: scale(1.35);
+        transform-origin: center;
+    }
+}

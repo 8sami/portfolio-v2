@@ -1,5 +1,5 @@
-import { IconName } from "@/resources/icons";
-import { zones } from "tzdata";
+import type { IconName } from "@/resources/icons";
+import type { zones } from "tzdata";
 
 /**
  * IANA time zone string (e.g., 'Asia/Calcutta', 'Europe/Vienna').
@@ -134,7 +134,16 @@ export interface About extends BasePageConfig {
     /** Title of the introduction section */
     title: string;
     /** Description of the introduction section */
-    description: React.ReactNode;
+    description: React.ReactNode[];
+  };
+  /** Now section */
+  now: {
+    /** Whether to display the now section */
+    display: boolean;
+    /** Title of the now section */
+    title: string;
+    /** Description of the now section */
+    description: React.ReactNode[];
   };
   /** Work experience section */
   work: {
@@ -183,6 +192,32 @@ export interface About extends BasePageConfig {
       timeframe: string;
     }>;
   };
+  certifications: {
+    /** Whether to display certifications section */
+    display: boolean;
+    /** Title for the certifications section */
+    title: string;
+    /** List of certifications */
+    certificates: Array<{
+      /** Certification title */
+      title: string;
+      /** Certification description */
+      description: React.ReactNode;
+      /** Certification images */
+      images?: Array<{
+        /** Image source path */
+        src: string;
+        /** Image alt text */
+        alt: string;
+        /** Image width ratio */
+        width: number;
+        /** Image height ratio */
+        height: number;
+      }>;
+      /** Certification link */
+      link: string;
+    }>;
+  };
   /** Technical skills section */
   technical: {
     /** Whether to display technical skills section */
@@ -213,7 +248,32 @@ export interface About extends BasePageConfig {
       }>;
     }>;
   };
+  /**
+   * Gif section
+   */
+  gif: {
+    /** Whether to display the gif section */
+    display: boolean;
+    /** Title for the gif section */
+    title: string;
+    /** Description for the gif section */
+    description: string;
+    /** Path to the gif */
+    src: string;
+    /** Alt text for the gif */
+    alt: string;
+  }
 }
+
+/**
+ * Guestbook Section
+ * @description The below information will be displayed on the Home page in Guestbook block
+ */
+export interface Guestbook extends Omit<BasePageConfig, 'description'> {
+  /** Title of the guestbook section */
+  title: string;
+  description?: string;
+};
 
 /**
  * Blog page configuration.
@@ -250,5 +310,69 @@ export interface Doom extends BasePageConfig {
   controls: string;
   iframe: {
     link: string;
+  };
+}
+
+/**
+ * Seeker page configuration , location & fingerprint demo.
+ */
+export interface Seeker extends BasePageConfig {
+  ui: {
+    entrance: {
+      title: string;
+      description: string;
+      button: string;
+      buttonIcon: IconName;
+      permissionLabel: string;
+    };
+    denied: {
+      heading: string;
+      message: string;
+      tryAgain: string;
+      buttonIcon: IconName;
+    };
+    results: {
+      alertTitle: string;
+      alertMessage: string;
+      locationHeading: string;
+      gpsTitle: string;
+      telemetryTitle: string;
+      mapHeading: string;
+      mapLatLabel: string;
+      mapLonLabel: string;
+      mapAccuracyPrefix: string;
+      mapButtons: {
+        google: string;
+        osm: string;
+      };
+      labels: Record<string, string>;
+    };
+    device: {
+      heading: string;
+      sections: {
+        identity: string;
+        network: string;
+        networkTag: string;
+        privacy: string;
+        privacyTag: string;
+        hardware: string;
+        resources: string;
+        preferences: string;
+        signature: string;
+        signatureTag: string;
+      };
+      labels: Record<string, string>;
+      signatureLabels: Record<string, string>;
+    };
+    disclaimer: {
+      heading: string;
+      lead: string;
+      tipsTitle: string;
+      tips: Array<{ icon: string; title: string; desc: string }>;
+      vectorsTitle: string;
+      vectors: Array<{ icon: string; title: string; desc: string }>;
+      footerNotice: string;
+      footerIcon: IconName;
+    };
   };
 }

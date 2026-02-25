@@ -58,12 +58,11 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
               vertical="center"
               onClick={() => scrollTo(section.title, 80)}
             >
-              <Flex height="1" minWidth="16" background="neutral-strong"></Flex>
+              <Flex height="1" minWidth="16" background="neutral-strong" />
               <Text>{section.title}</Text>
             </Flex>
             {about.tableOfContent.subItems && (
-              <>
-                {section.items.map((item, itemIndex) => (
+              section.items.map((item, itemIndex) => (
                   <Flex
                     l={{ hide: true }}
                     key={itemIndex}
@@ -74,11 +73,10 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
                     vertical="center"
                     onClick={() => scrollTo(item, 80)}
                   >
-                    <Flex height="1" minWidth="8" background="neutral-strong"></Flex>
+                    <Flex height="1" minWidth="8" background="neutral-strong" />
                     <Text>{item}</Text>
                   </Flex>
-                ))}
-              </>
+                ))
             )}
           </Column>
         ))}

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import {
+import type {
   DataStyleConfig,
   DisplayConfig,
   EffectsConfig,
@@ -15,7 +15,9 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://www.samiullahjaved.com";
+const baseURL = process.env.NODE_ENV === 'development' 
+  ? "http://localhost:3000" 
+  : "https://www.samiullahjaved.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -24,6 +26,8 @@ const routes: RoutesConfig = {
   "/blog": false,
   "/gallery": false,
   "/doom": true,
+  "/guestbook": true,
+  "/seeker": true,
 };
 
 const display: DisplayConfig = {
@@ -39,7 +43,7 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Instrument_Serif, Instrument_Sans, JetBrains_Mono, DotGothic16  } from "next/font/google";
+import { Instrument_Serif, Instrument_Sans, DotGothic16 } from "next/font/google";
 
 const heading = Instrument_Serif({
   variable: "--font-heading",
@@ -62,10 +66,11 @@ const label = DotGothic16({
   weight: "400"
 });
 
-const code = JetBrains_Mono({
+const code = DotGothic16({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
+  weight: "400"
 });
 
 const fonts: FontsConfig = {
@@ -111,28 +116,28 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
+    display: true,
     opacity: 100,
     x: 50,
     y: 60,
     width: 100,
     height: 50,
     tilt: 0,
-    colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    colorStart: "brand-background-strong",
+    colorEnd: "brand-background-strong",
   },
   dots: {
-    display: true,
-    opacity: 40,
-    size: "2",
-    color: "brand-background-strong",
+    display: false,
+    opacity: 80,
+    size: "8",
+    color: "accent-background-medium",
   },
   grid: {
-    display: false,
-    opacity: 100,
-    color: "neutral-alpha-medium",
-    width: "0.25rem",
-    height: "0.25rem",
+    display: true,
+    opacity: 80,
+    color: "accent-alpha-weak",
+    width: "0.38rem", 
+    height: "0.38rem",
   },
   lines: {
     display: false,

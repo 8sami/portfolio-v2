@@ -79,7 +79,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Row fillWidth s={{ direction: "column"}} horizontal="center">
+      <Row fillWidth s={{ direction: "column" }} horizontal="center">
         {about.avatar.display && (
           <Column
             className={styles.avatar}
@@ -103,7 +103,7 @@ export default function About() {
             {person.languages && person.languages.length > 0 && (
               <Row wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
+                  <Tag key={`${language}-${index}`} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -117,7 +117,7 @@ export default function About() {
             fillWidth
             minHeight="160"
             vertical="center"
-            marginBottom="32"
+            marginBottom="40"
           >
             {about.calendar.display && (
               <Row
@@ -134,12 +134,16 @@ export default function About() {
                   backdropFilter: "blur(var(--static-space-1))",
                 }}
               >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                <Icon
+                  paddingLeft="12"
+                  name="calendar"
+                  onBackground="brand-weak"
+                />
                 <Row paddingX="8">Schedule a call</Row>
                 <IconButton
                   href={about.calendar.link}
                   data-border="conservative"
-                  variant="secondary"
+                  variant="primary"
                   icon="chevronRight"
                 />
               </Row>
@@ -166,61 +170,90 @@ export default function About() {
                 data-border="conservative"
               >
                 {social
-                      .filter((item) => item.essential)
-                      .map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
-                )}
+                  .filter((item) => item.essential)
+                  .map(
+                    (item) =>
+                      item.link && (
+                        <React.Fragment key={item.name}>
+                          <Row s={{ hide: true }}>
+                            <Button
+                              key={item.name}
+                              href={item.link}
+                              prefixIcon={item.icon}
+                              label={item.name}
+                              size="s"
+                              weight="default"
+                              variant="secondary"
+                            />
+                          </Row>
+                          <Row hide s={{ hide: false }}>
+                            <IconButton
+                              size="l"
+                              key={`${item.name}-icon`}
+                              href={item.link}
+                              icon={item.icon}
+                              variant="secondary"
+                            />
+                          </Row>
+                        </React.Fragment>
+                      ),
+                  )}
               </Row>
             )}
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column
+              textVariant="body-default-l"
+              fillWidth
+              gap="s"
+              marginBottom="xl"
+            >
+              {about.intro.description.map((paragraph, index) => (
+                <Text key={`intro-${index}`}>
+                  {paragraph}
+                </Text>
+              ))}
             </Column>
           )}
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about.work.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
                 {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
+                  <Column
+                    key={`${experience.company}-${experience.role}-${index}`}
+                    fillWidth
+                  >
+                    <Row
+                      fillWidth
+                      horizontal="between"
+                      vertical="start"
+                      marginBottom="4"
+                    >
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
                       </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      <Text
+                        variant="heading-default-xs"
+                        onBackground="neutral-weak"
+                      >
                         {experience.timeframe}
                       </Text>
                     </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
+                    <Text
+                      variant="body-default-s"
+                      onBackground="brand-weak"
+                      marginBottom="s"
+                    >
                       {experience.role}
                     </Text>
                     <List as="ul" textVariant="body-default-m" gap="8">
@@ -233,10 +266,16 @@ export default function About() {
                       )}
                     </List>
                     {experience.images && experience.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
+                      <Row
+                        fillWidth
+                        paddingTop="m"
+                        paddingLeft="40"
+                        gap="12"
+                        wrap
+                      >
                         {experience.images.map((image, index) => (
                           <Row
-                            key={index}
+                            key={`${experience.company}-${index}`}
                             border="neutral-medium"
                             radius="m"
                             minWidth={image.width}
@@ -261,69 +300,97 @@ export default function About() {
 
           {about.studies.display && (
             <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+              <Heading
+                as="h2"
+                id={about.studies.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Row fillWidth horizontal="between" vertical="end">
+                  <Column
+                    key={`${institution.name}-${index}`}
+                    fillWidth
+                    gap="4"
+                  >
+                    <Row fillWidth horizontal="between" vertical="start">
                       <Text id={institution.name} variant="heading-strong-l">
                         {institution.name}
                       </Text>
-                      <Text variant="heading-default-xs" style={{ textWrap: "nowrap" }} onBackground="neutral-weak">
+                      <Text
+                        variant="heading-default-xs"
+                        style={{ textWrap: "nowrap" }}
+                        onBackground="neutral-weak"
+                      >
                         {institution.timeframe}
                       </Text>
                     </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="s">
+                    <Text
+                      variant="body-default-s"
+                      onBackground="brand-weak"
+                      marginBottom="s"
+                    >
                       {institution.description}
                     </Text>
-                    {institution?.achievements && institution.achievements?.length > 0 && (
-                      <List as="ul" gap="8" textVariant="body-default-m">
-                        {institution.achievements?.map((item, idx) => (
-                          <ListItem key={idx}>{item}</ListItem>
-                        ))}
-                    </List>
-                    )}
+                    {institution?.achievements &&
+                      institution.achievements?.length > 0 && (
+                        <List as="ul" gap="8" textVariant="body-default-m">
+                          {institution.achievements?.map((item, idx) => (
+                            <ListItem key={`${institution.name}-${idx}`}>{item}</ListItem>
+                          ))}
+                        </List>
+                      )}
                   </Column>
                 ))}
               </Column>
             </>
           )}
 
-          {about.technical.display && (
+          {about.certifications.display && (
             <>
               <Heading
                 as="h2"
-                id={about.technical.title}
+                id={about.certifications.title}
                 variant="display-strong-s"
-                marginBottom="40"
+                marginBottom="m"
               >
-                {about.technical.title}
+                {about.certifications.title}
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">
-                      {skill.title}
-                    </Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.tags && skill.tags.length > 0 && (
-                      <Row wrap gap="8" paddingTop="8">
-                        {skill.tags.map((tag, tagIndex) => (
-                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
-                            {tag.name}
-                          </Tag>
-                        ))}
-                      </Row>
-                    )}
-                    {skill.images && skill.images.length > 0 && (
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.certifications.certificates.map((certificate, index) => (
+                  <Column key={`cert-${index}-${certificate.title}`} fillWidth gap="4">
+                    <Row fillWidth horizontal="between" vertical="center">
+                      <Column>
+                        <Text id={certificate.title} variant="heading-strong-l">
+                          {certificate.title}
+                        </Text>
+                        <Text
+                          variant="body-default-m"
+                          onBackground="neutral-weak"
+                        >
+                          {certificate.description}
+                        </Text>
+                      </Column>
+                      <Text
+                        variant="heading-default-xs"
+                        style={{ textWrap: "nowrap" }}
+                        onBackground="neutral-weak"
+                      >
+                        <Button
+                          variant="tertiary"
+                          size="s"
+                          href={certificate.link}
+                          prefixIcon="link"
+                        />
+                      </Text>
+                    </Row>
+                    {certificate.images && certificate.images.length > 0 && (
                       <Row fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                        {certificate.images.map((image, index) => (
                           <Row
-                            key={index}
+                            key={`cert-${index}-${image.alt}`}
                             border="neutral-medium"
                             radius="m"
                             minWidth={image.width}
@@ -342,6 +409,112 @@ export default function About() {
                     )}
                   </Column>
                 ))}
+              </Column>
+            </>
+          )}
+
+          {about.technical.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.technical.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.technical.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.technical.skills.map((skill, index) => (
+                  <Column key={`${skill}-${index}`} fillWidth gap="4">
+                    <Text id={skill.title} variant="heading-strong-l">
+                      {skill.title}
+                    </Text>
+                    <Text variant="body-default-m" onBackground="neutral-weak">
+                      {skill.description}
+                    </Text>
+                    {skill.tags && skill.tags.length > 0 && (
+                      <Row wrap gap="8" paddingTop="8">
+                        {skill.tags.map((tag, tagIndex) => (
+                          <Tag
+                            key={`${skill.title}-${tagIndex}`}
+                            size="l"
+                            prefixIcon={tag.icon}
+                          >
+                            {tag.name}
+                          </Tag>
+                        ))}
+                      </Row>
+                    )}
+                    {skill.images && skill.images.length > 0 && (
+                      <Row fillWidth paddingTop="m" gap="12" wrap>
+                        {skill.images.map((image, index) => (
+                          <Row
+                            key={`${skill.title}-${index}`}
+                            border="neutral-medium"
+                            radius="m"
+                            minWidth={image.width}
+                            height={image.height}
+                          >
+                            <Media
+                              enlarge
+                              radius="m"
+                              sizes={image.width.toString()}
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                          </Row>
+                        ))}
+                      </Row>
+                    )}
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.gif.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.gif.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.gif.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="40">
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {about.gif.description}
+                </Text>
+                <Media
+                  aspectRatio="5/5"
+                  enlarge
+                  radius="m"
+                  alt={about.gif.alt}
+                  src={about.gif.src}
+                />
+              </Column>
+            </>
+          )}
+
+          {about.now.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.now.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.now.title}
+              </Heading>
+              <Column fillWidth gap="m" marginBottom="40">
+                <Column gap="8">
+                  {about.now.description.map((item, index) => (
+                    <Text key={index} variant="body-default-m" onBackground="neutral-weak">
+                      {item}
+                    </Text>
+                  ))}
+                </Column>
               </Column>
             </>
           )}

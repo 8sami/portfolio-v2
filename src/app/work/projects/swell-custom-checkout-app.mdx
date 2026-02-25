@@ -1,0 +1,53 @@
+---
+title: "Swell Checkout: A Customizable Checkout App"
+slug: "swell-checkout-customizable-app"
+publishedAt: "2026-02-25"
+summary: "I helped build a customizable checkout app for Swell. I did most of the development work and guided the project flow."
+team:
+link: "https://checkout-customizer.vercel.app/customise"
+images: ["/images/projects/swell-checkout-customizable-app.png"]
+---
+
+## Overview
+
+I worked on a new checkout application for the Swell platform. My goal was to make a tool that is plug and play for different stores. I did about 60% of the total work. I also helped lead the project by deciding the order of tasks and guiding the development.
+
+***
+
+## Key Features
+
+- **Flexible Checkout Steps**: I took an existing three-step checkout and removed specific client logic. I converted it to work as either a 3-step or 1-step checkout. 
+- **State and Style**: I handled all the **Zustand** states and **Tailwind CSS**. The code is built with **Next.js**. 
+- **Custom Theme Support**: I added theme support using **Cloudflare KV stores** and headers. This means we do not need multiple deployments for different looks. 
+- **UI Customization**: I used **Easy Blocks UI** to set up the design tools. This works with a checkout customizer to change the UI easily. 
+- **Redirection Logic**: I updated how the site moves users by fixing the middleware file. 
+
+***
+
+## Technologies Used
+
+- **Frontend**: Next.js, Tailwind CSS, Zustand
+- **Tools**: Easy Blocks UI, Cloudflare KV
+- **Platform**: Swell API
+
+***
+
+## Challenges and Learnings
+
+1. **Leading the Team**: Even with one year of experience, I had to guide the work. I told the team what to do and in what order. 
+2. **Testing and Setup**: I managed and deployed a separate Swell store just for testing. I gave the testing team all the info they needed to find bugs. 
+3. **App Architecture**: I guided how to build the Swell app to support the customizer. This included managing environment variables to toggle checkout behaviors. 
+
+***
+
+## Outcome
+
+The checkout is now very customizable and easy to plug into stores. Most of the complex logic and bugs are fixed. I resigned before the product was fully finished, but I built the core parts. 
+
+***
+
+Building a complex checkout requires clear logic and a lot of testing.
+
+The checkout had multiple versions, ie, 1st version was theme integration, 2nd version was conversion of the 3 step checkout to 1 step (dynamically and conditionally), 3rd version was merging both versions and adding new features. 4th version was implementing checkout customiser. Each version has separate deployments.
+
+- [Checkout Customiser](https://checkout-customizer.vercel.app/customise)

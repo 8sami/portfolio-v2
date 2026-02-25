@@ -1,5 +1,4 @@
-'use strict';
-var memory = new WebAssembly.Memory({ initial: 108 });
+const memory = new WebAssembly.Memory({ initial: 108 });
 
 /* STRIPPED LOGGING 
    We define these but keep them empty or console-only to prevent HTML clutter.
@@ -10,7 +9,7 @@ function readWasmString(offset, length) {
 }
 
 function appendOutput(style) {
-    return function(offset, length) {
+    return (offset, length) => {
         // console.log(readWasmString(offset, length)); // Uncomment for debug
     }
 }
@@ -29,14 +28,14 @@ canvas.width = doom_screen_width;
 canvas.height = doom_screen_height;
 
 function drawCanvas(ptr) {
-    var doom_screen = new Uint8ClampedArray(memory.buffer, ptr, doom_screen_width * doom_screen_height * 4);
-    var render_screen = new ImageData(doom_screen, doom_screen_width, doom_screen_height);
-    var ctx = canvas.getContext('2d');
+    const doom_screen = new Uint8ClampedArray(memory.buffer, ptr, doom_screen_width * doom_screen_height * 4);
+    const render_screen = new ImageData(doom_screen, doom_screen_width, doom_screen_height);
+    const ctx = canvas.getContext('2d');
     ctx.putImageData(render_screen, 0, 0);
 }
 
 /* WASM IMPORTS */
-var importObject = {
+const importObject = {
     js: {
         js_console_log: appendOutput("log"),
         js_stdout: appendOutput("stdout"),
@@ -63,12 +62,14 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
     const KEY_BACKSPACE = 127;
     const KEY_RCTRL = 0x80 + 0x1d;
     const KEY_RALT = 0x80 + 0x38;
+    const KEY_Y = 121; // Lowercase 'y'
+    const KEY_N = 110; // Lowercase 'n'
 
     /* STRICT INPUT MAPPING 
        We only return valid Doom keys. 
        Everything else returns 0 (Ignored).
     */
-    let doomKeyCode = function(keyCode) {
+    const doomKeyCode = (keyCode) => {
         // Numbers 0-9 for weapon switching
         if (keyCode >= 48 && keyCode <= 57) return keyCode;
 
@@ -94,16 +95,16 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
         }
     };
 
-    let keyDown = function(keyCode) { 
+    const keyDown = (keyCode) => { 
         if(keyCode !== 0) obj.instance.exports.add_browser_event(0, keyCode); 
     };
     
-    let keyUp = function(keyCode) { 
+    const keyUp = (keyCode) => { 
         if(keyCode !== 0) obj.instance.exports.add_browser_event(1, keyCode); 
     };
 
     /* Keyboard Listeners */
-    window.addEventListener('keydown', function(event) {
+    window.addEventListener('keydown', (event) => {
         const k = doomKeyCode(event.keyCode);
         if (k !== 0) {
             keyDown(k);
@@ -111,7 +112,7 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
         }
     }, false);
 
-    window.addEventListener('keyup', function(event) {
+    window.addEventListener('keyup', (event) => {
         const k = doomKeyCode(event.keyCode);
         if (k !== 0) {
             keyUp(k);
@@ -125,13 +126,16 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
         ["btn-down", KEY_DOWN],
         ["btn-left", KEY_LEFT],
         ["btn-right", KEY_RIGHT],
+        ["btn-y", KEY_Y],
+        ["btn-n", KEY_N],
         ["btn-enter", 13],
         ["btn-strafe", KEY_RALT],
-        ["btn-fire", KEY_RCTRL], // This button now sends the Fire command
-        ["btn-use", 32]          // This button now sends the Use command
+        ["btn-fire", KEY_RCTRL],
+        ["btn-use", 32],
+        ["btn-esc", 27],
     ];
 
-    mobileMap.forEach(([id, code]) => {
+    for (const [id, code] of mobileMap) {
         const btn = document.getElementById(id);
         if(btn) {
             // Prevent context menu
@@ -149,7 +153,7 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
                 keyUp(code);
             });
         }
-    });
+    };
 
     /* Focus Hint */
     // Clicking anywhere on screen focuses the canvas
