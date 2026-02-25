@@ -107,6 +107,7 @@ import {
   FaTelegram,
   FaCompass,
   FaGifts,
+  FaMap,
 } from 'react-icons/fa6';
 import { DiVisualstudio } from 'react-icons/di';
 import { FaCut, FaHandHolding } from 'react-icons/fa';
@@ -119,6 +120,7 @@ export const iconLibrary: Record<string, IconType> = {
   arrowLeft: HiArrowLeft,
   resume: HiDocumentText,
   arrowRight: HiArrowRight,
+  map: FaMap,
   email: HiEnvelope,
   signature: PiFingerprint,
   battery: PiBatteryMedium,

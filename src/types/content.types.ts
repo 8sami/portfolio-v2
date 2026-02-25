@@ -336,6 +336,7 @@ export interface Seeker extends BasePageConfig {
       alertMessage: string;
       locationHeading: string;
       gpsTitle: string;
+      telemetryTitle: string;
       mapHeading: string;
       mapLatLabel: string;
       mapLonLabel: string;
@@ -344,7 +345,7 @@ export interface Seeker extends BasePageConfig {
         google: string;
         osm: string;
       };
-      labels?: Record<string, string>;
+      labels: Record<string, string>;
     };
     device: {
       heading: string;
