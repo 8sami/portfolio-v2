@@ -1,4 +1,4 @@
-import { Column, Grid } from '@once-ui-system/core';
+import { Column, Grid, Skeleton } from '@once-ui-system/core';
 import type { DeviceData } from './useDeviceInfo';
 import type { IconName } from '@/resources/icons';
 import { DataRow } from './DataRow';
@@ -40,6 +40,18 @@ interface ResourceRow {
   variant?: VariantType;
 }
 
+const DEVICE_SECTIONS = [
+  { icon: 'masks', titleKey: 'identity' },
+  {
+    icon: 'network',
+    titleKey: 'network',
+    tagKey: 'networkTag',
+    tagVariant: 'danger' as const,
+  },
+  { icon: 'chip', titleKey: 'hardware' },
+  { icon: 'settings', titleKey: 'preferences' },
+] as const;
+
 export function DeviceInfo({ data }: DeviceInfoProps) {
   const {
     browser,
@@ -59,8 +71,7 @@ export function DeviceInfo({ data }: DeviceInfoProps) {
 
   const sections: SectionConfig[] = [
     {
-      icon: 'masks',
-      titleKey: 'identity',
+      ...DEVICE_SECTIONS[0],
       rows: [
         { labelKey: 'platform', getValue: () => hardware.platform },
         { labelKey: 'os', getValue: () => `${os.name} ${os.version}` },
@@ -72,10 +83,7 @@ export function DeviceInfo({ data }: DeviceInfoProps) {
       ],
     },
     {
-      icon: 'network',
-      titleKey: 'network',
-      tagKey: 'networkTag',
-      tagVariant: 'danger' as const,
+      ...DEVICE_SECTIONS[1],
       rows: [
         {
           labelKey: 'privateIPs',
@@ -91,8 +99,7 @@ export function DeviceInfo({ data }: DeviceInfoProps) {
       ],
     },
     {
-      icon: 'chip',
-      titleKey: 'hardware',
+      ...DEVICE_SECTIONS[2],
       rows: [
         {
           labelKey: 'cores',
@@ -104,8 +111,7 @@ export function DeviceInfo({ data }: DeviceInfoProps) {
       ],
     },
     {
-      icon: 'settings',
-      titleKey: 'preferences',
+      ...DEVICE_SECTIONS[3],
       rows: [
         { labelKey: 'theme', getValue: () => preferences.darkMode },
         { labelKey: 'motion', getValue: () => preferences.reducedMotion },
@@ -243,4 +249,25 @@ function getPermissionVariant(state: string) {
   if (state === 'denied') return 'danger-strong';
   if (state === 'prompt') return 'warning-strong';
   return 'neutral-strong';
+}
+
+export function DeviceInfoSkeleton() {
+  const mainGridCount = DEVICE_SECTIONS.length + 2; // sections + privacy + resources
+  return (
+    <Column fillWidth gap="24">
+      <Grid columns="2" gap="12" fillWidth s={{ columns: "1" }}>
+        {[...Array(mainGridCount)].map((_, i) => (
+          <Skeleton
+            key={i}
+            shape="block"
+            style={{ height: "160px", width: "100%", borderRadius: "var(--radius-m)" }}
+          />
+        ))}
+      </Grid>
+      <Skeleton
+        shape="block"
+        style={{ height: "200px", width: "100%", borderRadius: "var(--radius-m)" }}
+      />
+    </Column>
+  );
 }

@@ -16,7 +16,7 @@ import {
   RevealFx,
 } from "@once-ui-system/core";
 import { baseURL, seeker, person, about } from "@/resources";
-import { LocationInfo, MapEmbed, Disclaimer, DeviceInfo } from "@/components/seeker";
+import { LocationInfo, MapEmbed, Disclaimer, DeviceInfo, DeviceInfoSkeleton } from "@/components/seeker";
 import { useDeviceInfo } from "@/components/seeker/useDeviceInfo";
 
 type GeoState = "idle" | "loading" | "success" | "denied" | "error";
@@ -212,10 +212,7 @@ export default function SeekerPage() {
         {device ? (
           <DeviceInfo data={device} />
         ) : (
-          <Column fillWidth gap="m">
-            <Skeleton shape="line" width="m" height="m" />
-            <Skeleton shape="block" width="xl" style={{ height: "300px" }} />
-          </Column>
+          <DeviceInfoSkeleton />
         )}
       </Column>
 
