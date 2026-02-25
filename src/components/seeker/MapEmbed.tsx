@@ -38,8 +38,8 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
   ];
 
   const buttons: ButtonConfig[] = [
-    { label: ui.mapButtons.google, href: googleMapsUrl, variant: "primary", arrowIcon: true, prefixIcon: "map-pin" },
-    { label: ui.mapButtons.osm, href: osmViewUrl, variant: "secondary", arrowIcon: false, prefixIcon: "globe" },
+    { label: ui.mapButtons.google, href: googleMapsUrl, variant: "primary", arrowIcon: true, prefixIcon: "googlemaps" },
+    { label: ui.mapButtons.osm, href: osmViewUrl, variant: "secondary", arrowIcon: false, prefixIcon: "openstreetmap" },
   ];
 
   return (

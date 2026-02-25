@@ -727,7 +727,7 @@ const seeker: Seeker = {
       mapLatLabel: "Lat",
       mapLonLabel: "Lon",
       mapAccuracyPrefix: "+/- ",
-      mapButtons: { google: "Google Maps", osm: "OpenStreetMap" },
+      mapButtons: { google: "View on Google Maps", osm: "View on OpenStreetMap" },
       labels: {
         latitude: "Latitude",
         longitude: "Longitude",

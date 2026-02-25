@@ -87,6 +87,8 @@ import {
   SiVirustotal,
   SiGitlab,
   SiShopify,
+  SiOpenstreetmap,
+  SiGooglemaps,
 } from 'react-icons/si';
 
 import {
@@ -156,6 +158,8 @@ export const iconLibrary: Record<string, IconType> = {
   supabase: SiSupabase,
   figma: SiFigma,
   facebook: FaFacebook,
+  openstreetmap: SiOpenstreetmap,
+  googlemaps: SiGooglemaps,
   pinterest: FaPinterest,
   whatsapp: FaWhatsapp,
   reddit: FaReddit,

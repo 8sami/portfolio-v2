@@ -87,7 +87,7 @@ export default function SeekerPage() {
   }, []);
 
   return (
-    <Column maxWidth="m" paddingY="24" gap="l" horizontal="center">
+    <Column maxWidth="m" paddingY="24" gap="m" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -105,7 +105,7 @@ export default function SeekerPage() {
       {/* ── Header ── */}
       <Column
         fillWidth
-        gap="32"
+        gap="m"
         horizontal="center"
         align="center"
         maxWidth={"m"}
@@ -156,34 +156,36 @@ export default function SeekerPage() {
       )}
 
       {geoState === "loading" && (
-        <Column fillWidth gap="l">
-          <Skeleton shape="block" width="xl" style={{ height: "400px", borderRadius: "var(--radius-m)" }} />
-          <Skeleton shape="block" width="xl" style={{ height: "200px", borderRadius: "var(--radius-m)" }} />
+        <Column fillWidth gap="m">
+          <Skeleton shape="block" width="xl" style={{ height: "40px", borderRadius: "var(--radius-m)" }} />
+          <Skeleton shape="block" width="xl" style={{ height: "280px", borderRadius: "var(--radius-m)" }} />
+          <Skeleton shape="block" width="xl" style={{ height: "40px", borderRadius: "var(--radius-m)" }} />
+          <Skeleton shape="block" width="xl" style={{ height: "300px", borderRadius: "var(--radius-m)" }} />
         </Column>
       )}
 
       {geoState === "denied" && (
         <Column
           fillWidth
-          padding="48"
+          padding="32"
           radius="m"
           border="danger-alpha-medium"
           background="danger-alpha-weak"
           horizontal="center"
           align="center"
-          gap="16"
+          gap="m"
           data-border="conservative"
         >
           <Heading
             as="h2"
-            variant="display-strong-s"
+            variant="display-strong-xs"
             onBackground="danger-strong"
             align="center"
           >
             {seeker.ui.denied?.heading}
           </Heading>
           <Text
-            variant="body-default-m"
+            variant="body-default-s"
             onBackground="danger-medium"
             align="center"
             wrap="balance"
@@ -204,18 +206,18 @@ export default function SeekerPage() {
 
       {/* ── Results ── */}
       {geoState === "success" && location && (
-        <Column fillWidth gap="l">
+        <Column fillWidth gap="m">
           <Row
             fillWidth
             padding="12"
             radius="m"
             border="danger-alpha-medium"
-            background="danger-alpha-weak"
+            background="danger-strong"
             gap="12"
             vertical="center"
             data-border="conservative"
           >
-            <Icon name="info" size="xs" onBackground="danger-medium" />
+            <Icon name="danger" size="l" onBackground="danger-strong" />
             <Text variant="body-default-s" onBackground="danger-medium">
               <Text as="span" weight="strong" onBackground="danger-strong">
                 {seeker.ui.results?.alertTitle}{" "}

@@ -46,7 +46,7 @@ export function SectionCard({
             paddingX="8"
             paddingY="2"
             radius="xs"
-            background={`${tag.variant}-alpha-strong`}
+            background={`${tag.variant}-strong`}
             border={`${tag.variant}-alpha-medium`}
           >
             <Text
