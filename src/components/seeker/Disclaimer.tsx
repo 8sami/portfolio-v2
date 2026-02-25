@@ -16,7 +16,7 @@ const InfoSection = ({ title, items }: { title: string; items: Array<{ icon: str
     </Text>
     {items.map((item, index) => (
       <Row key={`${item.title}-${index}`} gap="12" vertical="center">
-        <Icon name={item.icon} size="l" onBackground="neutral-weak" />
+        <Icon name={item.icon} size="m" onBackground="neutral-weak" />
         <Column gap="4">
           <Text variant="label-default-s" weight="strong">
             {item.title}

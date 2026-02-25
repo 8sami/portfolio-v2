@@ -51,6 +51,7 @@ export default function Home() {
               paddingTop="16"
               paddingBottom="32"
               paddingLeft="12"
+              delay={1.8}
             >
               <Badge
                 background="brand-alpha-weak"

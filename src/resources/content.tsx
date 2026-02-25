@@ -97,27 +97,27 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Making lives easier by solving problems</>,
+  headline: <>I absolutely love making products that solve actual problems</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">⚠️ Warning</strong>
+        <strong className="ml-4">Warning</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          This site knows where you are
+          This site knows where you are :)
         </Text>
       </Row>
     ),
     href: "/seeker",
   },
-  subline: <>Assalamualaikum👋, I'm Sami. I love making products that solve actual problems.</>,
+  subline: <>Assalamualaikum 👋 I'm Sami. Welcome to my site, I hope you enjoy your stay. 🤗</>,
 };
 
 const about: About = {
   path: "/about",
   label: "About",
-  title: `Who is ${person.name}?`,
+  title: `Who is ${person.name}? 🤔`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: false,
@@ -155,15 +155,13 @@ const about: About = {
         compensated for doing so and enjoy it all the whilst!
       </>,
       <>
-        So I am not someone who does things just for the sake of money or just because my boss told
-        me to do it. I need to see my contribution making an impact on someone's life, which makes
-        me a bad corporate employee, but I would rather stay true to myself than lie just to earn a
-        few cents.
+        So I am not someone who does things just for the sake of money or just because someone told
+        me to do it. I need to see my contribution making an impact on someone's life.
       </>,
       <>
-        I find product development quite enojoyable. There's just so much fun in solving someone's
+        I find product development quite enjoyable. There's just so much fun in solving someone's
         problem and the process of getting realtime feedback, improving the product based on that
-        and then getting positive feedback in the end is one of my most cherished source of
+        and then getting positive feedback as a result is one of my most cherished source of
         serotonin.
       </>,
     ],

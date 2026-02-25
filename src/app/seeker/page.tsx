@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+
 import {
   Column,
   Row,
@@ -115,7 +116,7 @@ export default function SeekerPage() {
       </Column>
 
       {/* ── Entrance ── */}
-      {geoState === "idle" && (
+      {(geoState === "idle" || geoState === "loading") && (
         <Column fillWidth radius="m" horizontal="center" gap="s">
           <Button
             id="grant-location"
@@ -124,6 +125,8 @@ export default function SeekerPage() {
             size="m"
             prefixIcon={seeker.ui.entrance?.buttonIcon}
             onClick={requestLocation}
+            loading={geoState === "loading"}
+            disabled={geoState === "loading"}
           >
             {seeker.ui.entrance?.button}
           </Button>
@@ -131,31 +134,6 @@ export default function SeekerPage() {
           <Text variant="label-default-xs" onBackground="neutral-strong" style={{ opacity: 0.5 }}>
             {seeker.ui.entrance?.permissionLabel}
           </Text>
-        </Column>
-      )}
-
-      {geoState === "loading" && (
-        <Column fillWidth gap="24">
-          <Skeleton
-            shape="block"
-            maxWidth="xs"
-            style={{ height: "var(--size-xs)", borderRadius: "var(--radius-m)" }}
-          />
-          <Skeleton
-            shape="block"
-            maxWidth="l"
-            style={{ height: "var(--size-l)", borderRadius: "var(--radius-m)" }}
-          />
-          <Skeleton
-            shape="block"
-            maxWidth="xs"
-            style={{ height: "var(--size-xs)", borderRadius: "var(--radius-m)" }}
-          />
-          <Skeleton
-            shape="block"
-            maxWidth="l"
-            style={{ height: "var(--size-l)", borderRadius: "var(--radius-m)" }}
-          />
         </Column>
       )}
 

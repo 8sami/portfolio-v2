@@ -52,6 +52,7 @@ export default function DoomPage() {
           variant="body-default-m"
           onBackground="neutral-medium"
           align="center"
+          wrap="balance"
         >
           {doom.description}
         </Text>

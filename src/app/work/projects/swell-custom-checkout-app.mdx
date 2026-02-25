@@ -1,48 +1,53 @@
 ---
-title: "Swell Checkout App: Custom & Plug-and-Play"
-slug: "swell-custom-checkout-app"
-publishedAt: "2026-02-23"
-summary: "Heavy-lifted the development of a customizable Swell checkout app. Handled zustand, tailwind, and middleware logic."
+title: "Swell Checkout: A Customizable Checkout App"
+slug: "swell-checkout-customizable-app"
+publishedAt: "2026-02-25"
+summary: "I helped build a customizable checkout app for Swell. I did most of the development work and guided the project flow."
 team:
-link: ""
-images: ["/images/projects/image.png"]
+link: "https://checkout-customizer.vercel.app/customise"
+images: ["/images/projects/swell-checkout-customizable-app.png"]
 ---
 
 ## Overview
 
-I did about 60% of the work on this customizable checkout app for Swell. I wasn't really a "lead" in the senior sense,I've only got about a year or so of experience,but I ended up doing most of the heavy lifting and basically showed everyone else what needed to happen. I handled a huge chunk of the development, kept things moving in the right order, and even had to guide the testing guys on exactly what they should be looking for. I even set up a separate Swell store just for testing because the main environment was a mess to work with.
-
-It was a lot of coding and a bit of "herding cats."
+I worked on a new checkout application for the Swell platform. My goal was to make a tool that is plug and play for different stores. I did about 60% of the total work. I also helped lead the project by deciding the order of tasks and guiding the development.
 
 ***
 
 ## Key Features
 
-- **Stripping Client Logic**: We started with this 3-step checkout from an old client project. It was full of weird, specific logic and random edge cases. I spent a lot of time just scraping all that out and converting it into a flexible system that could do either 1-step or 3-step checkouts. 
-- **The Frontend Core**: I handled all the Zustand states, the Next.js setup, and the Tailwind CSS. Basically the whole UI and state logic.
-- **Middleware & Bug Squashing**: Found a ton of bugs and fixed them. The redirection logic in the middleware was pretty broken, so I had to rewrite it to actually work properly.
-- **Theming via Cloudflare**: Instead of doing a bunch of separate deployments, I used Cloudflare KV stores and headers for custom theme support. It meant we could change things without needing a whole new build.
-- **Visual Customizer**: Used Easy Blocks UI for the customization side. I extended the theme support so it would actually play nice with the checkout customizer tool.
-- **The Swell App Part**: I didn't actually write the Swell app myself, but I told the team how to build it so it would support the customizer, the step toggles, and all the environment variables that control how the checkout behaves.
+- **Flexible Checkout Steps**: I took an existing three-step checkout and removed specific client logic. I converted it to work as either a 3-step or 1-step checkout. 
+- **State and Style**: I handled all the **Zustand** states and **Tailwind CSS**. The code is built with **Next.js**. 
+- **Custom Theme Support**: I added theme support using **Cloudflare KV stores** and headers. This means we do not need multiple deployments for different looks. 
+- **UI Customization**: I used **Easy Blocks UI** to set up the design tools. This works with a checkout customizer to change the UI easily. 
+- **Redirection Logic**: I updated how the site moves users by fixing the middleware file. 
 
 ***
 
 ## Technologies Used
 
-- **Frontend**: Next.js, React, Tailwind CSS, Zustand
-- **Edge/Backend**: Cloudflare KV, Next.js Middleware
-- **Tools**: Swell, Easy Blocks UI
+- **Frontend**: Next.js, Tailwind CSS, Zustand
+- **Tools**: Easy Blocks UI, Cloudflare KV
+- **Platform**: Swell API
 
 ***
 
 ## Challenges and Learnings
 
-Taking someone else's messy, client-specific code and trying to make it "plug and play" for everyone is a massive headache. You find so many weird dependencies. It was also my first time really having to tell other people what to do and managing a testing flow, which was a learning curve on top of just writing the code. 
+1. **Leading the Team**: Even with one year of experience, I had to guide the work. I told the team what to do and in what order. 
+2. **Testing and Setup**: I managed and deployed a separate Swell store just for testing. I gave the testing team all the info they needed to find bugs. 
+3. **App Architecture**: I guided how to build the Swell app to support the customizer. This included managing environment variables to toggle checkout behaviors. 
 
 ***
 
 ## Outcome
 
-I ended up resigning before the finished product actually went live, but I built about 60% of the core foundation. It's a solid, flexible system that handles the customizer and different checkout flows really well.
+The checkout is now very customizable and easy to plug into stores. Most of the complex logic and bugs are fixed. I resigned before the product was fully finished, but I built the core parts. 
 
-*(Product isn't deployed yet)*
+***
+
+Building a complex checkout requires clear logic and a lot of testing.
+
+The checkout had multiple versions, ie, 1st version was theme integration, 2nd version was conversion of the 3 step checkout to 1 step (dynamically and conditionally), 3rd version was merging both versions and adding new features. 4th version was implementing checkout customiser. Each version has separate deployments.
+
+- [Checkout Customiser](https://checkout-customizer.vercel.app/customise)
