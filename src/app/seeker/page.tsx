@@ -87,7 +87,7 @@ export default function SeekerPage() {
   }, []);
 
   return (
-    <Column maxWidth="m" paddingY="24" gap="m" horizontal="center">
+    <Column maxWidth="m" paddingTop="24" gap="32" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -103,113 +103,97 @@ export default function SeekerPage() {
       />
 
       {/* ── Header ── */}
-      <Column
-        fillWidth
-        gap="m"
-        horizontal="center"
-        align="center"
-        maxWidth={"m"}
-      >
+      <Column fillWidth gap="m" horizontal="center" align="center" maxWidth={"m"}>
         <Heading variant="display-strong-s" align="center">
-          <LetterFx trigger="instant" speed="slow">
-            {seeker.ui.pageHeading}
+          <LetterFx trigger="instant" speed="medium">
+            {seeker.ui.entrance.title}
           </LetterFx>
         </Heading>
-        <Text
-          variant="body-default-m"
-          onBackground="neutral-medium"
-          align="center"
-          wrap="balance"
-        >
-          {seeker.ui.pageDescription}
+        <Text variant="body-default-m" onBackground="neutral-medium" align="center" wrap="balance">
+          {seeker.description}
         </Text>
       </Column>
 
       {/* ── Entrance ── */}
       {geoState === "idle" && (
-        <Column
-          fillWidth
-          radius="m"
-          horizontal="center"
-          gap="s"
-        >
+        <Column fillWidth radius="m" horizontal="center" gap="s">
           <Button
             id="grant-location"
             data-border="conservative"
             variant="primary"
-            size="s"
+            size="m"
             prefixIcon={seeker.ui.entrance?.buttonIcon}
-            arrowIcon
             onClick={requestLocation}
           >
             {seeker.ui.entrance?.button}
           </Button>
 
-          <Text
-            variant="label-default-xs"
-            onBackground="neutral-weak"
-            style={{ opacity: 0.6 }}
-          >
+          <Text variant="label-default-xs" onBackground="neutral-strong" style={{ opacity: 0.5 }}>
             {seeker.ui.entrance?.permissionLabel}
           </Text>
         </Column>
       )}
 
       {geoState === "loading" && (
-        <Column fillWidth gap="m">
-          <Skeleton shape="block" width="xl" style={{ height: "40px", borderRadius: "var(--radius-m)" }} />
-          <Skeleton shape="block" width="xl" style={{ height: "280px", borderRadius: "var(--radius-m)" }} />
-          <Skeleton shape="block" width="xl" style={{ height: "40px", borderRadius: "var(--radius-m)" }} />
-          <Skeleton shape="block" width="xl" style={{ height: "300px", borderRadius: "var(--radius-m)" }} />
+        <Column fillWidth gap="24">
+          <Skeleton
+            shape="block"
+            maxWidth="xs"
+            style={{ height: "var(--size-xs)", borderRadius: "var(--radius-m)" }}
+          />
+          <Skeleton
+            shape="block"
+            maxWidth="l"
+            style={{ height: "var(--size-l)", borderRadius: "var(--radius-m)" }}
+          />
+          <Skeleton
+            shape="block"
+            maxWidth="xs"
+            style={{ height: "var(--size-xs)", borderRadius: "var(--radius-m)" }}
+          />
+          <Skeleton
+            shape="block"
+            maxWidth="l"
+            style={{ height: "var(--size-l)", borderRadius: "var(--radius-m)" }}
+          />
         </Column>
       )}
 
       {geoState === "denied" && (
-        <Column
+        <Row
           fillWidth
-          padding="32"
+          padding="m"
           radius="m"
-          border="danger-alpha-medium"
-          background="danger-alpha-weak"
-          horizontal="center"
-          align="center"
-          gap="m"
+          border="warning-alpha-medium"
+          background="warning-strong"
+          gap="12"
+          vertical="center"
           data-border="conservative"
         >
-          <Heading
-            as="h2"
-            variant="display-strong-xs"
-            onBackground="danger-strong"
-            align="center"
-          >
-            {seeker.ui.denied?.heading}
-          </Heading>
-          <Text
-            variant="body-default-s"
-            onBackground="danger-medium"
-            align="center"
-            wrap="balance"
-          >
+          <Icon name="warning" size="l" onBackground="warning-strong" />
+          <Text variant="body-default-s" onBackground="warning-medium">
+            <Text as="span" weight="strong" onBackground="warning-strong">
+              {seeker.ui.denied?.heading}{" "}
+            </Text>
             {seeker.ui.denied?.message}
           </Text>
           <Button
             data-border="conservative"
-            variant="secondary"
+            variant="tertiary"
             size="s"
-            prefixIcon={seeker.ui.denied?.buttonIcon}
             onClick={reset}
           >
             {seeker.ui.denied?.tryAgain}
           </Button>
-        </Column>
+        </Row>
       )}
 
       {/* ── Results ── */}
       {geoState === "success" && location && (
-        <Column fillWidth gap="m">
+        <Column fillWidth gap="32">
           <Row
             fillWidth
-            padding="12"
+            padding="m"
             radius="m"
             border="danger-alpha-medium"
             background="danger-strong"
@@ -225,7 +209,6 @@ export default function SeekerPage() {
               {seeker.ui.results?.alertMessage}
             </Text>
           </Row>
-
           <LocationInfo data={location} />
           <MapEmbed
             latitude={location.latitude}
@@ -238,7 +221,7 @@ export default function SeekerPage() {
       {/* ── Device Intel ── */}
       <Column fillWidth gap="m">
         <Heading as="h2" variant="display-strong-s">
-          {seeker.ui?.device.heading ?? "Personal Information Leak"}
+          {seeker.ui?.device.heading}
         </Heading>
 
         {device ? (
@@ -251,7 +234,7 @@ export default function SeekerPage() {
         )}
       </Column>
 
-      <Line background="neutral-alpha-weak" fillWidth marginY="8" />
+      <Line background="neutral-alpha-weak" fillWidth />
 
       <Disclaimer />
     </Column>

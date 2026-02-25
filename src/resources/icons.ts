@@ -15,6 +15,7 @@ import {
   HiDocumentText,
   HiOutlineInformationCircle,
   HiBellAlert,
+  HiArrowLeft,
 } from 'react-icons/hi2';
 
 import {
@@ -115,6 +116,7 @@ export const iconLibrary: Record<string, IconType> = {
   signin: PiSignIn,
   signout: PiSignOut,
   arrowUpRight: HiArrowUpRight,
+  arrowLeft: HiArrowLeft,
   resume: HiDocumentText,
   arrowRight: HiArrowRight,
   email: HiEnvelope,

@@ -314,12 +314,10 @@ export interface Doom extends BasePageConfig {
 }
 
 /**
- * Seeker page configuration — location & fingerprint demo.
+ * Seeker page configuration , location & fingerprint demo.
  */
 export interface Seeker extends BasePageConfig {
   ui: {
-    pageHeading: string;
-    pageDescription: string;
     entrance: {
       title: string;
       description: string;

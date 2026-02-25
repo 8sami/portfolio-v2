@@ -698,21 +698,18 @@ const seeker: Seeker = {
   label: "Seeker",
   title: "SEEKER // Location Intelligence",
   description:
-    "An educational demo inspired by thewhiteh4t/seeker — showing how websites can collect your location, device fingerprint, and browser metadata. Stay vigilant.",
+    "An educational demo inspired by thewhiteh4t/seeker, showing how websites can collect your location, device fingerprint, and browser metadata. Stay vigilant.",
   ui: {
-    pageHeading: "Think you're safe?",
-    pageDescription:
-      "Go on. Tap it. It’s the same split-second choice you make when checking a 'failed delivery' text or some random email. I just want to show you exactly what the bad guys see before they actually start cleaning you out. No fluff, just a look at your own front door from the outside.",
     entrance: {
       title: "Think you're safe?",
       description:
         "Go on. Tap it. It’s the same split-second choice you make when checking a 'failed delivery' text or some random email. I just want to show you exactly what the bad guys see before they actually start cleaning you out. No fluff, just a look at your own front door from the outside.",
-      button: "Expose me",
+      button: "I want to know",
       buttonIcon: "globe",
       permissionLabel: "Requires location permission.",
     },
     denied: {
-      heading: "Access Denied",
+      heading: "ACCESS DENIED.",
       message: "You blocked the request. Good. But a real hacker would already be trying another way to get in.",
       tryAgain: "Try Again",
       buttonIcon: "arrowLeft",
@@ -720,14 +717,14 @@ const seeker: Seeker = {
     results: {
       alertTitle: "YOU'RE TOTALLY EXPOSED.",
       alertMessage:
-        "An attacker is basically sitting in your living room now. They’ve got your home layout, your device ID, and even how much battery you have left—it’s everything they need to pick their next target. You, probably.",
+        "An attacker is basically sitting in your living room now. They’ve got your home layout, your device ID, and even how much battery you have left, it’s everything they need to pick their next target. You, probably.",
       locationHeading: "Live Tracking",
       gpsTitle: "GPS Coordinates",
       mapHeading: "Location Map",
       mapLatLabel: "Lat",
       mapLonLabel: "Lon",
       mapAccuracyPrefix: "+/- ",
-      mapButtons: { google: "View on Google Maps", osm: "View on OpenStreetMap" },
+      mapButtons: { google: "Open Google Maps", osm: "Open OpenStreetMap" },
       labels: {
         latitude: "Latitude",
         longitude: "Longitude",
@@ -790,10 +787,10 @@ const seeker: Seeker = {
     disclaimer: {
       heading: "How they actually get you",
       lead:
-        "I didn’t use some complex exploit to find you—this is just standard browser behavior...",
+        "I didn’t use some complex exploit to find you, this is just standard browser behavior...",
       tipsTitle: "Defensive Measures",
       tips: [
-        { icon: "globe", title: "Look at the URL—seriously", desc: "Sites like 'googl-secure.com' aren't real." },
+        { icon: "globe", title: "Look at the URL,seriously", desc: "Sites like 'googl-secure.com' aren't real." },
         { icon: "eyeOff", title: "GPS isn't for fun", desc: "Your coordinates show exactly where you sleep and work." },
         { icon: "hook", title: "Links are just hooks", desc: "Every random SMS or email is a fishing line." },
         { icon: "clean", title: "Clean your permissions", desc: "Most of us have apps watching our cameras for years." },

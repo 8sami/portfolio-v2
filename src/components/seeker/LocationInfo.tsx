@@ -47,11 +47,11 @@ export function LocationInfo({ data }: { data: LocationData }) {
   ];
 
   return (
-    <Column fillWidth gap="m">
+    <Column fillWidth gap="16">
       <Heading as="h2" variant="display-strong-s">
         {ui.locationHeading}
       </Heading>
-      <SectionCard title={ui.gpsTitle}>
+      <SectionCard icon="compass" title={ui.gpsTitle}>
         {rows.map((row) => (
           <DataRow
             key={row.labelKey}

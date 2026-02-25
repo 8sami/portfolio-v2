@@ -43,7 +43,7 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
   ];
 
   return (
-    <Column fillWidth gap="m">
+    <Column fillWidth gap="16">
       <Heading as="h2" variant="display-strong-s">
         {ui.mapHeading}
       </Heading>
@@ -95,7 +95,7 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
           </Text>
         </Row>
       </Column>
-      <Row style={{ flexWrap: "nowrap" }} fillWidth gap="8" wrap data-border="conservative">
+      <Row fillWidth gap="8" data-border="conservative">
         {buttons.map((btn) => (
           <Button
             key={btn.label}
@@ -103,7 +103,7 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
             target="_blank"
             rel="noopener noreferrer"
             variant={btn.variant}
-            size="s"
+            size="m"
             prefixIcon={btn.prefixIcon}
             arrowIcon={btn.arrowIcon}
             fillWidth

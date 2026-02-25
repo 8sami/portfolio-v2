@@ -31,7 +31,7 @@ export function SectionCard({
       <Row vertical="center" horizontal="between">
         <Row vertical="center" gap="4">
           {icon && (
-            <Icon name={icon} size="m" onBackground="neutral-strong" marginRight="4" />
+            <Icon name={icon} size="l" onBackground="neutral-strong" marginRight="4" />
           )}
           <Text
             paddingY="8"
