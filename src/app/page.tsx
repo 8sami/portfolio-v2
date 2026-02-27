@@ -48,10 +48,9 @@ export default function Home() {
             <RevealFx
               fillWidth
               horizontal="center"
-              paddingTop="16"
               paddingBottom="32"
               paddingLeft="12"
-              delay={1.8}
+              delay={1.2}
             >
               <Badge
                 background="brand-alpha-weak"

@@ -45,7 +45,7 @@ export const CommentList: React.FC<CommentListProps> = ({
             size="l"
             style={{ flexShrink: 0, marginTop: "2px" }}
             border={
-              comment.author?.is_admin === true
+              comment.author?.is_admin
                 ? "brand-strong"
                 : "neutral-strong"
             }

@@ -117,7 +117,7 @@ export default function About() {
             fillWidth
             minHeight="160"
             vertical="center"
-            marginBottom="40"
+            marginBottom="32"
           >
             {about.calendar.display && (
               <Row
@@ -127,7 +127,8 @@ export default function About() {
                 radius="m"
                 padding="4"
                 gap="8"
-                marginBottom="m"
+                marginTop="8"
+                marginBottom="24"
                 vertical="center"
                 className={styles.blockAlign}
                 style={{
