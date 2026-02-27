@@ -1,6 +1,8 @@
 import { Meta } from "@once-ui-system/core";
 import { baseURL, guestbook } from "@/resources";
 import { GuestbookContent } from "@/components/guestbook/GuestbookContent";
+import { createClient } from "@supabase/supabase-js";
+import { supabaseAnonKey, supabaseUrl } from "@/lib/supabase";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -13,24 +15,27 @@ export async function generateMetadata() {
 }
 
 async function fetchComments() {
-  try {
-    const res = await fetch(`${baseURL}/api/comments`, {
-      cache: "no-store"
-    });
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-    if (!res.ok) {
-      console.error("Failed to fetch initial comments from API route");
-      return [];
-    }
-    return res.json();
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return [];
-  }
+  const { data: comments, error } = await supabase
+    .from('comments')
+    .select(`
+      id,
+      content,
+      created_at,
+      author:author_id (
+        id, name, email, image, is_admin
+      )
+    `)
+    .order('created_at', { ascending: false });
+
+  if (error) return [];
+  return comments;
 }
 
 async function GuestbookData() {
   const comments = await fetchComments();
+  // @ts-ignore
   return <GuestbookContent initialComments={comments} />;
 }
 
