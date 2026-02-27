@@ -1,4 +1,4 @@
-import {
+import type {
   DataStyleConfig,
   DisplayConfig,
   EffectsConfig,
@@ -37,28 +37,27 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Space_Grotesk, DM_Sans, JetBrains_Mono } from "next/font/google";
 
-const heading = Geist({
+const heading = Space_Grotesk({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
 
-const body = Geist({
+const body = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Geist({
+const label = JetBrains_Mono({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Geist_Mono({
+const code = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
@@ -73,16 +72,16 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  solid: "contrast", // color | contrast
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative | sharp
-  surface: "translucent", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  theme: "dark",
+  brand: "custom",
+  accent: "custom",
+  neutral: "custom",
+  border: "rounded",
+  solid: "color",
+  solidStyle: "flat",
+  surface: "translucent",
+  transition: "all",
+  scaling: "100",
 };
 
 const dataStyle: DataStyleConfig = {
@@ -104,22 +103,22 @@ const effects: EffectsConfig = {
     cursor: false,
     x: 50,
     y: 0,
-    radius: 100,
+    radius: 90,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 80,
     x: 50,
     y: 60,
     width: 100,
     height: 50,
     tilt: 0,
     colorStart: "accent-background-strong",
-    colorEnd: "page-background",
+    colorEnd: "brand-background-medium",
   },
   dots: {
-    display: true,
-    opacity: 40,
+    display: false,
+    opacity: 90,
     size: "2",
     color: "brand-background-strong",
   },
