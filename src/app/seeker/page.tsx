@@ -67,6 +67,14 @@ export default function SeekerPage() {
           speed: pos.coords.speed,
         });
         setGeoState("success");
+        try {
+          setTimeout(() => {
+            const audio = new Audio('/audio/faaahhh.wav');
+            audio.play();
+          }, 1500);
+        } catch (err) {
+          console.error("Audio playback failed:", err);
+        }
       },
       (err) => {
         if (watchIdRef.current !== null) {
