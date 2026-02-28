@@ -21,7 +21,7 @@ const routes: RoutesConfig = {
   "/about": true,
   "/work": true,
   "/blog": true,
-  "/gallery": true,
+  "/socials": true,
 };
 
 const display: DisplayConfig = {
@@ -73,8 +73,11 @@ const fonts: FontsConfig = {
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
   theme: "dark",
+  // @ts-ignore
   brand: "custom",
+  // @ts-ignore
   accent: "custom",
+  // @ts-ignore
   neutral: "custom",
   border: "rounded",
   solid: "color",
