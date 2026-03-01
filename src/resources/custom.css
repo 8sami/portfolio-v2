@@ -66,7 +66,7 @@
   --scheme-neutral-1200: #f9fcff;
 
   /* --font-letter-spacing-heading: 0.01em; */
-  --font-letter-spacing-display: -0.022em;
+  --font-letter-spacing-display: -0.04em;
 }
 
 /* [class*="font-heading"],
@@ -77,4 +77,5 @@
 [class*="font-display"],
 .font-display {
   letter-spacing: var(--font-letter-spacing-display) !important;
+  font-weight: 400 !important;
 }
