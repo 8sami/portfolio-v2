@@ -74,7 +74,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="label-default-s">Read case study</Text>
+                  <Text variant="label-default-s">Read more about it</Text>
                 </Button>
               )}
               {link && (

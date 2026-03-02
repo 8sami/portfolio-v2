@@ -111,7 +111,7 @@ const home: Home = {
     ),
     href: "/seeker",
   },
-  subline: <>Assalamualaikum 👋 I'm Sami. Welcome to my site, I hope you enjoy your stay. 🤗</>,
+  subline: <>I'm Sami. Welcome to my site, I hope you enjoy your stay. 👋</>,
 };
 
 const about: About = {
@@ -628,7 +628,7 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: "Say hi 👋 to fellow passersby",
+  title: "Drop a nice comment and say hi! 👋",
 };
 
 const work: Work = {
