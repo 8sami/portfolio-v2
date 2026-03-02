@@ -41,15 +41,10 @@ export const CommentList: React.FC<CommentListProps> = ({
       {comments.map((comment) => (
         <Row key={comment.id} gap="16" paddingY="12" fillWidth vertical="start">
           <Avatar
+            statusIndicator={comment.author?.is_admin ? {color : "green" } : undefined}
             src={comment.author?.image || undefined}
             size="l"
             style={{ flexShrink: 0, marginTop: "2px" }}
-            border={
-              comment.author?.is_admin
-                ? "brand-strong"
-                : "neutral-strong"
-            }
-            borderWidth={2}
           />
           <Column gap="1" fillWidth>
             <Row

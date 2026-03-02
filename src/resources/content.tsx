@@ -144,7 +144,7 @@ const about: About = {
         actually listens.
       </>,
       <>
-        That said, I mostly tend to follow my gut feeling and curiosity, and that same gut feeling
+        That said, I mostly tend to follow my gut feeling and curiosity and that same gut feeling
         and curiosity led me to learn programming back when I was in 9th grade. Since then, I have
         learned whatever I thought would be fun to learn.
       </>,
@@ -176,7 +176,7 @@ const about: About = {
         role: "Software Developer",
         achievements: [
           <>
-            Built a plug-and-play checkout for Swell stores using Cloudflare KV, Easyblocks, and
+            Built a plug-and-play checkout for Swell stores using Cloudflare KV, Easyblocks and
             NextJS, featuring a no-code editor for UI customisation.
           </>,
           <>
@@ -185,7 +185,7 @@ const about: About = {
           </>,
           <>
             Delivered 6+ client projects end-to-end, managing design, backend, frontend
-            implementation, and deployment.
+            implementation and deployment.
           </>,
           <>
             Mentored an intern through code reviews and task delegation to ensure timely and
@@ -206,7 +206,7 @@ const about: About = {
           </>,
           <>
             Standardised AI usage by creating a database of specialised prompts, reducing API token
-            costs by &asymp;30%, and ensuring code consistency.
+            costs by &asymp;30% and ensuring code consistency.
           </>,
           <>
             Automated marketing workflows using N8N and Slack, saving the team 10+ hours of manual
@@ -609,7 +609,7 @@ const about: About = {
   },
   gif: {
     title: "A little something to stare in awe at",
-    description: "I don't know why, but I really liked this gif, and wanted to add it here",
+    description: "I don't know why, but I really liked this gif and wanted to add it here",
     display: true,
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
@@ -696,7 +696,7 @@ const seeker: Seeker = {
   label: "Seeker",
   title: "SEEKER // Location Intelligence",
   description:
-    "An educational demo inspired by thewhiteh4t/seeker, showing how websites can collect your location, device fingerprint, and browser metadata. Stay vigilant.",
+    "An educational demo inspired by thewhiteh4t/seeker, showing how websites can collect your location, device fingerprint and browser metadata. Stay vigilant.",
   ui: {
     entrance: {
       title: "Think you're safe?",
@@ -715,7 +715,7 @@ const seeker: Seeker = {
     results: {
       alertTitle: "YOU'RE TOTALLY EXPOSED.",
       alertMessage:
-        "An attacker is basically sitting in your living room now. They’ve got your home layout, your device ID, and even how much battery you have left, it’s everything they need to pick their next target. You, probably.",
+        "An attacker is basically sitting in your living room now. They’ve got your home layout, your device ID and even how much battery you have left, it’s everything they need to pick their next target. You, probably.",
       locationHeading: "Live Tracking",
       gpsTitle: "GPS Coordinates",
       telemetryTitle: "Telemetry & Elevation",

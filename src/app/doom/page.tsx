@@ -39,13 +39,12 @@ export default function DoomPage() {
         }}
       />
       <Column
-        gap="32"
         direction="column"
         fillWidth
         horizontal="center"
         paddingBottom="4"
       >
-        <Heading variant="display-strong-s" align="center">
+        <Heading variant="display-strong-s" marginBottom="l" align="center">
           {doom.label}
         </Heading>
         <Text
