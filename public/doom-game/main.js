@@ -65,34 +65,40 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
     const KEY_Y = 121; // Lowercase 'y'
     const KEY_N = 110; // Lowercase 'n'
 
-    /* STRICT INPUT MAPPING 
-       We only return valid Doom keys. 
-       Everything else returns 0 (Ignored).
+    /* CROSS-BROWSER INPUT MAPPING
+       Uses event.key (modern standard) with event.keyCode as fallback.
+       event.keyCode is deprecated and unreliable in Edge/Chromium.
     */
-    const doomKeyCode = (keyCode) => {
-        // Numbers 0-9 for weapon switching
-        if (keyCode >= 48 && keyCode <= 57) return keyCode;
+    const doomKeyCode = (event) => {
+        const key = event.key;
 
-        switch (keyCode) {
-            case 37: return KEY_LEFT;   // Arrow Left
-            case 38: return KEY_UP;     // Arrow Up
-            case 39: return KEY_RIGHT;  // Arrow Right
-            case 40: return KEY_DOWN;   // Arrow Down
-            
-            case 32: return KEY_RCTRL;  // SPACE -> FIRE (Ctrl in Doom)
-            case 17: return 32;         // CTRL -> OPEN/USE (Space in Doom)
-            
-            case 16: return KEY_RALT;   // Shift (Strafe)
-            
-            case 13: return 13;         // Enter
-            case 8:  return KEY_BACKSPACE;
-            case 27: return 27;         // Escape (Menu)
-            
-            case 89: return 121;        // Y (Yes)
-            case 78: return 110;        // N (No)
+        // Modern event.key mapping (preferred, works reliably in Edge)
+        switch (key) {
+            case 'ArrowLeft':   return KEY_LEFT;
+            case 'ArrowUp':     return KEY_UP;
+            case 'ArrowRight':  return KEY_RIGHT;
+            case 'ArrowDown':   return KEY_DOWN;
 
-            default: return 0; 
+            case ' ':           return KEY_RCTRL;   // Space -> Fire
+            case 'Control':     return 32;          // Ctrl -> Use/Open
+            case 'Shift':       return KEY_RALT;    // Shift -> Strafe
+
+            case 'Enter':       return 13;
+            case 'Backspace':   return KEY_BACKSPACE;
+            case 'Escape':      return 27;
+
+            case 'y': case 'Y': return KEY_Y;
+            case 'n': case 'N': return KEY_N;
         }
+
+        // Number keys 0–9 for weapon switching
+        if (key >= '0' && key <= '9') return key.charCodeAt(0);
+
+        // Fallback to keyCode for any edge cases
+        const keyCode = event.keyCode;
+        if (keyCode >= 48 && keyCode <= 57) return keyCode; // 0–9
+
+        return 0;
     };
 
     const keyDown = (keyCode) => { 
@@ -105,7 +111,7 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
 
     /* Keyboard Listeners */
     window.addEventListener('keydown', (event) => {
-        const k = doomKeyCode(event.keyCode);
+        const k = doomKeyCode(event);
         if (k !== 0) {
             keyDown(k);
             event.preventDefault(); // Stop browser scrolling
@@ -113,7 +119,7 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
     }, false);
 
     window.addEventListener('keyup', (event) => {
-        const k = doomKeyCode(event.keyCode);
+        const k = doomKeyCode(event);
         if (k !== 0) {
             keyUp(k);
             event.preventDefault();
