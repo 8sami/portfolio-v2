@@ -82,7 +82,7 @@ export default function Home() {
               data-border="conservative"
               href={about.path}
               variant="secondary"
-              size="m"
+              size="s"
               weight="default"
               arrowIcon
             >

@@ -35,6 +35,10 @@ const doom: Doom = {
   iframe: {
     link: "/doom-game/index.html",
   },
+  meme: {
+    text: "wanna see some memes?",
+    link: "/this-person-is-gay",
+  },
 };
 
 const newsletter: Newsletter = {
@@ -111,13 +115,13 @@ const home: Home = {
     ),
     href: "/seeker",
   },
-  subline: <>I'm Sami. Welcome to my site, I hope you enjoy your stay. 👋</>,
+  subline: <>I'm Sami and I hope you enjoy your stay. 👋</>,
 };
 
 const about: About = {
   path: "/about",
   label: "About",
-  title: `Who is ${person.name}? 🤔`,
+  title: `Who is ${person.name}?`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: false,

@@ -311,6 +311,10 @@ export interface Doom extends BasePageConfig {
   iframe: {
     link: string;
   };
+  meme?: {
+    text: string;
+    link: string;
+  };
 }
 
 /**

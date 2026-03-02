@@ -1,6 +1,6 @@
 "use client";
 
-import { Column, Heading, Meta, Schema, Text, useToast } from "@once-ui-system/core";
+import { Button, Column, Heading, Meta, Schema, Text, useToast } from "@once-ui-system/core";
 import { baseURL, doom, person, about } from "@/resources";
 import { useEffect, useRef } from "react";
 
@@ -56,7 +56,7 @@ export default function DoomPage() {
           {doom.description}
         </Text>
       </Column>
-      <Column gap="16" fillWidth horizontal="center">
+      <Column gap="20" fillWidth horizontal="center">
         <Text
           align="center"
           variant="label-default-xs"
@@ -88,6 +88,18 @@ export default function DoomPage() {
           title={doom.title}
           allowFullScreen
         />
+        {doom?.meme && (
+          <Button 
+            variant="tertiary"
+            size="s"
+            href={doom.meme.link}
+            style={{
+              opacity: 0.4,
+            }}
+          >
+            {doom.meme.text}
+        </Button>
+        )}
       </Column>
     </Column>
   );
