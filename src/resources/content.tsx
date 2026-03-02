@@ -31,7 +31,7 @@ const doom: Doom = {
   description:
     '"Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done."',
   controls:
-    "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu.",
+    "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu. (Note: Make sure the game is in focus to use the controls)",
   iframe: {
     link: "/doom-game/index.html",
   },

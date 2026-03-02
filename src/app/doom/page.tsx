@@ -60,7 +60,8 @@ export default function DoomPage() {
         <Text
           align="center"
           variant="label-default-xs"
-          onBackground="neutral-medium"
+          onBackground="neutral-weak"
+          wrap="balance"
         >
           {doom.controls}
         </Text>
