@@ -69,10 +69,10 @@
   --font-letter-spacing-display: -0.04em;
 }
 
-/* [class*="font-heading"],
+[class*="font-heading"],
 .font-heading {
-  letter-spacing: var(--font-letter-spacing-heading) !important;
-} */
+  font-weight: 400 !important;
+}
 
 [class*="font-display"],
 .font-display {
