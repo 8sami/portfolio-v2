@@ -113,8 +113,8 @@ export const Header = () => {
 
         <Row fillWidth horizontal='center'>
           <Row
-            background='page'
-            border='neutral-alpha-weak'
+            background='surface'
+            border='neutral-alpha-medium'
             radius='m-8'
             shadow='l'
             padding='4'
