@@ -17,6 +17,7 @@ import {
 } from '@/resources';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.scss';
+import type { IconName } from '@/resources/icons';
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -114,7 +115,7 @@ export const Header = () => {
         <Row fillWidth horizontal='center'>
           <Row
             background='surface'
-            border='neutral-alpha-medium'
+            border='neutral-alpha-weak'
             radius='m-8'
             shadow='l'
             padding='4'
@@ -137,7 +138,7 @@ export const Header = () => {
                   
                   <Row s={{ hide: true }}>
                     <ToggleButton
-                      prefixIcon={item.icon as any}
+                      prefixIcon={item.icon as IconName}
                       href={item.href}
                       label={item.isRoot ? undefined : item.label}
                       selected={
@@ -149,7 +150,7 @@ export const Header = () => {
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
-                      prefixIcon={item.icon as any}
+                      prefixIcon={item.icon as IconName}
                       href={item.href}
                       selected={
                         item.isRoot
