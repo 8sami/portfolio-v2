@@ -136,8 +136,8 @@ const effects: EffectsConfig = {
     display: true,
     opacity: 80,
     color: "accent-alpha-weak",
-    width: "0.38rem", 
-    height: "0.38rem",
+    width: "0.67rem", 
+    height: "0.67rem",
   },
   lines: {
     display: false,
