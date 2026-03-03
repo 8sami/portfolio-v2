@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Column, Heading, Meta, Schema, Text, useToast } from "@once-ui-system/core";
+import { Button, Column, Heading, Schema, SmartLink, Text, useToast } from "@once-ui-system/core";
 import { baseURL, doom, person, about } from "@/resources";
 import { useEffect, useRef } from "react";
 
@@ -24,7 +24,7 @@ export default function DoomPage() {
   }, [addToast]);
 
   return (
-    <Column maxWidth="m" paddingTop="24" gap="xl" horizontal="center">
+    <Column maxWidth="m" paddingTop="24" gap="40" horizontal="center">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -44,7 +44,7 @@ export default function DoomPage() {
         horizontal="center"
         paddingBottom="4"
       >
-        <Heading variant="display-strong-s" marginBottom="l" align="center">
+        <Heading variant="display-strong-s" align="center">
           {doom.label}
         </Heading>
         <Text
@@ -56,7 +56,7 @@ export default function DoomPage() {
           {doom.description}
         </Text>
       </Column>
-      <Column gap="20" fillWidth horizontal="center">
+      <Column gap="16" fillWidth horizontal="center">
         <Text
           align="center"
           variant="label-default-xs"
@@ -89,6 +89,16 @@ export default function DoomPage() {
           title={doom.title}
           allowFullScreen
         />
+        <Text
+          align="center"
+          variant="label-default-xs"
+          onBackground="neutral-weak"
+        >
+          {doom.caution} {" "}
+          <SmartLink href="/doom-game/index.html" >
+            Play in fullscreen
+          </SmartLink>
+        </Text>
         {doom?.meme && (
           <Button 
             variant="tertiary"

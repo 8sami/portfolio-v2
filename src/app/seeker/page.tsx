@@ -71,7 +71,7 @@ export default function SeekerPage() {
           setTimeout(() => {
             const audio = new Audio('/audio/faaahhh.wav');
             audio.play();
-          }, 1450);
+          }, 1200);
         } catch (err) {
           console.error("Audio playback failed:", err);
         }

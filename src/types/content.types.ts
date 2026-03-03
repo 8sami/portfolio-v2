@@ -308,6 +308,7 @@ export interface Gallery extends BasePageConfig {
  */
 export interface Doom extends BasePageConfig {
   controls: string;
+  caution: string;
   iframe: {
     link: string;
   };

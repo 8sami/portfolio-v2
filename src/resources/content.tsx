@@ -28,15 +28,16 @@ const doom: Doom = {
   path: "/doom",
   label: "DOOM",
   title: "DOOM Game",
-  description:
-    '"Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done."',
+  description: '',
   controls:
-    "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu. (Note: Ensure the game is in focus and Caps Lock is off to use the controls)",
+    "Arrow Keys to Move, CTRL to Open/Interact, SPACE to Fire, SHIFT to Strafe, ESC for Menu.",
+  caution:
+    "If controls don't work ensure that the game is in focus and Caps Lock is off.",
   iframe: {
     link: "/doom-game/index.html",
   },
   meme: {
-    text: "wanna see some memes?",
+    text: "Fancy some memes?",
     link: "/this-person-is-gay",
   },
 };
