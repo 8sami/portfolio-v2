@@ -1,21 +1,7 @@
-"use client";
-
 import type React from "react";
 import { Text, Avatar, Skeleton, Row, Column } from "@once-ui-system/core";
 import { formatDate } from "@/utils/formatDate";
-
-export interface Comment {
-  id: string;
-  content: string;
-  created_at: string;
-  author: {
-    id: string;
-    name: string | null;
-    email: string | null;
-    image: string | null;
-    is_admin?: boolean;
-  } | null;
-}
+import type { Comment } from "@/app/api/comments/route";
 
 interface CommentListProps {
   comments: Comment[];

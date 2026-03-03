@@ -16,7 +16,7 @@ import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
-import type { Comment } from "@/components/CommentList";
+import type { Comment } from "@/app/api/comments/route";
 
 export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   initialComments = [],

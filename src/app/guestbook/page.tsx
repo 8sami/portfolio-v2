@@ -3,6 +3,7 @@ import { baseURL, guestbook } from "@/resources";
 import { GuestbookContent } from "@/components/guestbook/GuestbookContent";
 import { createClient } from "@supabase/supabase-js";
 import { supabaseAnonKey, supabaseUrl } from "@/lib/supabase";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -15,6 +16,7 @@ export async function generateMetadata() {
 }
 
 async function fetchComments() {
+  noStore();
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
   const { data: comments, error } = await supabase
@@ -29,7 +31,10 @@ async function fetchComments() {
     `)
     .order('created_at', { ascending: false });
 
-  if (error) return [];
+  if (error) {
+    console.error(error);
+    return [];
+  }
   return comments;
 }
 
