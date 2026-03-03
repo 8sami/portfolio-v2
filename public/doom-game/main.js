@@ -166,6 +166,9 @@ WebAssembly.instantiateStreaming(fetch('doom.wasm'), importObject)
     window.addEventListener('click', () => canvas.focus());
     canvas.focus();
 
+    /* Notify parent that WASM + game is ready */
+    window.parent.postMessage({ type: "doom-ready" }, "*");
+
     /* Game Loop */
     function step(timestamp) {
         obj.instance.exports.doom_loop_step();

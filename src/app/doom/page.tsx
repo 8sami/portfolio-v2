@@ -1,19 +1,26 @@
 "use client";
-
-import { Button, Column, Heading, Schema, SmartLink, Text, useToast } from "@once-ui-system/core";
+import {
+  Button,
+  Column,
+  Heading,
+  Schema,
+  Skeleton,
+  SmartLink,
+  Text,
+  useToast,
+} from "@once-ui-system/core";
 import { baseURL, doom, person, about } from "@/resources";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DoomPage() {
   const { addToast } = useToast();
   const toastShown = useRef(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (toastShown.current) return;
-
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-
     if (isMobile && isPortrait) {
       addToast({
         variant: "danger",
@@ -22,6 +29,16 @@ export default function DoomPage() {
       toastShown.current = true;
     }
   }, [addToast]);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.type === "doom-ready") {
+        setIsLoaded(true);
+      }
+    };
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
+  }, []);
 
   return (
     <Column maxWidth="m" paddingTop="24" gap="40" horizontal="center">
@@ -65,7 +82,9 @@ export default function DoomPage() {
         >
           {doom.controls}
         </Text>
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           @media (orientation: landscape) and (max-height: 600px) {
             .doom-iframe {
               height: 80vh !important;
@@ -74,42 +93,63 @@ export default function DoomPage() {
               aspect-ratio: auto !important;
             }
           }
-        ` }} />
-        <iframe
-          src={doom.iframe.link}
-          className="doom-iframe"
+        `,
+          }}
+        />
+        <div
           style={{
-            border: "none",
+            position: "relative",
             maxWidth: "700px",
             width: "100%",
             aspectRatio: "16/10",
-            borderRadius: "var(--radius-m)",
-            boxShadow: "var(--shadow-l-strong)",
           }}
-          title={doom.title}
-          allowFullScreen
-        />
+        >
+          {!isLoaded && (
+            <Skeleton
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                borderRadius: "var(--radius-m)",
+              }}
+              shape="block"
+            />
+          )}
+          <iframe
+            src={doom.iframe.link}
+            className="doom-iframe"
+            style={{
+              border: "none",
+              width: "100%",
+              height: "100%",
+              aspectRatio: "16/10",
+              borderRadius: "var(--radius-m)",
+              boxShadow: "var(--shadow-l-strong)",
+              opacity: isLoaded ? 1 : 0,
+              transition: "opacity 0.3s ease",
+            }}
+            title={doom.title}
+            allowFullScreen
+          />
+        </div>
         <Text
           align="center"
           variant="label-default-xs"
           onBackground="neutral-weak"
         >
-          {doom.caution} {" "}
-          <SmartLink href="/doom-game/index.html" >
-            Play in fullscreen
-          </SmartLink>
+          {doom.caution}{" "}
+          <SmartLink href="/doom-game/index.html">Play in fullscreen</SmartLink>
         </Text>
         {doom?.meme && (
-          <Button 
+          <Button
             variant="tertiary"
             size="s"
             href={doom.meme.link}
-            style={{
-              opacity: 0.4,
-            }}
+            style={{ opacity: 0.4 }}
           >
             {doom.meme.text}
-        </Button>
+          </Button>
         )}
       </Column>
     </Column>
