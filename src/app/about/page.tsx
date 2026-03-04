@@ -164,7 +164,7 @@ export default function About() {
                 className={styles.blockAlign}
                 paddingTop="20"
                 paddingBottom="8"
-                gap="8"
+                gap="4"
                 wrap
                 horizontal="center"
                 fitWidth

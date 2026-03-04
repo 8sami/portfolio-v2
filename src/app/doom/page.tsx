@@ -3,8 +3,8 @@ import {
   Button,
   Column,
   Heading,
+  Row,
   Schema,
-  Skeleton,
   SmartLink,
   Text,
   useToast,
@@ -96,7 +96,7 @@ export default function DoomPage() {
         `,
           }}
         />
-        <div
+        <Column
           style={{
             position: "relative",
             maxWidth: "700px",
@@ -105,16 +105,108 @@ export default function DoomPage() {
           }}
         >
           {!isLoaded && (
-            <Skeleton
+            <Column
+              gap="l"
               style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              borderRadius: "var(--radius-m)",
+              background: "#0a0a0a",
+              zIndex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              fontFamily: "'Courier New', Courier, monospace",
+            }}>
+              {/* scanlines */}
+              <Row style={{
                 position: "absolute",
                 inset: 0,
-                width: "100%",
-                height: "100%",
-                borderRadius: "var(--radius-m)",
-              }}
-              shape="block"
-            />
+                backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)",
+                pointerEvents: "none",
+                zIndex: 2,
+              }} />
+
+              {/* title */}
+              <Row style={{
+                color: "#ff4444",
+                fontSize: "clamp(16px, 4vw, 28px)",
+                fontWeight: "bold",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                textShadow: "0 0 10px #ff4444, 0 0 20px #ff2222",
+                imageRendering: "pixelated",
+              }}>
+                ░▒▓ DOOM ▓▒░
+              </Row>
+
+              {/* loading label */}
+              <Row style={{
+                color: "#aaaaaa",
+                fontSize: "clamp(9px, 2vw, 12px)",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+              }}>
+                LOADING GAME ASSETS
+                <span style={{ animation: "retro-blink 1s step-start infinite" }}>█</span>
+              </Row>
+
+              {/* loading bar */}
+              <Row style={{
+                width: "55%",
+                border: "2px solid #444",
+                padding: "3px",
+                background: "#111",
+              }}>
+                <Row s={{ hide: true}} style={{
+                  height: "12px",
+                  background: "linear-gradient(90deg, #8b0000, #ff4444)",
+                  boxShadow: "0 0 8px #ff4444",
+                  animation: "retro-load 3s ease-in-out infinite",
+                  transformOrigin: "left",
+                }} />
+                <Row 
+                l={{hide: true}}
+                s={{hide: false}}
+                style={{
+                  height: "4px",
+                  background: "linear-gradient(90deg, #8b0000, #ff4444)",
+                  boxShadow: "0 0 8px #ff4444",
+                  animation: "retro-load 3s ease-in-out infinite",
+                  transformOrigin: "left",
+                }} />
+              </Row>
+
+              {/* flavour text */}
+              <Row style={{
+                color: "#555",
+                fontSize: "clamp(8px, 1.5vw, 10px)",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}>
+                RIP AND TEAR UNTIL IT IS DONE
+              </Row>
+
+              <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes retro-blink {
+                  0%, 100% { opacity: 1; }
+                  50% { opacity: 0; }
+                }
+                @keyframes retro-load {
+                  0%   { width: 5%; }
+                  60%  { width: 85%; }
+                  80%  { width: 90%; }
+                  100% { width: 95%; }
+                }
+              `}} />
+            </Column>
           )}
           <iframe
             src={doom.iframe.link}
@@ -132,7 +224,7 @@ export default function DoomPage() {
             title={doom.title}
             allowFullScreen
           />
-        </div>
+        </Column>
         <Text
           align="center"
           variant="label-default-xs"
@@ -142,14 +234,16 @@ export default function DoomPage() {
           <SmartLink href="/doom-game/index.html">Play in fullscreen</SmartLink>
         </Text>
         {doom?.meme && (
+          <Row marginTop="12">
           <Button
             variant="tertiary"
             size="s"
             href={doom.meme.link}
-            style={{ opacity: 0.4 }}
+            style={{ opacity: 0.5 }}
           >
             {doom.meme.text}
           </Button>
+        </Row>
         )}
       </Column>
     </Column>
