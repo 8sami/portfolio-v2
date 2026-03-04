@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Button,
   Column,
@@ -102,11 +103,13 @@ export default function DoomPage() {
             maxWidth: "700px",
             width: "100%",
             aspectRatio: "16/10",
+            minWidth: "285px", 
+            minHeight: "180px",
           }}
         >
           {!isLoaded && (
             <Column
-              gap="l"
+              gap="24"
               style={{
               position: "absolute",
               inset: 0,
@@ -120,7 +123,7 @@ export default function DoomPage() {
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
-              fontFamily: "'Courier New', Courier, monospace",
+              fontFamily: "var(--font-label)",
             }}>
               {/* scanlines */}
               <Row style={{
@@ -134,7 +137,7 @@ export default function DoomPage() {
               {/* title */}
               <Row style={{
                 color: "#ff4444",
-                fontSize: "clamp(16px, 4vw, 28px)",
+                fontSize: "clamp(16px, 5.4vw, 40px)",
                 fontWeight: "bold",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
@@ -169,7 +172,7 @@ export default function DoomPage() {
                   height: "12px",
                   background: "linear-gradient(90deg, #8b0000, #ff4444)",
                   boxShadow: "0 0 8px #ff4444",
-                  animation: "retro-load 3s ease-in-out infinite",
+                  animation: "retro-load 5s ease-in-out forwards",
                   transformOrigin: "left",
                 }} />
                 <Row 
@@ -179,14 +182,14 @@ export default function DoomPage() {
                   height: "4px",
                   background: "linear-gradient(90deg, #8b0000, #ff4444)",
                   boxShadow: "0 0 8px #ff4444",
-                  animation: "retro-load 3s ease-in-out infinite",
+                  animation: "retro-load 5s ease-in-out forwards",
                   transformOrigin: "left",
                 }} />
               </Row>
 
               {/* flavour text */}
               <Row style={{
-                color: "#555",
+                color: "#aaaaaa",
                 fontSize: "clamp(8px, 1.5vw, 10px)",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
@@ -219,7 +222,7 @@ export default function DoomPage() {
               borderRadius: "var(--radius-m)",
               boxShadow: "var(--shadow-l-strong)",
               opacity: isLoaded ? 1 : 0,
-              transition: "opacity 0.3s ease",
+              transition: "opacity 0.5s ease",
             }}
             title={doom.title}
             allowFullScreen
