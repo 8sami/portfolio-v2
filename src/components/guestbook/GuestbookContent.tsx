@@ -41,7 +41,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
       });
 
       if (response.ok) {
-        const refresh = await fetch("/api/comments");
+        const refresh = await fetch("/api/comments", { cache: "no-store" });
         const data = await refresh.json();
         setComments(data);
         return true;
