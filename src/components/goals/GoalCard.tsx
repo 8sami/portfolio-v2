@@ -1,20 +1,14 @@
 "use client";
 
-import type React from "react";
-import { useState } from "react";
-import {
-  Column,
-  Row,
-  Text,
-  Button,
-  Icon,
-} from "@once-ui-system/core";
-import { formatDate } from "@/utils/formatDate";
-import type { Goal } from "@/app/api/goals/route";
 import type { Comment } from "@/app/api/comments/route";
+import type { Goal } from "@/app/api/goals/route";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
+import { formatDate } from "@/utils/formatDate";
+import { Button, Column, Icon, Row, Text } from "@once-ui-system/core";
 import type { User } from "@supabase/supabase-js";
+import type React from "react";
+import { useState } from "react";
 
 interface GoalCardProps {
   goal: Goal;
@@ -70,24 +64,23 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       fillWidth
       border="neutral-alpha-weak"
       radius="m"
-      paddingY="20"
-      paddingX="24"
+      paddingY="16"
+      paddingX="20"
       gap="12"
       background="surface"
     >
       {/* Top row */}
-      <Row fillWidth horizontal="between" vertical="center" gap="8">
-        <Row gap="12" vertical="center">
+      <Row fillWidth horizontal="between" vertical="start" gap="12">
+        <Row gap="12" vertical="start" flex={1}>
           {/* checkbox-style indicator */}
           <div
             style={{
-              width: "18px",
-              height: "18px",
-              minWidth: "18px",
+              width: "20px",
+              height: "20px",
+              minWidth: "20px",
+              marginTop: "2px",
               backgroundColor: isAccomplished ? "var(--brand-solid-strong)" : "transparent",
-              border: isAccomplished
-                ? "none"
-                : "2px solid var(--neutral-alpha-medium)",
+              border: isAccomplished ? "none" : "2px solid var(--neutral-alpha-medium)",
               borderRadius: "4px",
               display: "flex",
               alignItems: "center",
@@ -96,11 +89,11 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             }}
           >
             {isAccomplished && (
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path
                   d="M10 3L4.5 8.5L2 6"
                   stroke="var(--static-black)"
-                  strokeWidth="2.2"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -108,8 +101,8 @@ export const GoalCard: React.FC<GoalCardProps> = ({
             )}
           </div>
 
-          <Column gap="2">
-            <Row gap="8" vertical="center">
+          <Column gap="4" flex={1}>
+            <Row gap="8" vertical="center" style={{ flexWrap: "wrap" }}>
               <Text
                 variant="label-strong-m"
                 onBackground={isAccomplished ? "neutral-weak" : "neutral-strong"}
@@ -120,11 +113,28 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 {goal.title}
               </Text>
               {goal.is_current && (
-                <Icon name="rocket" size="xs" onBackground="brand-weak" />
+                <Row
+                  vertical="center"
+                  gap="4"
+                  paddingX="8"
+                  paddingY="2"
+                  radius="s"
+                  background="brand-alpha-weak"
+                  border="brand-alpha-medium"
+                >
+                  <Icon name="rocket" size="m" onBackground="brand-strong" />
+                  <Text variant="label-strong-xs" onBackground="brand-strong">
+                    In Progress
+                  </Text>
+                </Row>
               )}
             </Row>
             {goal.description && (
-              <Text variant="body-default-s" onBackground="neutral-medium" style={{ lineHeight: "1.6" }}>
+              <Text
+                variant="body-default-m"
+                onBackground="neutral-medium"
+                style={{ lineHeight: "1.6" }}
+              >
                 {goal.description}
               </Text>
             )}
@@ -132,7 +142,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
         </Row>
 
         {isAdmin && (
-          <Row gap="2" style={{ flexShrink: 0 }}>
+          <Row gap="4" style={{ flexShrink: 0 }}>
             <Button
               size="s"
               variant="tertiary"
@@ -152,43 +162,33 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       </Row>
 
       {/* Meta row */}
-      <Row gap="12" vertical="center" style={{ flexWrap: "wrap" }}>
-        <Text variant="body-default-xs" onBackground="neutral-weak">
-          {isAccomplished
-            ? `Accomplished ${formatDate(goal.accomplished_at!, true)}`
-            : `Added ${formatDate(goal.created_at, true)}`}
-        </Text>
+      <Row fillWidth horizontal="between" vertical="center" gap="12" style={{ flexWrap: "wrap" }}>
+        <Row vertical="center" gap="8">
+          <Icon name="calendar" size="m" onBackground="neutral-weak" />
+          <Text variant="body-default-xs" onBackground="neutral-weak">
+            {isAccomplished
+              ? `Accomplished ${formatDate(goal.accomplished_at!, false)}`
+              : `Added ${formatDate(goal.created_at, false)}`}
+          </Text>
+        </Row>
 
         {(updates.length > 0 || isAdmin) && (
-          <button
-            type="button"
+          <Button
+            size="s"
+            variant="tertiary"
+            prefixIcon="book"
             onClick={() => setShowUpdates((v) => !v)}
-            style={{
-              all: "unset",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: "4px",
-            }}
           >
-            <Icon name="book" size="xs" onBackground="neutral-weak" />
-            <Text variant="body-default-xs" onBackground="neutral-weak">
-              {updates.length > 0
-                ? `${updates.length} note${updates.length !== 1 ? "s" : ""}`
-                : "add note"}
-            </Text>
-          </button>
+            {updates.length > 0
+              ? `${updates.length} Update${updates.length !== 1 ? "s" : ""}`
+              : "Add Update"}
+          </Button>
         )}
       </Row>
 
       {/* Updates panel */}
       {showUpdates && (
-        <Column
-          fillWidth
-          gap="4"
-          paddingTop="8"
-          borderTop="neutral-alpha-weak"
-        >
+        <Column fillWidth gap="12" paddingTop="8">
           <CommentList comments={updates} isLoading={isPosting} />
           {isAdmin && user && (
             <Column
@@ -203,7 +203,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 user={user}
                 onSignOut={() => {}}
                 onSignIn={() => {}}
-                placeholder="Add a progress note…"
+                placeholder="Log progress or notes..."
               />
             </Column>
           )}

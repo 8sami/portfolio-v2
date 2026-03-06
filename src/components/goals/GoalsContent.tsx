@@ -1,20 +1,13 @@
 "use client";
 
-import type React from "react";
-import { useState, useEffect } from "react";
-import {
-  Column,
-  Row,
-  Heading,
-  Text,
-  Button,
-  Schema,
-} from "@once-ui-system/core";
-import { baseURL, goals, person } from "@/resources";
-import { supabase } from "@/lib/supabase";
-import type { User } from "@supabase/supabase-js";
-import type { Goal } from "@/app/api/goals/route";
 import type { Comment } from "@/app/api/comments/route";
+import type { Goal } from "@/app/api/goals/route";
+import { supabase } from "@/lib/supabase";
+import { baseURL, goals, person } from "@/resources";
+import { Button, Column, Heading, Row, Schema, Text } from "@once-ui-system/core";
+import type { User } from "@supabase/supabase-js";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import { GoalCard } from "./GoalCard";
 import { GoalForm } from "./GoalForm";
 import { GoalStats } from "./GoalStats";
@@ -23,9 +16,7 @@ interface GoalsContentProps {
   initialGoals?: Goal[];
 }
 
-export const GoalsContent: React.FC<GoalsContentProps> = ({
-  initialGoals = [],
-}) => {
+export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] }) => {
   const [goalsList, setGoalsList] = useState<Goal[]>(initialGoals);
   const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -34,50 +25,72 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({
   const [editingGoal, setEditingGoal] = useState<Goal | null>(null);
   const [isAuthLoaded, setIsAuthLoaded] = useState(false);
 
+  const processingRef = useRef(false);
+
   useEffect(() => {
     let mounted = true;
 
     const checkAdmin = async (uid: string) => {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("users")
         .select("is_admin")
         .eq("id", uid)
         .single();
+
+      if (error) {
+        console.error("Error checking admin status:", error);
+      }
       return data?.is_admin === true;
     };
 
-    const init = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    const handleSessionOnLoad = async () => {
+      if (processingRef.current) return;
+      processingRef.current = true;
+
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+
+      if (error) {
+        console.error("Session fetch error:", error);
+      }
+
       if (!mounted) return;
       if (session?.user) {
         setUser(session.user);
         setToken(session.access_token);
         const admin = await checkAdmin(session.user.id);
         if (mounted) setIsAdmin(admin);
+      } else {
+        setUser(null);
+        setToken(null);
+        if (mounted) setIsAdmin(false);
       }
       if (mounted) setIsAuthLoaded(true);
     };
 
-    init();
+    handleSessionOnLoad();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        if (!mounted) return;
-        const u = session?.user ?? null;
-        setUser(u);
-        setToken(session?.access_token ?? null);
-        if (u) {
-          const admin = await checkAdmin(u.id);
-          if (mounted) setIsAdmin(admin);
-        } else {
-          setIsAdmin(false);
-        }
-        if (mounted) setIsAuthLoaded(true);
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!mounted) return;
+      const u = session?.user ?? null;
+      setUser(u);
+      setToken(session?.access_token ?? null);
+      if (u) {
+        const admin = await checkAdmin(u.id);
+        if (mounted) setIsAdmin(admin);
+      } else {
+        setIsAdmin(false);
       }
-    );
+      if (mounted) setIsAuthLoaded(true);
+    });
 
     return () => {
       mounted = false;
+      processingRef.current = false;
       subscription.unsubscribe();
     };
   }, []);
@@ -86,9 +99,7 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({
     setGoalsList((prev) => {
       const exists = prev.find((g) => g.id === saved.id);
       if (exists) {
-        return prev.map((g) =>
-          g.id === saved.id ? { ...saved, updates: g.updates } : g
-        );
+        return prev.map((g) => (g.id === saved.id ? { ...saved, updates: g.updates } : g));
       }
       return [{ ...saved, updates: [] }, ...prev];
     });
@@ -112,27 +123,23 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({
 
   const handleUpdateAdded = (goalId: string, comment: Comment) => {
     setGoalsList((prev) =>
-      prev.map((g) =>
-        g.id === goalId
-          ? { ...g, updates: [comment, ...(g.updates ?? [])] }
-          : g
-      )
+      prev.map((g) => (g.id === goalId ? { ...g, updates: [comment, ...(g.updates ?? [])] } : g)),
     );
   };
 
   const handleUpdateDeleted = async (goalId: string, commentId: string) => {
     if (!token) return;
-    const res = await fetch(
-      `/api/goals/${goalId}/updates?commentId=${commentId}`,
-      { method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
-    );
+    const res = await fetch(`/api/goals/${goalId}/updates?commentId=${commentId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
     if (res.ok) {
       setGoalsList((prev) =>
         prev.map((g) =>
           g.id === goalId
             ? { ...g, updates: (g.updates ?? []).filter((u) => u.id !== commentId) }
-            : g
-        )
+            : g,
+        ),
       );
     }
   };
@@ -188,7 +195,10 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({
             token={token}
             editingGoal={editingGoal}
             onSaved={handleGoalSaved}
-            onCancel={() => { setShowForm(false); setEditingGoal(null); }}
+            onCancel={() => {
+              setShowForm(false);
+              setEditingGoal(null);
+            }}
           />
         )}
 
