@@ -29,6 +29,7 @@ async function fetchComments() {
         id, name, email, image, is_admin
       )
     `)
+    .is('goal_id', null)
     .order('created_at', { ascending: false });
 
   if (error) {

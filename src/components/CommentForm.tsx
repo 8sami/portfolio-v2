@@ -19,6 +19,7 @@ interface CommentFormProps {
   user: User | null;
   onSignOut: () => void;
   onSignIn: () => void;
+  placeholder?: string;
 }
 
 export const CommentForm: React.FC<CommentFormProps> = ({
@@ -26,6 +27,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
   user,
   onSignOut,
   onSignIn,
+  placeholder = "Add a nice comment...",
 }) => {
   const [content, setContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,7 +83,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <Input
             id="comment-content"
-            placeholder="Add a nice comment..."
+            placeholder={placeholder}
             value={content}
             onChange={(e) => setContent(e.target.value)}
             disabled={isSubmitting}

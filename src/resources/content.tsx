@@ -2,6 +2,7 @@ import type {
   About,
   Blog,
   Gallery,
+  Goals,
   Guestbook,
   Home,
   Newsletter,
@@ -636,6 +637,12 @@ const guestbook: Guestbook = {
   title: "Drop a nice comment and say hi! 👋",
 };
 
+const goals: Goals = {
+  path: "/goals",
+  label: "Goals",
+  title: "Things I want to achieve",
+};
+
 const work: Work = {
   path: "/work",
   label: "Work",
@@ -846,4 +853,4 @@ const seeker: Seeker = {
   },
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, guestbook, doom, seeker };
+export { person, social, newsletter, home, about, blog, work, gallery, guestbook, goals, doom, seeker };

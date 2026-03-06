@@ -28,6 +28,7 @@ const routes: RoutesConfig = {
   "/doom": true,
   "/guestbook": true,
   "/seeker": true,
+  "/goals": true,
 };
 
 const display: DisplayConfig = {

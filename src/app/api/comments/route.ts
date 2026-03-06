@@ -1,8 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+import { createClient } from "@supabase/supabase-js";
+import { supabaseUrl, supabaseAnonKey } from "@/lib/supabase";
 
 export type Comment = {
   id: string;
@@ -35,6 +33,7 @@ export async function GET() {
           is_admin
         )
       `)
+      .is('goal_id', null)
       .order('created_at', { ascending: false });
 
     if (error) {

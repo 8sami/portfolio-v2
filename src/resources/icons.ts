@@ -16,6 +16,9 @@ import {
   HiOutlineInformationCircle,
   HiBellAlert,
   HiArrowLeft,
+  HiOutlineCheckCircle,
+  HiOutlineTrash,
+  HiPencilSquare,
 } from 'react-icons/hi2';
 
 import {
@@ -216,7 +219,11 @@ export const iconLibrary: Record<string, IconType> = {
   pythonanywhere: SiPythonanywhere,
   twilio: SiTwilio,
   pen: PiPenNib,
+  checkCircle: HiOutlineCheckCircle,
+  trash: HiOutlineTrash,
+  edit: HiPencilSquare,
 };
+
 
 export type IconLibrary = typeof iconLibrary;
 export type IconName = keyof IconLibrary;

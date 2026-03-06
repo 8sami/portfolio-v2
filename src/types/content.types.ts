@@ -276,6 +276,16 @@ export interface Guestbook extends Omit<BasePageConfig, 'description'> {
 };
 
 /**
+ * Goals page configuration.
+ * @description Configuration for the Goals page.
+ */
+export interface Goals extends Omit<BasePageConfig, 'description'> {
+  /** Title of the goals page */
+  title: string;
+  description?: string;
+};
+
+/**
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
