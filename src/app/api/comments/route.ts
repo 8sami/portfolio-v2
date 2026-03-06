@@ -96,40 +96,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // First, ensure the user exists in the users table
-    const { data: existingUser, error: userError } = await supabase
-      .from('users')
-      .select('id')
-      .eq('id', user.id)
-      .single();
-
-    if (userError && userError.code !== 'PGRST116') { // PGRST116 is "not found"
-      console.error("Error checking user:", userError);
-      return NextResponse.json(
-        { error: "User not found in database" },
-        { status: 500 }
-      );
-    }
-
-    // If user doesn't exist, create them
-    if (!existingUser) {
-      const { error: insertUserError } = await supabase
-        .from('users')
-        .insert({
-          id: user.id,
-          email: user.email,
-          name: user.user_metadata?.full_name || user.user_metadata?.name,
-          image: user.user_metadata?.avatar_url || user.user_metadata?.picture
-        });
-
-      if (insertUserError) {
-        console.error("Error creating user:", insertUserError);
-        return NextResponse.json(
-          { error: "Failed to create user record" },
-          { status: 500 }
-        );
-      }
-    }
+    // Insert the comment into the database (RLS will allow this for authenticated users)
+    // The user record in public.users is automatically created/updated by DB triggers
+    // on the auth.users table, so we don't need to manually check or insert here.
 
     // Insert the comment into the database (RLS will allow this for authenticated users)
     const { data: newComment, error: insertError } = await supabase

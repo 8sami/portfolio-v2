@@ -6,51 +6,56 @@ import type { Comment } from "@/app/api/comments/route";
 interface CommentListProps {
   comments: Comment[];
   isLoading?: boolean;
+  variant?: "default" | "compact";
 }
 
-const CommentSkeleton: React.FC = () => (
-  <Row gap="12" paddingY="16" fillWidth vertical="start">
-    <Skeleton shape="circle" width="m" height="m" />
-    <Column gap="8" fillWidth>
-      <Skeleton shape="block" width="m" height="xs" />
-      <Skeleton shape="block" width="xl" height="xs" />
-    </Column>
-  </Row>
-);
+const CommentSkeleton: React.FC<{ variant?: "default" | "compact" }> = ({ variant = "default" }) => {
+  const isCompact = variant === "compact";
+  return (
+    <Row gap={isCompact ? "8" : "12"} paddingY={isCompact ? "8" : "16"} fillWidth vertical="start">
+      <Skeleton shape="circle" width={isCompact ? "s" : "m"} height={isCompact ? "s" : "m"} />
+      <Column gap="8" fillWidth>
+        <Skeleton shape="block" width="m" height="xs" />
+        <Skeleton shape="block" width="xl" height="xs" />
+      </Column>
+    </Row>
+  );
+};
 
 export const CommentList: React.FC<CommentListProps> = ({
   comments = [],
   isLoading,
+  variant = "default",
 }) => {
+  const isCompact = variant === "compact";
   return (
-    <Column fillWidth gap="4">
+    <Column fillWidth gap={isCompact ? "0" : "4"}>
       {comments.map((comment) => (
-        <Row key={comment.id} gap="16" paddingY="12" fillWidth vertical="start">
+        <Row
+          key={comment.id}
+          gap={isCompact ? "12" : "16"}
+          paddingY={isCompact ? "8" : "12"}
+          fillWidth
+          vertical="start"
+        >
           <Avatar
-            statusIndicator={comment.author?.is_admin ? {color : "green" } : undefined}
+            statusIndicator={comment.author?.is_admin ? { color: "green" } : undefined}
             src={comment.author?.image || undefined}
-            size="l"
-            style={{ flexShrink: 0, marginTop: "2px" }}
+            size={isCompact ? "m" : "l"}
+            style={{ flexShrink: 0, marginTop: isCompact ? "0" : "2px" }}
           />
-          <Column gap="1" fillWidth>
-            <Row
-              vertical="end"
-              gap="8"
-              fillWidth
-              style={{ flexWrap: "wrap" }}
-            >
-              <Text variant="label-strong-m" onBackground="neutral-strong">
-                {comment.author?.name ||
-                  comment.author?.email?.split("@")[0] ||
-                  "Anonymous"}
+          <Column gap="0" fillWidth>
+            <Row vertical="end" gap="8" fillWidth style={{ flexWrap: "wrap" }}>
+              <Text variant={isCompact ? "label-strong-s" : "label-strong-m"} onBackground="neutral-strong">
+                {comment.author?.name || comment.author?.email?.split("@")[0] || "Anonymous"}
               </Text>
               <Text variant="body-default-xs" onBackground="neutral-weak">
                 {formatDate(comment.created_at, true)}
               </Text>
             </Row>
             <Text
-              variant="body-default-m"
-              style={{ whiteSpace: "pre-wrap", lineHeight: "1.6" }}
+              variant={isCompact ? "body-default-s" : "body-default-m"}
+              style={{ whiteSpace: "pre-wrap", lineHeight: isCompact ? "1.4" : "1.6" }}
               onBackground="neutral-medium"
             >
               {comment.content}
@@ -58,7 +63,7 @@ export const CommentList: React.FC<CommentListProps> = ({
           </Column>
         </Row>
       ))}
-      {isLoading && <CommentSkeleton />}
+      {isLoading && <CommentSkeleton variant={variant} />}
     </Column>
   );
 };

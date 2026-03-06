@@ -189,7 +189,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       {/* Updates panel */}
       {showUpdates && (
         <Column fillWidth gap="12" paddingTop="8">
-          <CommentList comments={updates} isLoading={isPosting} />
+          <CommentList comments={updates} isLoading={isPosting} variant="compact" />
           {isAdmin && user && (
             <Column
               fillWidth
@@ -204,6 +204,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
                 onSignOut={() => {}}
                 onSignIn={() => {}}
                 placeholder="Log progress or notes..."
+                variant="compact"
               />
             </Column>
           )}

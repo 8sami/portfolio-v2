@@ -14,14 +14,13 @@ import {
 import { baseURL, guestbook, person } from "@/resources";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
-import { supabase } from "@/lib/supabase";
-import type { User } from "@supabase/supabase-js";
+import { useAuth } from "@/context/AuthContext";
 import type { Comment } from "@/app/api/comments/route";
 
 export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   initialComments = [],
 }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const { user, session, signIn, signOut } = useAuth();
   const [comments, setComments] = useState<Comment[]>(initialComments);
   const [showSignInModal, setShowSignInModal] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
@@ -56,50 +55,22 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   };
 
   useEffect(() => {
-    const handleSessionOnLoad = async () => {
-      if (processingRef.current) return;
-      processingRef.current = true;
-
-      const params = new URLSearchParams(window.location.hash.substring(1));
-      if (params.get("error")) {
-        setErrorToast("Sign in cancelled or failed.");
-        setUser(null);
-        return;
-      }
-
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
-        const pending = localStorage.getItem("pendingComment");
-        if (pending && session.access_token) {
-          const success = await postComment(pending, session.access_token);
+    if (user && !processingRef.current) {
+      const pending = localStorage.getItem("pendingComment");
+      if (pending && session?.access_token) {
+        processingRef.current = true;
+        postComment(pending, session.access_token).then((success) => {
           if (success) {
             localStorage.removeItem("pendingComment");
             setShowSignInModal(false);
           }
-        }
+          processingRef.current = false;
+        });
       }
-    };
-
-    handleSessionOnLoad();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+    }
+  }, [user, session]);
 
   const handleSubmit = async (content: string) => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
     if (!session) {
       localStorage.setItem("pendingComment", content);
       setShowSignInModal(true);
@@ -109,17 +80,11 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   };
 
   const handleSignIn = async (provider: "google" | "github") => {
-    await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `${window.location.origin}/guestbook`,
-      },
-    });
+    await signIn(provider);
   };
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
+    await signOut();
   };
 
   return (
