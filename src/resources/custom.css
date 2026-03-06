@@ -67,6 +67,7 @@
 
   /* --font-letter-spacing-heading: 0.01em; */
   --font-letter-spacing-display: -0.04em;
+  --font-letter-spacing-label: 0.08em;
 }
 
 [class*="font-heading"],
@@ -77,5 +78,11 @@
 [class*="font-display"],
 .font-display {
   letter-spacing: var(--font-letter-spacing-display) !important;
+  font-weight: 400 !important;
+}
+
+[class*="font-label"],
+.font-label {
+  letter-spacing: var(--font-letter-spacing-label) !important;
   font-weight: 400 !important;
 }

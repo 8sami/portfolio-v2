@@ -12,8 +12,6 @@ import {
   Icon,
   Line,
   Schema,
-  Skeleton,
-  RevealFx,
 } from "@once-ui-system/core";
 import { baseURL, seeker, person, about } from "@/resources";
 import { LocationInfo, MapEmbed, Disclaimer, DeviceInfo, DeviceInfoSkeleton } from "@/components/seeker";
@@ -68,10 +66,8 @@ export default function SeekerPage() {
         });
         setGeoState("success");
         try {
-          setTimeout(() => {
-            const audio = new Audio('/audio/faaahhh.wav');
-            audio.play();
-          }, 1200);
+          const audio = new Audio('/audio/faaahhh.wav');
+          audio.play();
         } catch (err) {
           console.error("Audio playback failed:", err);
         }
@@ -126,30 +122,27 @@ export default function SeekerPage() {
 
       {/* ── Entrance ── */}
       {(geoState === "idle" || geoState === "loading") && (
-        <RevealFx speed="medium">
-          <Column fillWidth radius="m" horizontal="center" gap="s">
-            <Button
-              id="grant-location"
-              data-border="conservative"
-              variant="primary"
-              size="m"
-              prefixIcon={seeker.ui.entrance?.buttonIcon}
-              onClick={requestLocation}
-              loading={geoState === "loading"}
-              disabled={geoState === "loading"}
-            >
-              {seeker.ui.entrance?.button}
-            </Button>
+        <Column fillWidth radius="m" horizontal="center" gap="s">
+          <Button
+            id="grant-location"
+            data-border="conservative"
+            variant="primary"
+            size="m"
+            prefixIcon={seeker.ui.entrance?.buttonIcon}
+            onClick={requestLocation}
+            loading={geoState === "loading"}
+            disabled={geoState === "loading"}
+          >
+            {seeker.ui.entrance?.button}
+          </Button>
 
-            <Text variant="label-default-xs" onBackground="neutral-strong" style={{ opacity: 0.5 }}>
-              {seeker.ui.entrance?.permissionLabel}
-            </Text>
-          </Column>
-        </RevealFx>
+          <Text variant="label-default-xs" onBackground="neutral-strong" style={{ opacity: 0.5 }}>
+            {seeker.ui.entrance?.permissionLabel}
+          </Text>
+        </Column>
       )}
 
       {geoState === "denied" && (
-        <RevealFx speed="medium">
         <Row
           fillWidth
           padding="m"
@@ -172,43 +165,41 @@ export default function SeekerPage() {
             variant="tertiary"
             size="s"
             onClick={reset}
+            style={{ marginLeft: "auto" }}
           >
             {seeker.ui.denied?.tryAgain}
           </Button>
         </Row>
-        </RevealFx>
       )}
 
       {/* ── Results ── */}
       {geoState === "success" && location && (
-        <RevealFx speed="medium">
-          <Column fillWidth gap="32">
-            <Row
-              fillWidth
-              padding="m"
-              radius="m"
-              border="danger-alpha-medium"
-              background="danger-strong"
-              gap="12"
-              vertical="center"
-              data-border="conservative"
-            >
-              <Icon name="danger" size="l" onBackground="danger-strong" />
-              <Text variant="body-default-s" onBackground="danger-medium">
-                <Text as="span" weight="strong" onBackground="danger-strong">
-                  {seeker.ui.results?.alertTitle}{" "}
-                </Text>
-                {seeker.ui.results?.alertMessage}
+        <Column fillWidth gap="32">
+          <Row
+            fillWidth
+            padding="m"
+            radius="m"
+            border="danger-alpha-medium"
+            background="danger-strong"
+            gap="12"
+            vertical="center"
+            data-border="conservative"
+          >
+            <Icon name="danger" size="l" onBackground="danger-strong" />
+            <Text variant="body-default-s" onBackground="danger-medium">
+              <Text as="span" weight="strong" onBackground="danger-strong">
+                {seeker.ui.results?.alertTitle}{" "}
               </Text>
-            </Row>
-            <LocationInfo data={location} />
-            <MapEmbed
-              latitude={location.latitude}
-              longitude={location.longitude}
-              accuracy={location.accuracy}
-            />
-          </Column>
-        </RevealFx>
+              {seeker.ui.results?.alertMessage}
+            </Text>
+          </Row>
+          <LocationInfo data={location} />
+          <MapEmbed
+            latitude={location.latitude}
+            longitude={location.longitude}
+            accuracy={location.accuracy}
+          />
+        </Column>
       )}
 
       {/* ── Device Intel ── */}

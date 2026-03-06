@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useMemo } from 'react';
-import { Fade, Flex, Line, Row, ToggleButton } from '@once-ui-system/core';
+import { Fade, Flex, Line, Row, Text, ToggleButton } from '@once-ui-system/core';
 import {
   routes,
   display,
@@ -138,9 +138,10 @@ export const Header = () => {
                   
                   <Row s={{ hide: true }}>
                     <ToggleButton
+                    
                       prefixIcon={item.icon as IconName}
                       href={item.href}
-                      label={item.isRoot ? undefined : item.label}
+                      label={item.isRoot ? undefined : <Text style={{ marginBottom: '3px' }}>{item.label}</Text>}
                       selected={
                         item.isRoot
                           ? pathname === item.href
