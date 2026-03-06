@@ -713,7 +713,8 @@ const seeker: Seeker = {
     },
     denied: {
       heading: "ACCESS DENIED.",
-      message: "You blocked the request. Good. But a real hacker would already be trying another way to get in.",
+      message:
+        "You blocked the request. Good. But a real hacker would already be trying another way to get in.",
       tryAgain: "Try Again",
       buttonIcon: "arrowLeft",
     },
@@ -728,7 +729,7 @@ const seeker: Seeker = {
       mapLatLabel: "Lat",
       mapLonLabel: "Lon",
       mapAccuracyPrefix: "+/- ",
-      mapButtons: { google: "Open Google Maps", osm: "Open OpenStreetMap" },
+      mapButtons: { google: "Google Maps", osm: "OpenStreetMap" },
       labels: {
         latitude: "Latitude",
         longitude: "Longitude",
@@ -791,24 +792,56 @@ const seeker: Seeker = {
     },
     disclaimer: {
       heading: "How they actually get you",
-      lead:
-        "I didn’t use some complex exploit to find you, this is just standard browser behavior...",
+      lead: "I didn’t use some complex exploit to find you, this is just standard browser behavior...",
       tipsTitle: "Defensive Measures",
       tips: [
-        { icon: "globe", title: "Look at the URL,seriously", desc: "Sites like 'googl-secure.com' aren't real." },
-        { icon: "eyeOff", title: "GPS isn't for fun", desc: "Your coordinates show exactly where you sleep and work." },
-        { icon: "hook", title: "Links are just hooks", desc: "Every random SMS or email is a fishing line." },
-        { icon: "clean", title: "Clean your permissions", desc: "Most of us have apps watching our cameras for years." },
+        {
+          icon: "globe",
+          title: "Look at the URL,seriously",
+          desc: "Sites like 'googl-secure.com' aren't real.",
+        },
+        {
+          icon: "eyeOff",
+          title: "GPS isn't for fun",
+          desc: "Your coordinates show exactly where you sleep and work.",
+        },
+        {
+          icon: "hook",
+          title: "Links are just hooks",
+          desc: "Every random SMS or email is a fishing line.",
+        },
+        {
+          icon: "clean",
+          title: "Clean your permissions",
+          desc: "Most of us have apps watching our cameras for years.",
+        },
       ],
       vectorsTitle: "Common Vectors",
       vectors: [
-        { icon: "gifts", title: "The 'I Win' Scam", desc: "Fake prizes that only 'unlock' if you share your location." },
-        { icon: "alert", title: "Urgency and Fear", desc: "Emails about a 'suspicious purchase' that make you panic." },
-        { icon: "cut", title: "Obscured Destinations", desc: "Tiny URLs that hide 50 different tracking scripts." },
-        { icon: "compass", title: "Delivery 'Delays'", desc: "Texts about a missing package that need your GPS." },
+        {
+          icon: "gifts",
+          title: "The 'I Win' Scam",
+          desc: "Fake prizes that only 'unlock' if you share your location.",
+        },
+        {
+          icon: "alert",
+          title: "Urgency and Fear",
+          desc: "Emails about a 'suspicious purchase' that make you panic.",
+        },
+        {
+          icon: "cut",
+          title: "Obscured Destinations",
+          desc: "Tiny URLs that hide 50 different tracking scripts.",
+        },
+        {
+          icon: "compass",
+          title: "Delivery 'Delays'",
+          desc: "Texts about a missing package that need your GPS.",
+        },
       ],
       footerIcon: "info",
-      footerNotice: "Independent security audit demo. No data persistence. No network egress.",
+      footerNotice:
+        "Independent security audit demo. No data persistence. No network egress.",
     },
   },
 };

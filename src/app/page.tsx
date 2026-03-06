@@ -54,7 +54,7 @@ export default function Home() {
             >
               <Badge
                 background="brand-alpha-weak"
-                paddingX="12"
+                paddingX="8"
                 paddingY="4"
                 radius="m"
                 onBackground="neutral-strong"
@@ -62,7 +62,7 @@ export default function Home() {
                 arrow={false}
                 href={home.featured.href}
               >
-                <Row paddingY="2">{home.featured.title}</Row>
+                <Text paddingY="2">{home.featured.title}</Text>
               </Badge>
             </RevealFx>
           )}

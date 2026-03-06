@@ -66,7 +66,7 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
         <Row
           fillWidth
           paddingX="12"
-          paddingY="8"
+          paddingY="12"
           gap="12"
           vertical="center"
           wrap
@@ -87,12 +87,14 @@ export function MapEmbed({ latitude, longitude, accuracy }: MapEmbedProps) {
               </Text>
             </Row>
           ))}
-          <Text
-            variant="label-default-xs"
-            onBackground="neutral-weak"
-          >
-            {ui.mapAccuracyPrefix}{accuracy.toFixed(0)} m
-          </Text>
+          <Column s={{ hide: true }}>
+            <Text
+              variant="label-default-xs"
+              onBackground="neutral-weak"
+            >
+              {ui.mapAccuracyPrefix}{accuracy.toFixed(0)} m
+            </Text>
+          </Column>
         </Row>
       </Column>
       <Row fillWidth gap="8" data-border="conservative">
