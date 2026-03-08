@@ -1,3 +1,7 @@
+export const pluralize = (count: number, unit: string, suffix = " ago") => {
+  return `${count} ${unit}${count !== 1 ? "s" : ""}${suffix}`;
+};
+
 export function formatDate(date: string, includeRelative = false) {
   const currentDate = new Date();
 
@@ -10,20 +14,19 @@ export function formatDate(date: string, includeRelative = false) {
   const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
   const minutesAgo = Math.floor(timeDifference / (1000 * 60));
-  const secondsAgo = Math.floor(timeDifference / 1000);
 
   let formattedDate = "";
 
   if (daysAgo >= 365) {
-    formattedDate = `${Math.floor(daysAgo / 365)}y ago`;
+    formattedDate = pluralize(Math.floor(daysAgo / 365), "year");
   } else if (daysAgo >= 30) {
-    formattedDate = `${Math.floor(daysAgo / 30)}mo ago`;
+    formattedDate = pluralize(Math.floor(daysAgo / 30), "month");
   } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
+    formattedDate = pluralize(daysAgo, "day");
   } else if (hoursAgo > 0) {
-    formattedDate = `${hoursAgo}h ago`;
+    formattedDate = pluralize(hoursAgo, "hour");
   } else if (minutesAgo > 0) {
-    formattedDate = `${minutesAgo}m ago`;
+    formattedDate = pluralize(minutesAgo, "minute");
   } else {
     formattedDate = "just now";
   }
@@ -34,9 +37,9 @@ export function formatDate(date: string, includeRelative = false) {
     year: "numeric",
   });
 
-  if (!includeRelative) {
-    return fullDate;
+  if (includeRelative) {
+    return formattedDate;
   }
 
-  return `${fullDate} (${formattedDate})`;
+  return fullDate;
 }

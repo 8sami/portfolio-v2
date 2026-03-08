@@ -44,9 +44,9 @@ export const CommentList: React.FC<CommentListProps> = ({
             size={isCompact ? "m" : "l"}
             style={{ flexShrink: 0, marginTop: isCompact ? "0" : "2px" }}
           />
-          <Column fillWidth>
-            <Row vertical="center" gap="12" fillWidth style={{ flexWrap: "wrap" }}>
-              <Text variant={`body-default-${isCompact ? "s" : "m"}`} onBackground="neutral-strong">
+          <Column fillWidth gap="4">
+            <Row vertical="center" fillWidth style={{ flexWrap: "wrap" }}>
+              <Text variant={`body-default-${isCompact ? "s" : "m"}`} onBackground="neutral-strong" paddingRight="8">
                 {comment.author?.name || comment.author?.email?.split("@")[0] || "Anonymous"}
               </Text>
               <Text variant={"label-default-xs"} onBackground="neutral-weak">

@@ -4,7 +4,7 @@ import type { Comment } from "@/app/api/comments/route";
 import type { Goal } from "@/app/api/goals/route";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
-import { formatDate } from "@/utils/formatDate";
+import { formatDate, pluralize } from "@/utils/formatDate";
 import { Badge, Column, Flex, IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
 import type { User } from "@supabase/supabase-js";
 import type React from "react";
@@ -137,16 +137,14 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
         {(updates.length > 0 || isAdmin) && (
           <SmartLink
-            style={{
-              color: "var(--scheme-neutral-700)",
-              cursor: "pointer",
-              fontFamily: "var(--font-label)",
-            }}
+            style={{ cursor: "pointer" }}
             onClick={() => setShowUpdates((v) => !v)}
           >
-            {updates.length > 0
-              ? `${updates.length} Update${updates.length !== 1 ? "s" : ""}`
-              : "Add Update"}
+            <Text  variant="label-strong-xs" onBackground="brand-weak">
+              {updates.length > 0
+                ? pluralize(updates.length, "Update", "")
+                : "Add Update"}
+            </Text>
           </SmartLink>
         )}
       </Flex>
