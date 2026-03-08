@@ -13,7 +13,7 @@ import {
   Row,
   List,
   ListItem,
-  Flex,
+  SmartLink,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -51,6 +51,11 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: about.goals.title,
+      display: about.goals.display,
+      items: [],
     },
   ];
   return (
@@ -199,21 +204,6 @@ export default function About() {
                         </React.Fragment>
                       ),
                   )}
-                <React.Fragment>
-                  <Row s={{ hide: true }}>
-                    <Button prefixIcon="goal" size="s" variant="secondary" href="/goals">
-                      Goals
-                    </Button>
-                  </Row>
-                  <Row s={{ hide: false }}>
-                    <IconButton
-                      size="l"
-                      href="/goals"
-                      icon="rocket"
-                      variant="secondary"
-                    />
-                  </Row>
-                </React.Fragment>
               </Row>
             )}
           </Column>
@@ -484,6 +474,29 @@ export default function About() {
                     )}
                   </Column>
                 ))}
+              </Column>
+            </>
+          )}
+
+          {about.goals.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.goals.title}
+                variant="display-strong-s"
+                marginBottom="m"
+              >
+                {about.goals.title}
+              </Heading>
+              <Column fillWidth marginBottom="40">
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {about.goals.description}
+                  <SmartLink
+                    href={about.goals.link}
+                  >
+                    {about.goals.label}
+                  </SmartLink>
+                </Text>
               </Column>
             </>
           )}

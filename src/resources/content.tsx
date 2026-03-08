@@ -615,6 +615,13 @@ const about: About = {
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
   },
+  goals: {
+    display: true,
+    title: "Personal Goals",
+    description: "A short list of ambitious goals that I am striving to achieve in my short life :) ",
+    label: "See the list",
+    link: "/goals",
+  },
 };
 
 const blog: Blog = {

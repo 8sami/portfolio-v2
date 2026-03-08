@@ -16,7 +16,7 @@ export const GoalStats: React.FC<GoalStatsProps> = ({ goals }) => {
   )[0];
 
   return (
-    <Row paddingX="2" fillWidth horizontal="between" vertical="end" gap="8" style={{ flexWrap: "wrap" }}>
+    <Row paddingX="2" paddingTop="12" fillWidth horizontal="between" vertical="end" gap="8" style={{ flexWrap: "wrap" }}>
       <Text variant="label-default-s" onBackground="neutral-weak">
         {lastUpdated ? `Last updated ${formatDate(lastUpdated.updated_at, true)}` : ""}
       </Text>

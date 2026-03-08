@@ -5,7 +5,7 @@ import type { Goal } from "@/app/api/goals/route";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
 import { formatDate } from "@/utils/formatDate";
-import { Badge, Button, Column, Flex, Icon, Row, SmartLink, Text } from "@once-ui-system/core";
+import { Badge, Column, Flex, IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
 import type { User } from "@supabase/supabase-js";
 import type React from "react";
 import { useState } from "react";
@@ -109,17 +109,17 @@ export const GoalCard: React.FC<GoalCardProps> = ({
 
         {isAdmin && (
           <Row gap="4" style={{ flexShrink: 0 }}>
-            <Button
+            <IconButton
               size="s"
-              variant="tertiary"
-              prefixIcon="edit"
+              variant="secondary"
+              icon="edit"
               onClick={() => onEdit(goal)}
               aria-label="Edit goal"
             />
-            <Button
+            <IconButton
               size="s"
-              variant="tertiary"
-              prefixIcon="trash"
+              variant="danger"
+              icon="trash"
               onClick={() => onDelete(goal.id)}
               aria-label="Delete goal"
             />

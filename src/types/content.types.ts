@@ -253,7 +253,20 @@ export interface About extends BasePageConfig {
     src: string;
     /** Alt text for the gif */
     alt: string;
-  }
+  };
+  /** Goals section configuration */
+  goals: {
+    /** Whether to display the goals section */
+    display: boolean;
+    /** Title for the goals section */
+    title: string;
+    /** Description for the goals section */
+    description: string;
+    /** Call to action text for the goals section */
+    label: string;
+    /** Link for the goals section */
+    link: string;
+  };
 }
 
 /**
