@@ -5,9 +5,8 @@ import type { Goal } from "@/app/api/goals/route";
 import { baseURL, goals, person } from "@/resources";
 import { useAuth } from "@/context/AuthContext";
 import { Button, Column, Heading, Row, Schema, Text } from "@once-ui-system/core";
-import type { User } from "@supabase/supabase-js";
 import type React from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { GoalCard } from "./GoalCard";
 import { GoalForm } from "./GoalForm";
 import { GoalStats } from "./GoalStats";
@@ -24,10 +23,6 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
   const [editingGoal, setEditingGoal] = useState<Goal | null>(null);
 
   const isAuthLoaded = !isAuthLoading;
-
-
-  const processingRef = useRef(false);
-
 
   const handleGoalSaved = (saved: Goal) => {
     setGoalsList((prev) => {
@@ -61,23 +56,6 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
     );
   };
 
-  const handleUpdateDeleted = async (goalId: string, commentId: string) => {
-    if (!token) return;
-    const res = await fetch(`/api/goals/${goalId}/updates?commentId=${commentId}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (res.ok) {
-      setGoalsList((prev) =>
-        prev.map((g) =>
-          g.id === goalId
-            ? { ...g, updates: (g.updates ?? []).filter((u) => u.id !== commentId) }
-            : g,
-        ),
-      );
-    }
-  };
-
   const sortedGoals = [...goalsList].sort((a, b) => {
     if (a.is_current && !b.is_current) return -1;
     if (!a.is_current && b.is_current) return 1;
@@ -87,7 +65,7 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
   });
 
   return (
-    <Column maxWidth="m" fillWidth paddingTop="24">
+    <Column maxWidth="s" fillWidth paddingTop="24">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -101,13 +79,11 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
         }}
       />
 
-      <Column fillWidth gap="24" paddingX="m">
-        <Heading variant="display-strong-s" align="center">
-          {goals.title}
-        </Heading>
+      <Heading variant="display-strong-s" marginBottom="40" align="center">
+        {goals.title}
+      </Heading>
 
-        <GoalStats goals={goalsList} />
-
+      <Column fillWidth gap="12" paddingX="m">
         {isAdmin && isAuthLoaded && (
           <Row fillWidth horizontal="end">
             <Button
@@ -116,22 +92,24 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
               prefixIcon="plus"
               onClick={() => {
                 setEditingGoal(null);
-                setShowForm((v) => !v);
+                setShowForm(true);
               }}
             >
-              {showForm && !editingGoal ? "Cancel" : "Add Goal"}
+              Add Goal
             </Button>
           </Row>
         )}
 
-        {isAdmin && showForm && token && (
+        {isAdmin && isAuthLoaded && token && (
           <GoalForm
             token={token}
             editingGoal={editingGoal}
+            isOpen={showForm}
             onSaved={handleGoalSaved}
-            onCancel={() => {
+            onClose={() => {
               setShowForm(false);
               setEditingGoal(null);
+              
             }}
           />
         )}
@@ -144,20 +122,19 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
           </Column>
         ) : (
           <Column fillWidth gap="12">
-            {sortedGoals.map((goal, index) => (
+            {sortedGoals.map((goal) => (
               <GoalCard
                 key={goal.id}
                 goal={goal}
-                index={index}
                 isAdmin={isAdmin}
                 user={user}
                 token={token}
                 onDelete={handleDeleteGoal}
                 onEdit={handleEditGoal}
                 onUpdateAdded={handleUpdateAdded}
-                onUpdateDeleted={handleUpdateDeleted}
               />
             ))}
+            <GoalStats goals={goalsList} />
           </Column>
         )}
       </Column>

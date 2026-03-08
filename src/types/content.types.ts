@@ -136,15 +136,6 @@ export interface About extends BasePageConfig {
     /** Description of the introduction section */
     description: React.ReactNode[];
   };
-  /** Now section */
-  now: {
-    /** Whether to display the now section */
-    display: boolean;
-    /** Title of the now section */
-    title: string;
-    /** Description of the now section */
-    description: React.ReactNode[];
-  };
   /** Work experience section */
   work: {
     /** Whether to display work experience */

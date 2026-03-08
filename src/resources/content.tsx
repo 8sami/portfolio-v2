@@ -12,7 +12,7 @@ import type {
   Work,
   Doom,
 } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { Button, Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Samiullah",
@@ -87,7 +87,7 @@ const social: Social = [
     name: "Instagram",
     icon: "instagram",
     link: "https://www.instagram.com/wotareudoing/",
-    essential: true,
+    essential: false,
   },
   {
     name: "Threads",
@@ -111,7 +111,7 @@ const home: Home = {
         <strong className="ml-4">Warning</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          This site knows where you are :)
+          I know where you are :)
         </Text>
       </Row>
     ),
@@ -135,11 +135,6 @@ const about: About = {
   calendar: {
     display: true,
     link: "https://cal.eu/samiullahjaved/30min",
-  },
-  now: {
-    display: false,
-    title: "Now",
-    description: [<>hi</>, <>hello</>, <>hii</>],
   },
   intro: {
     display: true,
@@ -640,7 +635,7 @@ const guestbook: Guestbook = {
 const goals: Goals = {
   path: "/goals",
   label: "Goals",
-  title: "Things I want to achieve",
+  title: "Goals I wish to achieve",
 };
 
 const work: Work = {

@@ -114,7 +114,7 @@ import {
 } from 'react-icons/fa6';
 import { DiVisualstudio } from 'react-icons/di';
 import { FaCut, FaHandHolding } from 'react-icons/fa';
-import { GiFishingHook } from 'react-icons/gi';
+import { GiBullseye, GiFishingHook } from 'react-icons/gi';
 
 export const iconLibrary: Record<string, IconType> = {
   signin: PiSignIn,
@@ -219,7 +219,7 @@ export const iconLibrary: Record<string, IconType> = {
   pythonanywhere: SiPythonanywhere,
   twilio: SiTwilio,
   pen: PiPenNib,
-  checkCircle: HiOutlineCheckCircle,
+  goal: GiBullseye,
   trash: HiOutlineTrash,
   edit: HiPencilSquare,
 };

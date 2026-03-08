@@ -14,7 +14,6 @@ import {
   doom,
   home,
   guestbook,
-  goals,
 } from '@/resources';
 import { ThemeToggle } from './ThemeToggle';
 import styles from './Header.module.scss';
@@ -64,7 +63,6 @@ export const Header = () => {
       { href: gallery.path, icon: 'gallery', label: gallery.label },
       { href: doom.path, icon: 'game', label: doom.label },
       { href: guestbook.path, icon: 'pen', label: guestbook.label },
-      { href: goals.path, icon: 'checkCircle', label: goals.label },
     ],
     [],
   );

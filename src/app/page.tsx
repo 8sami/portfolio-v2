@@ -49,7 +49,6 @@ export default function Home() {
               fillWidth
               horizontal="center"
               paddingBottom="32"
-              paddingLeft="12"
               delay={1.2}
             >
               <Badge

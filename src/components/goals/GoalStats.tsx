@@ -16,14 +16,13 @@ export const GoalStats: React.FC<GoalStatsProps> = ({ goals }) => {
   )[0];
 
   return (
-    <Row fillWidth horizontal="between" vertical="end" gap="16" style={{ flexWrap: "wrap" }}>
-      <Text variant="body-default-s" onBackground="neutral-weak">
-        {lastUpdated ? `last updated ${formatDate(lastUpdated.updated_at, true)}` : ""}
+    <Row paddingX="2" fillWidth horizontal="between" vertical="end" gap="8" style={{ flexWrap: "wrap" }}>
+      <Text variant="label-default-s" onBackground="neutral-weak">
+        {lastUpdated ? `Last updated ${formatDate(lastUpdated.updated_at, true)}` : ""}
       </Text>
       <Row gap="8" vertical="center">
-        <Heading variant="display-strong-xs">{accomplished}</Heading>
-        <Text variant="body-default-m" onBackground="neutral-weak">
-          accomplished (of {total} total)
+        <Text variant="label-default-s" onBackground="neutral-weak">
+          {accomplished} of {total} goals achieved
         </Text>
       </Row>
     </Row>

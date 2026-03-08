@@ -10,26 +10,29 @@ import {
   Text,
   Line,
   Switch,
-  Heading,
+  Dialog,
 } from "@once-ui-system/core";
 import type { Goal } from "@/app/api/goals/route";
 
 interface GoalFormProps {
   token: string;
   editingGoal: Goal | null;
+  isOpen: boolean;
   onSaved: (goal: Goal) => void;
-  onCancel: () => void;
+  onClose: () => void;
 }
 
 export const GoalForm: React.FC<GoalFormProps> = ({
   token,
   editingGoal,
+  isOpen,
   onSaved,
-  onCancel,
+  onClose,
 }) => {
   const [title, setTitle] = useState(editingGoal?.title ?? "");
   const [description, setDescription] = useState(editingGoal?.description ?? "");
   const [isAccomplished, setIsAccomplished] = useState(!!editingGoal?.accomplished_at);
+  const [isCurrent, setIsCurrent] = useState(editingGoal?.is_current ?? false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -37,8 +40,9 @@ export const GoalForm: React.FC<GoalFormProps> = ({
     setTitle(editingGoal?.title ?? "");
     setDescription(editingGoal?.description ?? "");
     setIsAccomplished(!!editingGoal?.accomplished_at);
+    setIsCurrent(editingGoal?.is_current ?? false);
     setError(null);
-  }, [editingGoal]);
+  }, [editingGoal, isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -59,7 +63,7 @@ export const GoalForm: React.FC<GoalFormProps> = ({
       description: description.trim() || null,
       accomplished_at,
       display_order: editingGoal?.display_order ?? 0,
-      is_current: editingGoal?.is_current ?? false,
+      is_current: isCurrent,
     };
 
     try {
@@ -90,69 +94,68 @@ export const GoalForm: React.FC<GoalFormProps> = ({
   };
 
   return (
-    <Column
-      fillWidth
-      border="neutral-alpha-weak"
-      radius="m"
-      padding="20"
-      gap="16"
-      background="surface"
+    <Dialog
+      isOpen={isOpen}
+      onClose={onClose}
+      title={editingGoal ? "Edit Goal" : "Add New Goal"}
+      maxWidth="xs"
+      style={{
+        height: "fit-content",
+        margin: "auto",
+      }}
     >
-      <Row horizontal="between" vertical="center">
-        <Heading variant="heading-strong-s">
-          {editingGoal ? "Edit Goal" : "Add New Goal"}
-        </Heading>
-        <Button size="s" variant="tertiary" onClick={onCancel}>
-          Cancel
-        </Button>
-      </Row>
-      <Line background="neutral-alpha-weak" />
-
-      <form onSubmit={handleSubmit}>
-        <Column fillWidth gap="12">
-          <Input
-            id="goal-title"
-            label="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Goal title"
-            disabled={isSubmitting}
-            aria-required
-          />
-          <Input
-            id="goal-description"
-            label="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Optional description…"
-            disabled={isSubmitting}
-          />
-          <Row gap="12" vertical="center" paddingTop="8" paddingBottom="8">
-            <Switch
-              isChecked={isAccomplished}
-              onToggle={() => setIsAccomplished((v) => !v)}
-              label="Accomplished"
+      <Column fillWidth gap="16" padding="16">
+        <form onSubmit={handleSubmit}>
+          <Column fillWidth gap="12">
+            <Input
+              id="goal-title"
+              label="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Goal title"
+              disabled={isSubmitting}
+              aria-required
             />
-          </Row>
+            <Input
+              id="goal-description"
+              label="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Optional description…"
+              disabled={isSubmitting}
+            />
+            <Row gap="16" wrap vertical="center" paddingTop="8" paddingBottom="8">
+              <Switch
+                isChecked={isAccomplished}
+                onToggle={() => setIsAccomplished((v) => !v)}
+                label="Accomplished"
+              />
+              <Switch
+                isChecked={isCurrent}
+                onToggle={() => setIsCurrent((v) => !v)}
+                label="In Progress"
+              />
+            </Row>
 
-          {error && (
-            <Text variant="body-default-s" onBackground="danger-weak">
-              {error}
-            </Text>
-          )}
+            {error && (
+              <Text variant="body-default-s" onBackground="danger-weak">
+                {error}
+              </Text>
+            )}
 
-          <Button
-            type="submit"
-            variant="primary"
-            size="m"
-            loading={isSubmitting}
-            disabled={isSubmitting || !title.trim()}
-            fillWidth
-          >
-            {editingGoal ? "Save Changes" : "Add Goal"}
-          </Button>
-        </Column>
-      </form>
-    </Column>
+            <Button
+              type="submit"
+              variant="primary"
+              size="m"
+              loading={isSubmitting}
+              disabled={isSubmitting || !title.trim()}
+              fillWidth
+            >
+              {editingGoal ? "Save Changes" : "Add Goal"}
+            </Button>
+          </Column>
+        </form>
+      </Column>
+    </Dialog>
   );
 };

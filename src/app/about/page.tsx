@@ -13,6 +13,7 @@ import {
   Row,
   List,
   ListItem,
+  Flex,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -90,7 +91,7 @@ export default function About() {
             xs={{ style: { top: "auto" } }}
             minWidth="160"
             paddingX="l"
-            paddingBottom="xl"
+            paddingBottom="40"
             gap="m"
             flex={3}
             horizontal="center"
@@ -116,8 +117,7 @@ export default function About() {
             id={about.intro.title}
             fillWidth
             minHeight="160"
-            vertical="center"
-            marginBottom="32"
+            marginBottom="24"
           >
             {about.calendar.display && (
               <Row
@@ -199,16 +199,31 @@ export default function About() {
                         </React.Fragment>
                       ),
                   )}
+                <React.Fragment>
+                  <Row s={{ hide: true }}>
+                    <Button prefixIcon="goal" size="s" variant="secondary" href="/goals">
+                      Goals
+                    </Button>
+                  </Row>
+                  <Row s={{ hide: false }}>
+                    <IconButton
+                      size="l"
+                      href="/goals"
+                      icon="rocket"
+                      variant="secondary"
+                    />
+                  </Row>
+                </React.Fragment>
               </Row>
             )}
           </Column>
 
           {about.intro.display && (
             <Column
-              textVariant="body-default-l"
+              textVariant="body-default-m"
               fillWidth
-              gap="s"
-              marginBottom="xl"
+              gap="8"
+              marginBottom="40"
             >
               {about.intro.description.map((paragraph, index) => (
                 <Text key={`intro-${index}`}>
@@ -494,28 +509,6 @@ export default function About() {
                   alt={about.gif.alt}
                   src={about.gif.src}
                 />
-              </Column>
-            </>
-          )}
-
-          {about.now.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.now.title}
-                variant="display-strong-s"
-                marginBottom="m"
-              >
-                {about.now.title}
-              </Heading>
-              <Column fillWidth gap="m" marginBottom="40">
-                <Column gap="8">
-                  {about.now.description.map((item, index) => (
-                    <Text key={index} variant="body-default-m" onBackground="neutral-weak">
-                      {item}
-                    </Text>
-                  ))}
-                </Column>
               </Column>
             </>
           )}
