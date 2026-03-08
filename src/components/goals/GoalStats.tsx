@@ -1,5 +1,5 @@
 import type React from "react";
-import { Row, Column, Text, Heading } from "@once-ui-system/core";
+import { Row, Text, Flex } from "@once-ui-system/core";
 import { formatDate } from "@/utils/formatDate";
 import type { Goal } from "@/app/api/goals/route";
 
@@ -16,7 +16,7 @@ export const GoalStats: React.FC<GoalStatsProps> = ({ goals }) => {
   )[0];
 
   return (
-    <Row paddingX="2" paddingTop="12" fillWidth horizontal="between" vertical="end" gap="8" style={{ flexWrap: "wrap" }}>
+    <Flex xs={{ horizontal: "center" }} paddingX="2" paddingTop="12" fillWidth horizontal="between" vertical="end" gap="8" style={{ flexWrap: "wrap" }}>
       <Text variant="label-default-s" onBackground="neutral-weak">
         {lastUpdated ? `Last updated ${formatDate(lastUpdated.updated_at, true)}` : ""}
       </Text>
@@ -25,6 +25,6 @@ export const GoalStats: React.FC<GoalStatsProps> = ({ goals }) => {
           {accomplished} of {total} goals achieved
         </Text>
       </Row>
-    </Row>
+    </Flex>
   );
 };
