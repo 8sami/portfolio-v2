@@ -10,6 +10,7 @@ export {
   gallery,
   doom,
   guestbook,
+  goals,
   seeker,
 } from "./content";
 

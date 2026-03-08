@@ -60,7 +60,7 @@ export default function NotFound() {
   }, [addToast]);
 
   return (
-    <Column fill center gap="l" padding="m">
+    <Column fill horizontal="center" gap="l" padding="m">
       <Column horizontal="center" gap="8">
         <Heading variant="display-strong-s">404 - Page Not Found</Heading>
         <Row vertical="center" gap="8">
@@ -149,11 +149,11 @@ export default function NotFound() {
         )}
       </Flex>
 
-      <Row horizontal="center" gap="8">
+      <Row horizontal="center" gap="8" wrap>
         <Button prefixIcon="hand" variant="primary" size="s" onClick={fetchMeme}>
           Give me another meme! 
         </Button>
-        <Button prefixIcon="home" href="/" variant="secondary" size="s">Take Me Home</Button>
+        <Button prefixIcon="home" href="/" variant="secondary" size="s">Home</Button>
       </Row>
     </Column>
   );

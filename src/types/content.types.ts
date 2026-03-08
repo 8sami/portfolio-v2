@@ -136,15 +136,6 @@ export interface About extends BasePageConfig {
     /** Description of the introduction section */
     description: React.ReactNode[];
   };
-  /** Now section */
-  now: {
-    /** Whether to display the now section */
-    display: boolean;
-    /** Title of the now section */
-    title: string;
-    /** Description of the now section */
-    description: React.ReactNode[];
-  };
   /** Work experience section */
   work: {
     /** Whether to display work experience */
@@ -262,7 +253,20 @@ export interface About extends BasePageConfig {
     src: string;
     /** Alt text for the gif */
     alt: string;
-  }
+  };
+  /** Goals section configuration */
+  goals: {
+    /** Whether to display the goals section */
+    display: boolean;
+    /** Title for the goals section */
+    title: string;
+    /** Description for the goals section */
+    description: string;
+    /** Call to action text for the goals section */
+    label: string;
+    /** Link for the goals section */
+    link: string;
+  };
 }
 
 /**
@@ -271,6 +275,16 @@ export interface About extends BasePageConfig {
  */
 export interface Guestbook extends Omit<BasePageConfig, 'description'> {
   /** Title of the guestbook section */
+  title: string;
+  description?: string;
+};
+
+/**
+ * Goals page configuration.
+ * @description Configuration for the Goals page.
+ */
+export interface Goals extends Omit<BasePageConfig, 'description'> {
+  /** Title of the goals page */
   title: string;
   description?: string;
 };

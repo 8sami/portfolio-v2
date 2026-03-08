@@ -1,7 +1,7 @@
 "use client";
 
 import type { IconName } from "@/resources/icons";
-import { Column, Icon, Row, Text } from "@once-ui-system/core";
+import { Badge, Column, Icon, Row, Text } from "@once-ui-system/core";
 
 interface SectionCardProps {
   title: string;
@@ -28,7 +28,7 @@ export function SectionCard({
       background="surface"
       data-border="conservative"
     >
-      <Row vertical="center" horizontal="between">
+      <Row vertical="start" horizontal="between">
         <Row vertical="center" gap="4">
           {icon && (
             <Icon name={icon} size="l" onBackground="neutral-strong" marginRight="4" />
@@ -42,7 +42,7 @@ export function SectionCard({
           </Text>
         </Row>
         {tag && (
-          <Row
+          <Badge
             paddingX="8"
             paddingY="2"
             radius="xs"
@@ -55,7 +55,7 @@ export function SectionCard({
             >
               {tag.label}
             </Text>
-          </Row>
+          </Badge>
         )}
       </Row>
       <Column fillWidth gap="12">

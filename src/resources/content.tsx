@@ -2,6 +2,7 @@ import type {
   About,
   Blog,
   Gallery,
+  Goals,
   Guestbook,
   Home,
   Newsletter,
@@ -11,7 +12,7 @@ import type {
   Work,
   Doom,
 } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { Button, Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Samiullah",
@@ -86,7 +87,7 @@ const social: Social = [
     name: "Instagram",
     icon: "instagram",
     link: "https://www.instagram.com/wotareudoing/",
-    essential: true,
+    essential: false,
   },
   {
     name: "Threads",
@@ -110,7 +111,7 @@ const home: Home = {
         <strong className="ml-4">Warning</strong>
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          This site knows where you are :)
+          I know where you are :)
         </Text>
       </Row>
     ),
@@ -134,11 +135,6 @@ const about: About = {
   calendar: {
     display: true,
     link: "https://cal.eu/samiullahjaved/30min",
-  },
-  now: {
-    display: false,
-    title: "Now",
-    description: [<>hi</>, <>hello</>, <>hii</>],
   },
   intro: {
     display: true,
@@ -619,6 +615,13 @@ const about: About = {
     src: "/images/vangogh.gif",
     alt: "Van Gogh",
   },
+  goals: {
+    display: true,
+    title: "Personal Goals",
+    description: "A short list of ambitious goals that I am striving to achieve in my short life :) ",
+    label: "See the list",
+    link: "/goals",
+  },
 };
 
 const blog: Blog = {
@@ -634,6 +637,12 @@ const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
   title: "Drop a nice comment and say hi! 👋",
+};
+
+const goals: Goals = {
+  path: "/goals",
+  label: "Goals",
+  title: "Goals I wish to achieve",
 };
 
 const work: Work = {
@@ -846,4 +855,4 @@ const seeker: Seeker = {
   },
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, guestbook, doom, seeker };
+export { person, social, newsletter, home, about, blog, work, gallery, guestbook, goals, doom, seeker };
