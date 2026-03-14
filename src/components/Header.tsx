@@ -106,9 +106,8 @@ export const Header = () => {
           fillWidth
           vertical='center'
           textVariant='body-default-s'
-	  s={{ hide: true }}
         >
-          {display.location && <Row>{person.location}</Row>}
+          {display.location && <Row s={{ hide: true }} >{person.location}</Row>}
         </Row>
 
         <Row fillWidth horizontal='center'>
