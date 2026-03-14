@@ -59,8 +59,6 @@ export const Header = () => {
       { href: home.path, icon: 'home', label: home.label, isRoot: true },
       { href: about.path, icon: 'person', label: about.label },
       { href: work.path, icon: 'grid', label: work.label },
-      { href: blog.path, icon: 'book', label: blog.label },
-      { href: gallery.path, icon: 'gallery', label: gallery.label },
       { href: doom.path, icon: 'game', label: doom.label },
       { href: guestbook.path, icon: 'pen', label: guestbook.label },
     ],
@@ -108,8 +106,9 @@ export const Header = () => {
           fillWidth
           vertical='center'
           textVariant='body-default-s'
+	  s={{ hide: true }}
         >
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+          {display.location && <Row>{person.location}</Row>}
         </Row>
 
         <Row fillWidth horizontal='center'>
