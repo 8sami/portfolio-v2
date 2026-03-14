@@ -102,7 +102,7 @@ export default function Home() {
 
       {/* Randomized Section */}
       <RevealFx translateY="16" delay={0.6} fillWidth>
-        <Column fillWidth gap="48" marginBottom="l" horizontal="center">
+        <Column fillWidth gap="32" marginBottom="l" horizontal="center">
           {routes["/blog"] && (
             <Column fillWidth horizontal="center" gap="32" marginTop="40">
               {/* Heading and Posts on separate lines, centered */}

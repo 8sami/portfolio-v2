@@ -59,6 +59,7 @@ export const Header = () => {
       { href: home.path, icon: 'home', label: home.label, isRoot: true },
       { href: about.path, icon: 'person', label: about.label },
       { href: work.path, icon: 'grid', label: work.label },
+      { href: blog.path, icon: 'book', label: blog.label },
       { href: doom.path, icon: 'game', label: doom.label },
       { href: guestbook.path, icon: 'pen', label: guestbook.label },
     ],
