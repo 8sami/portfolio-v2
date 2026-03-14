@@ -1,4 +1,4 @@
-import { getPosts } from "@/utils/utils";
+import { getPosts, shuffleArray } from "@/utils/utils";
 import { Grid } from "@once-ui-system/core";
 import Post from "./Post";
 
@@ -8,6 +8,8 @@ interface PostsProps {
   thumbnail?: boolean;
   direction?: "row" | "column";
   exclude?: string[];
+  randomize?: boolean;
+  limit?: number;
 }
 
 export function Posts({
@@ -16,21 +18,33 @@ export function Posts({
   thumbnail = false,
   exclude = [],
   direction,
+  randomize,
+  limit,
 }: PostsProps) {
   let allBlogs = getPosts(["src", "app", "blog", "posts"]);
 
-  // Exclude by slug (exact match)
+  // Exclude by slug
   if (exclude.length) {
     allBlogs = allBlogs.filter((post) => !exclude.includes(post.slug));
   }
 
-  const sortedBlogs = allBlogs.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
+  let displayedBlogs;
 
-  const displayedBlogs = range
-    ? sortedBlogs.slice(range[0] - 1, range.length === 2 ? range[1] : sortedBlogs.length)
-    : sortedBlogs;
+  if (randomize) {
+    // Use the utility you just exported
+    const shuffled = shuffleArray(allBlogs);
+    displayedBlogs = limit ? shuffled.slice(0, limit) : shuffled;
+  } else {
+    // Standard date sorting
+    const sortedBlogs = allBlogs.sort((a, b) => {
+      return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
+    });
+
+    // Standard range slicing
+    displayedBlogs = range
+      ? sortedBlogs.slice(range[0] - 1, range.length === 2 ? range[1] : sortedBlogs.length)
+      : sortedBlogs;
+  }
 
   return (
     <>

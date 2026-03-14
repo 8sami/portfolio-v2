@@ -9,7 +9,6 @@ import {
   Row,
   Schema,
   Meta,
-  Line,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
@@ -100,31 +99,30 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
-      {routes["/blog"] && (
-        <Column fillWidth gap="24" marginBottom="l">
-          <Row fillWidth paddingRight="64">
-            <Line maxWidth={48} />
-          </Row>
-          <Row fillWidth gap="24" marginTop="40" s={{ direction: "column" }}>
-            <Row flex={1} paddingLeft="l" paddingTop="24">
-              <Heading as="h2" variant="display-strong-xs" wrap="balance">
-                Latest from the blog
+
+      {/* Randomized Section */}
+      <RevealFx translateY="16" delay={0.6} fillWidth>
+        <Column fillWidth gap="48" marginBottom="l" horizontal="center">
+          {routes["/blog"] && (
+            <Column fillWidth horizontal="center" gap="32" marginTop="40">
+              {/* Heading and Posts on separate lines, centered */}
+              <Heading as="h2" variant="display-strong-xs" wrap="balance" align="center">
+                Randomly picked, just for you
               </Heading>
-            </Row>
-            <Row flex={3} paddingX="20">
-              <Posts range={[1, 2]} columns="2" />
-            </Row>
-          </Row>
-          <Row fillWidth paddingLeft="64" horizontal="end">
-            <Line maxWidth={48} />
-          </Row>
+              <Column fillWidth maxWidth="s">
+                <Posts randomize limit={2} columns="2" thumbnail />
+              </Column>
+            </Column>
+          )}
+          
+          {/* Projects width and spacing synced with Posts */}
+          <Column fillWidth maxWidth="s" gap="32">
+            <Projects randomize limit={3} />
+          </Column>
+          
+          <Mailchimp />
         </Column>
-      )}
-      <Projects range={[2]} />
-      <Mailchimp />
+      </RevealFx>
     </Column>
   );
 }

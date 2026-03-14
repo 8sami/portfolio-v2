@@ -22,6 +22,7 @@
 
 .navContainer {
     transition: transform 0.2s ease-in-out;
+    margin-left: -6px;
 
     @media (max-width: 768px) {
         transform: scale(1.35);
