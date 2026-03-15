@@ -61,7 +61,7 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
             {post.metadata.title}
           </Text>
           {post.metadata.summary && (
-            <Text variant="body-default-s" onBackground="neutral-medium">
+            <Text variant="body-default-s" wrap="balance" onBackground="neutral-medium">
               {post.metadata.summary}
             </Text>
           )}
