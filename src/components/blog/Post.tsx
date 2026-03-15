@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, Column, Media, Row, Avatar, Text, Flex } from "@once-ui-system/core";
+import { Card, Heading, Column, Media, Row, Avatar, Text, Flex } from "@once-ui-system/core";
 import { formatDate } from "@/utils/formatDate";
 import { person } from "@/resources";
 
@@ -45,9 +45,9 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
         style={{ flex: direction === "row" ? '1.5' : 'none' }}
       >
         <Column gap="12">
-          <Text variant="heading-strong-xl" wrap="balance">
+          <Heading as="h2" variant="heading-strong-xl" wrap="balance">
             {post.metadata.title}
-          </Text>
+          </Heading>
           {post.metadata.summary && (
             <Text variant="body-default-s" wrap="balance" onBackground="neutral-medium">
               {post.metadata.summary}
