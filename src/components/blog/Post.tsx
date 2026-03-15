@@ -44,18 +44,6 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
         gap="16" 
         style={{ flex: direction === "row" ? '1.5' : 'none' }}
       >
-        <Row gap="12" vertical="center">
-          <Row vertical="center" gap="8">
-            <Avatar src={person.avatar} size="s" />
-            <Text variant="body-default-m" onBackground="neutral-strong">
-              {person.name}
-            </Text>
-          </Row>
-          <Text variant="label-default-xs" onBackground="neutral-weak">
-            {formatDate(post.metadata.publishedAt, false)}
-          </Text>
-        </Row>
-
         <Column gap="12">
           <Text variant="heading-strong-xl" wrap="balance">
             {post.metadata.title}

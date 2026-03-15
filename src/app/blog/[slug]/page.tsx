@@ -97,7 +97,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             <SmartLink href="/blog">
               <Text variant="label-strong-m">Blog</Text>
             </SmartLink>
-            <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
+            <Text variant="label-default-xs" onBackground="neutral-weak" marginBottom="12">
               {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
             </Text>
             <Heading variant="display-strong-m">{post.metadata.title}</Heading>
@@ -114,8 +114,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           </Column>
           <Row marginBottom="32" horizontal="center">
             <Row gap="16" vertical="center">
-              <Avatar size="s" src={person.avatar} />
-              <Text variant="label-default-m" onBackground="brand-weak">
+              <Text variant="body-default-m" onBackground="brand-weak">
                 {person.name}
               </Text>
             </Row>
