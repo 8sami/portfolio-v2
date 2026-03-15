@@ -58,12 +58,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   return (
     <Column
       fillWidth
-      border="neutral-alpha-weak"
-      radius="m"
       paddingX="20"
       style={{ paddingTop: "14px", paddingBottom: "14px" }}
       gap="8"
-      background="surface"
     >
       {/* Top row */}
       <Row fillWidth horizontal="between" vertical="start" gap="12">
