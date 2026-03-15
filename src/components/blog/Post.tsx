@@ -22,6 +22,7 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
       background="transparent"
       radius="l"
       gap="24"
+      paddingX="20"
     >
       {post.metadata.image && thumbnail && (
         <Flex fillWidth style={{ flex: direction === "row" ? '1' : 'none' }}>
@@ -55,7 +56,7 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
           </Text>
         </Row>
 
-        <Column gap="8">
+        <Column gap="12">
           <Text variant="heading-strong-xl" wrap="balance">
             {post.metadata.title}
           </Text>
