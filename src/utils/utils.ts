@@ -23,18 +23,17 @@ type Metadata = {
 
 import { notFound } from "next/navigation";
 
-/**
- * Fisher-Yates Shuffle Algorithm
- * Perfectly unbiased and runs in O(n) time.
- */
-export function shuffleArray<T>(array: T[]): T[] {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
+export const getRandom = <T>(array: T[], limit?: number): T[] => {
+  const shuffled = [...array];
+  const n = shuffled.length;
+
+  for (let i = n - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  return newArray;
-}
+
+  return limit ? shuffled.slice(0, limit) : shuffled;
+};
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {

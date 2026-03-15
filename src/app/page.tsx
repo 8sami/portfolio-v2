@@ -100,7 +100,6 @@ export default function Home() {
         </Column>
       </Column>
 
-      {/* Randomized Section */}
       <RevealFx translateY="16" delay={0.6} fillWidth>
         <Column fillWidth gap="32" marginBottom="l" horizontal="center">
           {routes["/blog"] && (
@@ -109,15 +108,15 @@ export default function Home() {
               <Heading as="h2" variant="display-strong-xs" wrap="balance" align="center">
                 Randomly picked, just for you
               </Heading>
-              <Column fillWidth maxWidth="s">
-                <Posts randomize limit={2} columns="2" thumbnail />
+              <Column fillWidth maxWidth="s" paddingX="l">
+                <Posts limit={2} randomize columns="1" thumbnail />
               </Column>
             </Column>
           )}
           
           {/* Projects width and spacing synced with Posts */}
           <Column fillWidth maxWidth="s" gap="32">
-            <Projects randomize limit={3} />
+            <Projects limit={2} randomize/>
           </Column>
           
           <Mailchimp />
