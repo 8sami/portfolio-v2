@@ -58,7 +58,6 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   return (
     <Column
       fillWidth
-      paddingX="20"
       style={{ paddingTop: "14px", paddingBottom: "14px" }}
       gap="8"
     >
