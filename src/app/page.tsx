@@ -100,7 +100,7 @@ export default function Home() {
         </Column>
       </Column>
 
-      <RevealFx translateY="16" delay={0.6} fillWidth>
+      <RevealFx translateY="12" delay={0.8} fillWidth>
         <Column fillWidth gap="32" marginBottom="l" horizontal="center">
           {routes["/blog"] && (
             <Column fillWidth horizontal="center" gap="32" marginTop="40">
@@ -109,7 +109,7 @@ export default function Home() {
                 Randomly picked, just for you
               </Heading>
               <Column fillWidth maxWidth="s" paddingX="l">
-                <Posts limit={2} randomize columns="1" thumbnail />
+                <Posts limit={2} randomize thumbnail />
               </Column>
             </Column>
           )}

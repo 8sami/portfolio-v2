@@ -45,21 +45,22 @@ export default function Post({ post, thumbnail, direction = "column" }: PostProp
         style={{ flex: direction === "row" ? '1.5' : 'none' }}
       >
         <Column gap="12">
-          <Heading as="h2" variant="heading-strong-xl" wrap="balance">
-            {post.metadata.title}
-          </Heading>
+          <Row>
+            <Heading as="h2" variant="heading-strong-xl" wrap="balance">
+              {post.metadata.title}
+            </Heading>
+            {post.metadata.tag && (
+              <Text style={{ marginLeft: "auto" }} variant="label-strong-xs" onBackground="neutral-weak">
+                {post.metadata.tag}
+              </Text>
+            )}
+          </Row>
           {post.metadata.summary && (
             <Text variant="body-default-s" wrap="balance" onBackground="neutral-medium">
               {post.metadata.summary}
             </Text>
           )}
         </Column>
-
-        {post.metadata.tag && (
-          <Text variant="label-strong-xs" onBackground="neutral-weak">
-            {post.metadata.tag}
-          </Text>
-        )}
       </Column>
     </Card>
   );
