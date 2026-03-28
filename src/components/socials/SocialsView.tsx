@@ -39,9 +39,9 @@ export default async function SocialsView() {
   return (
     <Flex direction="column" horizontal="center" gap="32" fillWidth>
       {/* Instagram Grid */}
-      <Column style={{ maxWidth: "850px" }} horizontal="center">
+      <Column style={{ maxWidth: "780px" }} horizontal="center">
       {posts.length > 0 ? (
-        <MasonryGrid columns={3} m={{ columns: 2 }} s={{ columns: 1 }} gap="16">
+        <MasonryGrid columns={3} m={{ columns: 2 }} gap="16">
           {posts.map((post) => (
             <Row maxWidth={24} fillWidth key={post.id}>
               <Card
