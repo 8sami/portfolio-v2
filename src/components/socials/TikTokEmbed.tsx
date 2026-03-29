@@ -1,15 +1,17 @@
-"use client";
-
 import Script from "next/script";
 import { SmartLink, Text } from "@once-ui-system/core";
+import { social } from "@/resources";
+
+const TIKTOK = social.find((s) => s.name === "Tiktok");
+const TIKTOKHANDLE = TIKTOK?.link.split("@")[1];
 
 export default function TikTokEmbed() {
   return (
     <>
     <blockquote
       className="tiktok-embed"
-      cite="https://www.tiktok.com/@huzaifa.gguf"
-      data-unique-id="huzaifa.gguf"
+      cite={TIKTOK?.link}
+      data-unique-id={TIKTOKHANDLE}
       data-embed-from="embed_page"
       data-embed-type="creator"
       style={{
@@ -22,11 +24,11 @@ export default function TikTokEmbed() {
       }}
     >
       <SmartLink
-        href="https://www.tiktok.com/@huzaifa.gguf?refer=creator_embed"
+        href="?refer=creator_embed"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Text variant="label-default-s" onBackground="neutral-weak">@huzaifa.gguf</Text>
+        <Text variant="label-default-s" onBackground="neutral-weak">@{TIKTOKHANDLE}</Text>
       </SmartLink>
     </blockquote>
     <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />

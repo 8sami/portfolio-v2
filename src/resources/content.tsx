@@ -25,25 +25,25 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/huzaifakhan04",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/huzaifakhan04/",
+    essential: true,
+  },
+  {
+    name: "Tiktok",
+    icon: "tiktok",
+    link: "https://www.tiktok.com/@huzaifa.gguf",
     essential: true,
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.instagram.com/huzaifa.gguf/",
     essential: true,
   },
   {
