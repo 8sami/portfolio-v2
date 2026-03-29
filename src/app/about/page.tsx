@@ -16,6 +16,7 @@ import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
+import Image from "next/image";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -305,8 +306,11 @@ export default function About() {
                     {skill.tags && skill.tags.length > 0 && (
                       <Row wrap gap="8" paddingTop="8">
                         {skill.tags.map((tag, tagIndex) => (
-                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
-                            {tag.name}
+                          <Tag key={`${skill.title}-${tagIndex}`} size="l">
+                            <Row gap="4" center>
+                              {tag.icon && <Image alt="logo" src={tag.icon} width={20} height={20} />}
+                              {tag.name}
+                            </Row>
                           </Tag>
                         ))}
                       </Row>

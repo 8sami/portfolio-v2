@@ -151,7 +151,7 @@ const about: About = {
         <br />
         <br />
         I'm a Data Science grad from FAST-NUCES, 5x Dean's List, 2x top of class. I've been
-        recognised by Google, Huawei, Hult Prize Foundation, Vryo, Allied Bank Limited, and Zindigi.
+        recognised by Google, Huawei, Hult Prize Foundation, Vyro, Allied Bank Limited, and Zindigi.
         None of those things are what I lead with, because credentials are the last thing I think
         about when I'm deciding whether to build something.
         <br />
@@ -207,7 +207,7 @@ const about: About = {
         ],
         images: [
           {
-            src: "/images/projects/cattleos/cover.jpg",
+            src: "/images/about/cattleos.png",
             alt: "CattleOS – Voice-first AI for cattle management",
             width: 16,
             height: 9,
@@ -237,7 +237,7 @@ const about: About = {
         ],
         images: [
           {
-            src: "/images/projects/cmoonthego/cover.jpg",
+            src: "/images/about/cmoonthego.png",
             alt: "CMOontheGO – Multi-agent AI for marketing strategy",
             width: 16,
             height: 9,
@@ -317,7 +317,7 @@ const about: About = {
         ],
         images: [
           {
-            src: "/images/projects/fastrack/cover.jpg",
+            src: "/images/about/fastrack.png",
             alt: "Fastrack – Agentic AI Hiring Manager",
             width: 16,
             height: 9,
@@ -347,7 +347,7 @@ const about: About = {
         ],
         images: [
           {
-            src: "/images/projects/mymentro/cover.jpg",
+            src: "/images/about/mymentro.png",
             alt: "MyMentro – AI Career Intelligence",
             width: 16,
             height: 9,
@@ -355,7 +355,7 @@ const about: About = {
         ],
       },
       {
-        company: "Knowledge Discovery & Data Science Lab, FAST-NUCES",
+        company: "Knowledge Discovery & DS Lab, FAST-NUCES",
         timeframe: "May 2024 – Mar 2025",
         role: "Research Assistant",
         achievements: [
@@ -386,7 +386,7 @@ const about: About = {
             height: 9,
           },
           {
-            src: "https://www.youtube.com/watch?v=2EHemNhCX64",
+            src: "/images/about/gdg-apac.png",
             alt: "Vocalink – Google APAC Top 10, 2025",
             width: 16,
             height: 9,
@@ -426,7 +426,7 @@ const about: About = {
     title: "Education",
     institutions: [
       {
-        name: "National University of Computer and Emerging Sciences (FAST-NUCES)",
+        name: "FAST-NUCES",
         description: (
           <>
             B.S. in Data Science. Dean's List 5 times, top of class twice. I also spent four
@@ -523,31 +523,17 @@ const about: About = {
             🎓 <strong>5x Dean's List of Honours</strong> — FAST-NUCES
             <br />
             <br />
-            Recognised by: <strong>Google · Huawei · Hult Prize Foundation · Vryo · Allied Bank
+            Recognised by: <strong>Google · Huawei · Hult Prize Foundation · Vyro · Allied Bank
             Limited · Zindigi</strong>
           </>
         ),
         tags: [
-          { name: "Google" },
-          { name: "Huawei" },
-          { name: "Hult Prize" },
-          { name: "Vryo" },
-          { name: "Allied Bank" },
-          { name: "Zindigi" },
-        ],
-        images: [
-          {
-            src: "/images/awards/google-apac.jpg",
-            alt: "Google APAC Solution Challenge 2025 – Top 10",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/awards/hackathon.jpg",
-            alt: "Hackathon Win",
-            width: 16,
-            height: 9,
-          },
+          { name: "Google", icon: "/images/logos/google.png" },
+          { name: "Huawei", icon: "/images/logos/huawei.png" },
+          { name: "Hult Prize", icon: "/images/logos/hultprize.png" },
+          { name: "Vyro", icon: "/images/logos/vyro.png" },
+          { name: "Allied Bank", icon: "/images/logos/alliedbank.png" },
+          { name: "Zindigi", icon: "/images/logos/zindigi.png" },
         ],
       },
     ],
