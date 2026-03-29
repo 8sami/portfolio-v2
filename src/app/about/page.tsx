@@ -72,7 +72,7 @@ export default function About() {
           position="fixed"
           paddingLeft="24"
           gap="32"
-          s={{ hide: true }}
+          l={{ hide: true }}
         >
           <TableOfContents structure={structure} about={about} />
         </Column>
