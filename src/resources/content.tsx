@@ -1,5 +1,5 @@
 import type { About, Blog, Socials, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text, SmartLink } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Huzaifa",
@@ -88,13 +88,9 @@ const home: Home = {
         Avirso
       </Text>{" "}
       (SF) — and yes, I'm also on{" "}
-      <a href="https://www.instagram.com/huzaifa.gguf/" target="_blank" rel="noopener noreferrer">
-        Instagram
-      </a>{" "}
+      <SmartLink href="https://www.instagram.com/huzaifa.gguf/">Instagram</SmartLink>{" "}
       &{" "}
-      <a href="https://www.tiktok.com/@huzaifa.gguf" target="_blank" rel="noopener noreferrer">
-        TikTok
-      </a>{" "}
+      <SmartLink href="https://www.tiktok.com/@huzaifa.gguf">TikTok</SmartLink>{" "}
       if you prefer your builders unfiltered.
     </>
   ),
@@ -129,9 +125,7 @@ const about: About = {
         <br />
         <br />
         The clearest example:{" "}
-        <a href="https://fastrack.work" target="_blank" rel="noopener noreferrer">
-          Fastrack
-        </a>
+        <SmartLink href="https://fastrack.work">Fastrack</SmartLink>
         , my agentic AI hiring manager. We had paying customers before we had a product. Closed 10+
         B2B deals in four months. Funded the runway by winning hackathons. It was completely
         chaotic and it worked exactly as well as it should have.
@@ -143,13 +137,9 @@ const about: About = {
         <strong>Avirso</strong>, a boutique management consultancy in San Francisco, helping Fortune
         100 firms figure out their AI strategy before their competitors do. Alongside that, Fractional
         CTO at{" "}
-        <a href="https://cmoonthego.ai" target="_blank" rel="noopener noreferrer">
-          CMOontheGO
-        </a>{" "}
+        <SmartLink href="https://cmoonthego.ai">CMOontheGO</SmartLink>{" "}
         and consulting software engineer at{" "}
-        <a href="https://cattleos.com" target="_blank" rel="noopener noreferrer">
-          CattleOS
-        </a>{" "}
+        <SmartLink href="https://cattleos.com">CattleOS</SmartLink>{" "}
         — an Antler-backed, $5M valuation voice-AI operating system for ranchers. Yes, that's real.
         It's actually one of the more interesting technical problems I've worked on.
         <br />
@@ -167,13 +157,9 @@ const about: About = {
         <br />
         <br />
         Outside all of this: I post about tech, startups, and the less polished stuff on{" "}
-        <a href="https://www.instagram.com/huzaifa.gguf/" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>{" "}
+        <SmartLink href="https://www.instagram.com/huzaifa.gguf/">Instagram</SmartLink>{" "}
         and{" "}
-        <a href="https://www.tiktok.com/@huzaifa.gguf" target="_blank" rel="noopener noreferrer">
-          TikTok
-        </a>{" "}
+        <SmartLink href="https://www.tiktok.com/@huzaifa.gguf">TikTok</SmartLink>{" "}
         (@huzaifa.gguf). I don't like chocolate, I think Stranger Things is overrated, and pineapple
         belongs on pizza — I will not be taking questions.
       </>
@@ -206,9 +192,7 @@ const about: About = {
         achievements: [
           <>
             The pitch for{" "}
-            <a href="https://cattleos.com" target="_blank" rel="noopener noreferrer">
-              CattleOS
-            </a>
+            <SmartLink href="https://cattleos.com">CattleOS</SmartLink>
             : ranchers and feedlot operators are still running one of the world's largest industries
             on notebooks and spreadsheets. You're out in a field, your hands aren't free, and you
             need to log what just happened to an animal in real-time. CattleOS solves this with
@@ -238,9 +222,7 @@ const about: About = {
           <>
             Most founders and SMBs can't afford a CMO. They either get no strategic marketing or
             they pay agency fees for generic output.{" "}
-            <a href="https://cmoonthego.ai" target="_blank" rel="noopener noreferrer">
-              CMOontheGO
-            </a>{" "}
+            <SmartLink href="https://cmoonthego.ai">CMOontheGO</SmartLink>{" "}
             is the answer to that problem: a multi-agent AI that runs marketing strategy, planning,
             and real-time optimisation — delivering personalised, actionable audits at about 1/10th
             the cost of a human CMO. It's not a chatbot. It's a system that actually thinks through
@@ -315,9 +297,7 @@ const about: About = {
           <>
             Recruiting is broken in a very specific way: the best candidates often lose to people
             who are better at formatting resumes than doing the job.{" "}
-            <a href="https://fastrack.work" target="_blank" rel="noopener noreferrer">
-              Fastrack
-            </a>{" "}
+            <SmartLink href="https://fastrack.work">Fastrack</SmartLink>{" "}
             was built to fix that. It's the first agentic AI hiring manager — it handles sourcing,
             shortlisting, outreach (email and automated calls), scheduling, and ATS tracking
             end-to-end. Recruiters stop drowning in inboxes. They start talking to people worth
@@ -352,9 +332,7 @@ const about: About = {
           <>
             Career counselling for most students is one underfunded advisor, one brief meeting, and
             a generic recommendation to "follow your passion."{"  "}
-            <a href="https://app.mymentro.ai" target="_blank" rel="noopener noreferrer">
-              MyMentro
-            </a>{" "}
+            <SmartLink href="https://app.mymentro.ai">MyMentro</SmartLink>
             is what that should look like instead: an AI career coach that layers 10+ established
             frameworks — SWOT, GROW, PESTEL, RIASEC, and others — to generate genuinely
             personalised academic and employment roadmaps. Not suggestions. Actual structured
@@ -402,7 +380,13 @@ const about: About = {
         ],
         images: [
           {
-            src: "/images/projects/vocalink/cover.jpg",
+            src: "https://www.youtube.com/watch?v=2EHemNhCX64",
+            alt: "Vocalink – Youtube Video",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "https://www.youtube.com/watch?v=2EHemNhCX64",
             alt: "Vocalink – Google APAC Top 10, 2025",
             width: 16,
             height: 9,
@@ -423,13 +407,9 @@ const about: About = {
           </>,
           <>
             Also spent significant time on{" "}
-            <a
-              href="https://github.com/vibing-ai/marvel-ai-backend"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <SmartLink href="https://github.com/vibing-ai/marvel-ai-backend">
               Marvel AI
-            </a>
+            </SmartLink>
             , an open-source AI teaching assistant that grew to 1,000+ contributors. That's a
             different kind of engineering problem: you're not just building features, you're
             maintaining a system that hundreds of people are actively trying to extend in different
