@@ -355,7 +355,7 @@ const about: About = {
         ],
       },
       {
-        company: "Knowledge Discovery & DS Lab, FAST-NUCES",
+        company: "Knowledge Discovery & DS Lab",
         timeframe: "May 2024 – Mar 2025",
         role: "Research Assistant",
         achievements: [
