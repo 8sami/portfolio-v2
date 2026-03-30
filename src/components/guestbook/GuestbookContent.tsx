@@ -88,7 +88,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   };
 
   return (
-    <Column maxWidth="s" fillWidth paddingTop="24">
+    <Column maxWidth="m" fillWidth paddingTop="24">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -132,7 +132,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
           </Column>
 
           {/* Comments List */}
-          <Column fillWidth maxWidth="m" gap="0">
+          <Column fillWidth maxWidth="xs" gap="0">
             <CommentList comments={comments} isLoading={isPosting} />
           </Column>
         </Column>
