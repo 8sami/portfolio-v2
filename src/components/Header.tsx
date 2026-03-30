@@ -143,7 +143,7 @@ export const Header = () => {
             gap="20"
           >
             <Flex style={{ fontVariantNumeric: "tabular-nums" }} s={{ hide: true }}>
-              {display.time && <TimeDisplay timeZone={person.location} />}
+              {display.time && <TimeDisplay timeZone={person.timezone} />}
             </Flex>
           </Flex>
         </Flex>

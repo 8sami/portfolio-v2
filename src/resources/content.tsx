@@ -8,7 +8,8 @@ const person: Person = {
   role: "AI Engineer & Founder",
   avatar: "/images/avatar.png",
   email: "huzaifakhan04@gmail.com",
-  location: "Asia/Karachi",
+  timezone: "Asia/Karachi",
+  location: "Islamabad, Pakistan",
   languages: ["English", "Urdu", "Punjabi"],
 };
 
@@ -109,7 +110,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://linktr.ee/huzaifakhan04",
   },
   intro: {
