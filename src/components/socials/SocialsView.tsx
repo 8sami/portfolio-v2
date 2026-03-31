@@ -10,6 +10,12 @@ type BeholdPost = {
   prunedCaption?: string;
   thumbnailUrl?: string;
   timestamp?: string;
+  sizes?: {
+    small?: { width: number; height: number };
+    medium?: { width: number; height: number };
+    large?: { width: number; height: number };
+    full?: { width: number; height: number };
+  };
 };
 
 export default async function SocialsView() {
@@ -62,6 +68,7 @@ export default async function SocialsView() {
                   fillWidth
                   radius="l"
                   alt={post.caption?.substring(0, 50) || "Instagram post"}
+                  aspectRatio={post.sizes?.full?.width && post.sizes?.full?.height ? `${post.sizes.full.width}/${post.sizes.full.height}` : "4/5"}
                   src={
                     post.mediaType === "VIDEO"
                       ? post.thumbnailUrl || post.mediaUrl

@@ -8,7 +8,9 @@ const TIKTOKHANDLE = TIKTOK?.link.split("@")[1];
 export default function TikTokEmbed() {
   return (
     <>
-    <blockquote
+      <link rel="preconnect" href="https://www.tiktok.com" />
+      <link rel="dns-prefetch" href="https://www.tiktok.com" />
+      <blockquote
       className="tiktok-embed"
       cite={TIKTOK?.link}
       data-unique-id={TIKTOKHANDLE}
@@ -31,7 +33,7 @@ export default function TikTokEmbed() {
         <Text variant="label-default-s" onBackground="neutral-weak">@{TIKTOKHANDLE}</Text>
       </SmartLink>
     </blockquote>
-    <Script src="https://www.tiktok.com/embed.js" strategy="lazyOnload" />
+    <Script src="https://www.tiktok.com/embed.js" strategy="afterInteractive" />
     </>
   );
 }
