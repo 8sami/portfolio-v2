@@ -636,7 +636,7 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: <Row gap="12" center>Don't be shy, say hi! <img src="/images/pikachu.gif" alt="Pikachu waving hi" style={{ height: "4rem", marginTop: "-8px", marginRight: "-20px" }} /></Row>
+  title: <Row gap="12" center>Don't be shy, say hiii! <img src="/images/pikachu.gif" alt="Pikachu waving hi" style={{ height: "4rem", marginTop: "-8px", marginRight: "-20px" }} /></Row>
 };
 
 const goals: Goals = {
