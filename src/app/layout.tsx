@@ -103,6 +103,32 @@ export default async function RootLayout({
             `,
           }}
         />
+        <script
+          id="favicon-anim"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var frames = ${JSON.stringify(
+                  Array.from({ length: 21 }, (_, i) =>
+                    `/images/cat/frames/frame_${String(i).padStart(2, "0")}.png`
+                  )
+                )};
+                var idx = 0;
+                setInterval(function() {
+                  var link = document.querySelector("link[rel~='icon']");
+                  if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    document.head.appendChild(link);
+                  }
+                  link.type = 'image/png';
+                  link.href = frames[idx];
+                  idx = (idx + 1) % frames.length;
+                }, 70);
+              })();
+            `,
+          }}
+        />
       </head>
       <Providers>
         <Column
