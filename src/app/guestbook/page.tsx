@@ -7,10 +7,10 @@ import { unstable_noStore as noStore } from "next/cache";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: guestbook.title,
+    title: guestbook.title as string,
     description: guestbook.description || "",
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(guestbook.title)}`,
+    image: `/api/og/generate?title=${encodeURIComponent(guestbook.title as string)}`,
     path: guestbook.path,
   });
 }

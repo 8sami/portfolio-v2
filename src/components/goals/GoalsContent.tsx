@@ -69,7 +69,7 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
       <Schema
         as="webPage"
         baseURL={baseURL}
-        title={goals.title}
+        title={goals.title as string}
         description={goals.description ?? ""}
         path={goals.path}
         author={{

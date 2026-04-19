@@ -8,10 +8,10 @@ import type { Goal } from "@/app/api/goals/route";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: goals.title,
+    title: goals.title as string,
     description: goals.description ?? "Personal goals and milestones",
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(goals.title)}`,
+    image: `/api/og/generate?title=${encodeURIComponent(goals.title as string)}`,
     path: goals.path,
   });
 }
