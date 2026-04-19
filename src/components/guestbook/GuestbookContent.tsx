@@ -88,11 +88,11 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
   };
 
   return (
-    <Column maxWidth="s" fillWidth paddingTop="24">
+    <Column maxWidth="s" fillWidth paddingTop="20">
       <Schema
         as="webPage"
         baseURL={baseURL}
-        title={guestbook.title}
+        title={guestbook.title as string}
         description=""
         path={guestbook.path}
         author={{
@@ -110,7 +110,7 @@ export const GuestbookContent: React.FC<{ initialComments?: Comment[] }> = ({
 
       <Column fillWidth gap="24" paddingX="m">
         {/* Header */}
-        <Heading variant="display-strong-s" align="center">
+        <Heading variant="display-strong-s" wrap="nowrap" align="center">
           {guestbook.title}
         </Heading>
 

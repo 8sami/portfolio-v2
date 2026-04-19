@@ -76,7 +76,7 @@ export default function Home() {
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
+          <RevealFx paddingTop="4" delay={0.4} horizontal="center" paddingLeft="12">
             <Button
               id="about"
               data-border="conservative"
@@ -105,7 +105,7 @@ export default function Home() {
       <RevealFx translateY="12" delay={0.8} fillWidth>
         <Column fillWidth gap="32" marginBottom="l" horizontal="center">
           {routes["/blog"] && (
-            <Column fillWidth horizontal="center" gap="32" marginTop="40">
+            <Column fillWidth horizontal="center" gap="32" marginTop="24">
               {/* Heading and Posts on separate lines, centered */}
               <Heading as="h2" variant="display-strong-xs" wrap="balance" align="center">
                 Randomly picked, just for you

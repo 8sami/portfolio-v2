@@ -12,7 +12,7 @@ import type {
   Work,
   Doom,
 } from "@/types";
-import { Button, Line, Row, Text } from "@once-ui-system/core";
+import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Samiullah",
@@ -117,7 +117,7 @@ const home: Home = {
     ),
     href: "/seeker",
   },
-  subline: <>I'm Sami and I hope you enjoy your stay. 👋</>,
+  subline: <Row gap="4" center>I'm Sami and I hope you enjoy your stay.<img src="/images/knight.gif" alt="Knight resting" style={{ height: "3rem", marginTop: "-10px", marginRight: "-18px" }} /></Row>,  
 };
 
 const about: About = {
@@ -636,13 +636,13 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: "Drop a nice comment and say hi! 👋",
+  title: <Row gap="12" center>Don't be shy, say hi! <img src="/images/pikachu.gif" alt="Pikachu waving hi" style={{ height: "4rem", marginTop: "-8px", marginRight: "-20px" }} /></Row>
 };
 
 const goals: Goals = {
   path: "/goals",
   label: "Goals",
-  title: "Goals I wish to achieve",
+  title: <Row gap="8" center>Goals I wish to achieve <img src="/images/cat/cat.gif" alt="Cat jumping around" style={{ height: "4rem", marginTop: "-16px", marginRight: "-40px" }} /></Row>,
 };
 
 const work: Work = {
