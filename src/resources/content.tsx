@@ -172,6 +172,17 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
+	company: "Open Healthcare Network Foundation",
+	timeframe: "May. 2026 - Present",
+	role: "Google Summer of Code Contributor",
+	achievements: [
+	  <>
+	    Building the Instant Messaging Wrapper Functionality for Care EMR.
+	  <>,
+	],
+	images: [],
+      },
+      {
         company: "Devkind",
         timeframe: "Jul. 2025 - Feb. 2026",
         role: "Software Developer",
@@ -241,7 +252,9 @@ const about: About = {
       {
         name: "Islamia Government Science College Sukkur",
         description: "Intermediate in Computer Science",
-        achievements: [],
+        achievements: [
+	  "Done with the exams, and waiting for the results.",
+	],
         timeframe: "Aug. 2024 - Expd. 2026",
       },
       {
