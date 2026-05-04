@@ -117,7 +117,7 @@ const home: Home = {
     ),
     href: "/seeker",
   },
-  subline: <Row gap="4" center>I'm Sami and I hope you enjoy your stay.<img src="/images/knight.gif" alt="Knight resting" style={{ height: "3rem", marginTop: "-10px", marginRight: "-18px" }} /></Row>,  
+  subline: <Row gap="4" center>I'm Sami and I hope you enjoy your stay.<img src="/images/knight.gif" alt="Knight resting" style={{ height: "3rem", marginTop: "-10px", marginRight: "-20px" }} /></Row>,  
 };
 
 const about: About = {
