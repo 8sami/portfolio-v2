@@ -117,7 +117,7 @@ const home: Home = {
     ),
     href: "/seeker",
   },
-  subline: <Row gap="4" center>I'm Sami and I hope you enjoy your stay.<img src="/images/knight.gif" alt="Knight resting" style={{ height: "3rem", marginTop: "-6px", marginRight: "-10px" }} /></Row>,  
+  subline: <Row gap="4" center>I'm Sami and I hope you enjoy your stay.<img src="/images/knight.gif" alt="Knight resting" style={{ height: "3rem", marginTop: "-6px", marginRight: "-2px" }} /></Row>,  
 };
 
 const about: About = {
@@ -649,13 +649,13 @@ const blog: Blog = {
 const guestbook: Guestbook = {
   path: "/guestbook",
   label: "Guestbook",
-  title: <Row gap="12" center>Don't be shy, say hiii! <img src="/images/pikachu.gif" alt="Pikachu waving hi" style={{ height: "4rem", marginTop: "-8px", marginRight: "-20px" }} /></Row>
+  title: <Row gap="12" center>Don't be shy, say hiii! <img src="/images/pikachu.gif" alt="Pikachu waving hi" style={{ height: "4rem", marginTop: "-8px", marginRight: "-2px" }} /></Row>
 };
 
 const goals: Goals = {
   path: "/goals",
   label: "Goals",
-  title: <Row gap="8" center>Goals I wish to achieve <img src="/images/cat/cat.gif" alt="Cat jumping around" style={{ height: "4rem", marginTop: "-16px", marginRight: "-40px" }} /></Row>,
+  title: <Row gap="8" center>Goals I wish to achieve <img src="/images/cat/cat.gif" alt="Cat jumping around" style={{ height: "4rem", marginTop: "-16px", marginRight: "-2px" }} /></Row>,
 };
 
 const work: Work = {
