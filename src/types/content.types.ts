@@ -279,27 +279,33 @@ export interface About extends BasePageConfig {
  * Guestbook Section
  * @description The below information will be displayed on the Home page in Guestbook block
  */
-export interface Guestbook extends Omit<BasePageConfig, 'description' | 'title'> {
+export interface Guestbook extends Omit<
+  BasePageConfig,
+  "description" | "title"
+> {
   /** Title of the guestbook section */
   title: React.ReactNode;
   description?: string;
-};
+}
 
 /**
  * Goals page configuration.
  * @description Configuration for the Goals page.
  */
-export interface Goals extends Omit<BasePageConfig, 'description' | 'title'> {
+export interface Goals extends Omit<BasePageConfig, "description" | "title"> {
   /** Title of the goals page */
   title: React.ReactNode;
   description?: string;
-};
+}
 
 /**
  * Blog page configuration.
  * @description Configuration for the Blog page, including metadata and navigation label.
  */
-export interface Blog extends BasePageConfig {}
+export interface Blog extends Omit<BasePageConfig, "description" | "title"> {
+  title: React.ReactNode;
+  description?: string;
+}
 
 /**
  * Work/projects page configuration.
