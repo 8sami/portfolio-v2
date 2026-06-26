@@ -14,19 +14,20 @@ export function formatDate(date: string, includeRelative = false) {
   const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
   const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+  const secondsAgo = Math.floor(timeDifference / 1000);
 
   let formattedDate = "";
 
   if (daysAgo >= 365) {
-    formattedDate = pluralize(Math.floor(daysAgo / 365), "year");
+    formattedDate = `${Math.floor(daysAgo / 365)}y ago`;
   } else if (daysAgo >= 30) {
-    formattedDate = pluralize(Math.floor(daysAgo / 30), "month");
+    formattedDate = `${Math.floor(daysAgo / 30)}mo ago`;
   } else if (daysAgo > 0) {
-    formattedDate = pluralize(daysAgo, "day");
+    formattedDate = `${daysAgo}d ago`;
   } else if (hoursAgo > 0) {
-    formattedDate = pluralize(hoursAgo, "hour");
+    formattedDate = `${hoursAgo}h ago`;
   } else if (minutesAgo > 0) {
-    formattedDate = pluralize(minutesAgo, "minute");
+    formattedDate = `${minutesAgo}m ago`;
   } else {
     formattedDate = "just now";
   }
