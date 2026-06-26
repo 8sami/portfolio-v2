@@ -5,10 +5,10 @@ import { baseURL, blog, person, newsletter } from "@/resources";
 
 export async function generateMetadata() {
   return Meta.generate({
-    title: blog.title,
-    description: blog.description,
+    title: blog.title as string,
+    description: blog.description as string,
     baseURL: baseURL,
-    image: `/api/og/generate?title=${encodeURIComponent(blog.title)}`,
+    image: `/api/og/generate?title=${encodeURIComponent(blog.title as string)}`,
     path: blog.path,
   });
 }
@@ -19,10 +19,10 @@ export default function Blog() {
       <Schema
         as="blogPosting"
         baseURL={baseURL}
-        title={blog.title}
-        description={blog.description}
+        title={blog.title as string}
+        description={blog.description as string}
         path={blog.path}
-        image={`/api/og/generate?title=${encodeURIComponent(blog.title)}`}
+        image={`/api/og/generate?title=${encodeURIComponent(blog.title as string)}`}
         author={{
           name: person.name,
           url: `${baseURL}/blog`,
