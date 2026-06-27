@@ -664,7 +664,7 @@ const blog: Blog = {
         alt="Standing knight"
         style={{
           height: "5rem",
-          marginTop: "-30px",
+          marginTop: "-22px",
           marginBottom: "-10px",
           marginRight: "-2px",
         }}
