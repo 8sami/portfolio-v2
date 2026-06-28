@@ -5,7 +5,16 @@ import type { Goal } from "@/app/api/goals/route";
 import { CommentForm } from "@/components/CommentForm";
 import { CommentList } from "@/components/CommentList";
 import { formatDate, pluralize } from "@/utils/formatDate";
-import { Badge, Card, Column, Flex, IconButton, Row, SmartLink, Text } from "@once-ui-system/core";
+import {
+  Badge,
+  Card,
+  Column,
+  Flex,
+  IconButton,
+  Row,
+  SmartLink,
+  Text,
+} from "@once-ui-system/core";
 import type { User } from "@supabase/supabase-js";
 import type React from "react";
 import { useState } from "react";
@@ -18,6 +27,8 @@ interface GoalCardProps {
   onDelete: (id: string) => void;
   onEdit: (goal: Goal) => void;
   onUpdateAdded: (goalId: string, comment: Comment) => void;
+  isExpanded: boolean;
+  onToggleUpdates: (goalId: string) => void;
 }
 
 export const GoalCard: React.FC<GoalCardProps> = ({
@@ -28,8 +39,9 @@ export const GoalCard: React.FC<GoalCardProps> = ({
   onDelete,
   onEdit,
   onUpdateAdded,
+  isExpanded,
+  onToggleUpdates,
 }) => {
-  const [showUpdates, setShowUpdates] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
   const isAccomplished = !!goal.accomplished_at;
   const updates = goal.updates ?? [];
@@ -65,29 +77,44 @@ export const GoalCard: React.FC<GoalCardProps> = ({
       fillWidth
       cursor="normal"
     >
-      <Column gap="12" fillWidth style={{ paddingTop: "14px", paddingBottom: "14px" }}>
+      <Column
+        gap="12"
+        fillWidth
+        style={{ paddingTop: "14px", paddingBottom: "14px" }}
+      >
         {/* Top row */}
         <Row fillWidth horizontal="between" vertical="start" gap="12">
           <Row gap="12" vertical="start" flex={1}>
             <Column gap="8" flex={1}>
-              <Row gap="8" horizontal="between" vertical="center" style={{ flexWrap: "wrap" }}>
+              <Row
+                gap="8"
+                horizontal="between"
+                vertical="center"
+                style={{ flexWrap: "wrap" }}
+              >
                 <Row center>
                   <Text
                     variant="body-default-m"
-                    onBackground={isAccomplished ? "neutral-weak" : "neutral-strong"}
+                    onBackground={
+                      isAccomplished ? "neutral-weak" : "neutral-strong"
+                    }
                     style={{
                       textDecoration: isAccomplished ? "line-through" : "none",
                     }}
                   >
                     {goal.title}
                   </Text>
-                  <Text variant="label-default-xs" onBackground="neutral-weak" paddingLeft="8">
+                  <Text
+                    variant="label-default-xs"
+                    onBackground="neutral-weak"
+                    paddingLeft="8"
+                  >
                     {isAccomplished
                       ? `Accomplished ${formatDate(goal.accomplished_at!, true)}`
                       : `${formatDate(goal.created_at, true)}`}
                   </Text>
                 </Row>
-                  {(goal.is_current || isAccomplished) && (
+                {(goal.is_current || isAccomplished) && (
                   <Badge
                     vertical="center"
                     gap="4"
@@ -148,18 +175,28 @@ export const GoalCard: React.FC<GoalCardProps> = ({
           style={{ flexWrap: "wrap" }}
         >
           {(updates.length > 0 || isAdmin) && (
-            <SmartLink style={{ cursor: "pointer" }} onClick={() => setShowUpdates((v) => !v)}>
+            <SmartLink
+              style={{ cursor: "pointer" }}
+              onClick={() => onToggleUpdates(goal.id)}
+            >
               <Text variant="label-strong-xs" onBackground="brand-weak">
-                {updates.length > 0 ? pluralize(updates.length, "Update", "") : "Add Update"}
+                {updates.length > 0
+                  ? pluralize(updates.length, "Update", "")
+                  : "Add Update"}
               </Text>
             </SmartLink>
           )}
         </Flex>
 
         {/* Updates panel */}
-        {showUpdates && (
+        {isExpanded && (
           <Column fillWidth gap="12" paddingTop="4">
-            <CommentList comments={updates} isLoading={isPosting} variant="compact" />
+            <CommentList
+              direction={"column-reverse"}
+              comments={updates}
+              isLoading={isPosting}
+              variant="compact"
+            />
             {isAdmin && user && (
               <Column
                 fillWidth

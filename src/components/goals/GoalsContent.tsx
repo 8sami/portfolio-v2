@@ -4,7 +4,14 @@ import type { Comment } from "@/app/api/comments/route";
 import type { Goal } from "@/app/api/goals/route";
 import { baseURL, goals, person } from "@/resources";
 import { useAuth } from "@/context/AuthContext";
-import { Button, Column, Heading, Row, Schema, Text } from "@once-ui-system/core";
+import {
+  Button,
+  Column,
+  Heading,
+  Row,
+  Schema,
+  Text,
+} from "@once-ui-system/core";
 import type React from "react";
 import { useState } from "react";
 import { GoalCard } from "./GoalCard";
@@ -15,12 +22,19 @@ interface GoalsContentProps {
   initialGoals?: Goal[];
 }
 
-export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] }) => {
+export const GoalsContent: React.FC<GoalsContentProps> = ({
+  initialGoals = [],
+}) => {
   const [goalsList, setGoalsList] = useState<Goal[]>(initialGoals);
   const { user, session, isAdmin, isLoading: isAuthLoading } = useAuth();
   const token = session?.access_token ?? null;
   const [showForm, setShowForm] = useState(false);
   const [editingGoal, setEditingGoal] = useState<Goal | null>(null);
+  const [expandedGoalId, setExpandedGoalId] = useState<string | null>(null);
+
+  const handleToggleUpdates = (goalId: string) => {
+    setExpandedGoalId((prevId) => (prevId === goalId ? null : goalId));
+  };
 
   const isAuthLoaded = !isAuthLoading;
 
@@ -28,7 +42,9 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
     setGoalsList((prev) => {
       const exists = prev.find((g) => g.id === saved.id);
       if (exists) {
-        return prev.map((g) => (g.id === saved.id ? { ...saved, updates: g.updates } : g));
+        return prev.map((g) =>
+          g.id === saved.id ? { ...saved, updates: g.updates } : g,
+        );
       }
       return [{ ...saved, updates: [] }, ...prev];
     });
@@ -52,7 +68,11 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
 
   const handleUpdateAdded = (goalId: string, comment: Comment) => {
     setGoalsList((prev) =>
-      prev.map((g) => (g.id === goalId ? { ...g, updates: [comment, ...(g.updates ?? [])] } : g)),
+      prev.map((g) =>
+        g.id === goalId
+          ? { ...g, updates: [comment, ...(g.updates ?? [])] }
+          : g,
+      ),
     );
   };
 
@@ -109,14 +129,17 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
             onClose={() => {
               setShowForm(false);
               setEditingGoal(null);
-              
             }}
           />
         )}
 
         {sortedGoals.length === 0 ? (
           <Column horizontal="center" paddingY="48">
-            <Text variant="body-default-l" onBackground="neutral-weak" align="center">
+            <Text
+              variant="body-default-l"
+              onBackground="neutral-weak"
+              align="center"
+            >
               No goals yet.
             </Text>
           </Column>
@@ -132,6 +155,8 @@ export const GoalsContent: React.FC<GoalsContentProps> = ({ initialGoals = [] })
                 onDelete={handleDeleteGoal}
                 onEdit={handleEditGoal}
                 onUpdateAdded={handleUpdateAdded}
+                isExpanded={expandedGoalId === goal.id}
+                onToggleUpdates={handleToggleUpdates}
               />
             ))}
             <GoalStats goals={goalsList} />
