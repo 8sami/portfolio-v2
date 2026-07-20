@@ -12,8 +12,10 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes } from "@/resources";
 import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
+// import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import Post from "@/components/blog/Post";
+import { getPosts } from "@/utils/utils";
 
 export const dynamic = 'force-dynamic';
 
@@ -28,6 +30,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
+  const treesPost = getPosts(["src", "app", "blog", "posts"]).find(
+    (post) => post.slug === "10000-trees"
+  );
+
   return (
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <Schema
@@ -102,25 +108,38 @@ export default function Home() {
         </Column>
       </Column>
 
+      {treesPost && (
+        <RevealFx translateY="12" delay={0.8} fillWidth>
+          <Column fillWidth horizontal="center" gap="32" marginTop="24">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance" align="center">
+              I need your help
+            </Heading>
+            <Column fillWidth maxWidth="s" paddingX="l">
+              <Post post={treesPost} thumbnail={false} />
+            </Column>
+          </Column>
+        </RevealFx>
+      )}
+
       <RevealFx translateY="12" delay={0.8} fillWidth>
         <Column fillWidth gap="32" marginBottom="l" horizontal="center">
           {routes["/blog"] && (
             <Column fillWidth horizontal="center" gap="32" marginTop="24">
               {/* Heading and Posts on separate lines, centered */}
               <Heading as="h2" variant="display-strong-xs" wrap="balance" align="center">
-                Randomly picked, just for you
+                Randomly picked this one just for you
               </Heading>
               <Column fillWidth maxWidth="s" paddingX="l">
-                <Posts limit={2} randomize thumbnail />
+                <Posts limit={1} randomize thumbnail />
               </Column>
             </Column>
           )}
-          
+
           {/* Projects width and spacing synced with Posts */}
-          <Column fillWidth maxWidth="s" gap="32">
-            <Projects limit={2} randomize/>
-          </Column>
-          
+          {/*<Column fillWidth maxWidth="s" gap="32">
+            <Projects limit={1} randomize/>
+          </Column>*/}
+
           <Mailchimp />
         </Column>
       </RevealFx>

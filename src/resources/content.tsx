@@ -103,7 +103,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>I absolutely love making products that solve actual problems</>,
+  headline: <>I absolutely love solving problems and exploring new interests</>,
   featured: {
     display: true,
     title: (
@@ -119,9 +119,9 @@ const home: Home = {
   },
   subline: (
     <Row gap="4" center>
-      I'm Sami and I hope you enjoy your stay.
+      I'm Sami and I hope you enjoy your stay
       <img
-        src="/images/knight.gif"
+        src="/images/knight.webp"
         alt="Knight resting"
         style={{ height: "3rem", marginTop: "-6px", marginRight: "-2px" }}
       />
@@ -183,6 +183,17 @@ const about: About = {
     display: true, // set to false to hide this section
     title: "Work Experience",
     experiences: [
+      {
+        company: "Konpal",
+        timeframe: "Jul. 2026 - Present",
+        role: "Founder",
+        achievements: [
+          <>
+            Planting 10,000 trees (dm me for adopting a tree).
+          </>,
+        ],
+        images: [],
+      },
       {
         company: "Open Healthcare Network Foundation",
         timeframe: "May. 2026 - Present",
@@ -640,7 +651,7 @@ const about: About = {
     description:
       "I don't know why, but I really liked this gif and wanted to add it here",
     display: true,
-    src: "/images/vangogh.gif",
+    src: "/images/vangogh.webp",
     alt: "Van Gogh",
   },
   goals: {
@@ -660,7 +671,7 @@ const blog: Blog = {
     <Row gap="12" center>
       Some thoughts and ideas
       <img
-        src="/images/standing-knight.gif"
+        src="/images/standing-knight.webp"
         alt="Standing knight"
         style={{
           height: "5rem",
@@ -683,7 +694,7 @@ const guestbook: Guestbook = {
     <Row gap="12" center>
       Don't be shy, say hiii!{" "}
       <img
-        src="/images/pikachu.gif"
+        src="/images/pikachu.webp"
         alt="Pikachu waving hi"
         style={{ height: "4rem", marginTop: "-8px", marginRight: "-2px" }}
       />
@@ -698,7 +709,7 @@ const goals: Goals = {
     <Row gap="8" center>
       Goals I wish to achieve{" "}
       <img
-        src="/images/cat/cat.gif"
+        src="/images/cat/cat.webp"
         alt="Cat jumping around"
         style={{ height: "4rem", marginTop: "-16px", marginRight: "-2px" }}
       />
