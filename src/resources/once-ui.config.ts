@@ -15,8 +15,8 @@ import type {
 import { home, person, social } from "./content";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = process.env.NODE_ENV === 'development' 
-  ? "http://localhost:3000" 
+const baseURL = process.env.NODE_ENV === 'development'
+  ? "http://localhost:3000"
   : "https://www.samiullahjaved.com";
 
 const routes: RoutesConfig = {
@@ -44,13 +44,13 @@ const protectedRoutes: ProtectedRoutesConfig = {
 };
 
 // Import and set font for each variant
-import { Instrument_Serif, Instrument_Sans, DotGothic16 } from "next/font/google";
+import { Instrument_Serif, Instrument_Sans, DotGothic16, JetBrains_Mono } from "next/font/google";
 
 const heading = Instrument_Serif({
   variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  weight: "400", 
+  weight: "400",
 });
 
 const body = Instrument_Sans({
@@ -67,11 +67,11 @@ const label = DotGothic16({
   weight: "400"
 });
 
-const code = DotGothic16({
+const code = JetBrains_Mono({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
-  weight: "400"
+  weight: "300"
 });
 
 const fonts: FontsConfig = {
@@ -137,7 +137,7 @@ const effects: EffectsConfig = {
     display: true,
     opacity: 80,
     color: "accent-alpha-weak",
-    width: "0.67rem", 
+    width: "0.67rem",
     height: "0.67rem",
   },
   lines: {
